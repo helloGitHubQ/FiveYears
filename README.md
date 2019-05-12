@@ -3,6 +3,8 @@
 
 ## Java
 - 基础
+	- [异常](https://github.com/helloGitHubQ/FivesYears/blob/master/Exception.md "异常")
+	- [String](https://github.com/helloGitHubQ/FivesYears/blob/master/String.md "String")
 - JVM
 - 容器
 - 并发
@@ -14,22 +16,25 @@
 
 ## 数据结构和算法
 ## 网络
-##操作系统
+## 操作系统
 - Linux
 ## 数据库
 - Oracle
+	- [PL/SQL](https://github.com/helloGitHubQ/FivesYears/blob/master/DataBase.md "database") 
 - MYQL
-	[https://github.com/helloGitHubQ/FivesYears/blob/master/MYSQL.md](https://github.com/helloGitHubQ/FivesYears/blob/master/MYSQL.md "MYSQL")
+	- [MYSQL](https://github.com/helloGitHubQ/FivesYears/blob/master/MYSQL.md "MYSQL")
 - Redis
 ## 框架
 ## 设计模式
 ## 书籍
-Thinking in Java（第4版）/**在读**
+Thinking in Java（第4版）**在读**
 
 Java 并发编程实战
 
 设计模式 - 可复用面向对象软件基础
 
 算法（第4版）
+## 工具
+- [Git](https://github.com/helloGitHubQ/FivesYears/blob/master/Git.md "Git")
 ## 总结
 
