@@ -4,7 +4,7 @@
 ## Java
 - 基础
 	- [异常](https://github.com/helloGitHubQ/FivesYears/blob/master/Exception.md "异常")
-	- [String](https://github.com/helloGitHubQ/FivesYears/blob/master/String.md "String")
+	- [String](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/%E5%AD%97%E7%AC%A6%E4%B8%B2.md "String")
 - JVM
 - 容器
 - 并发
@@ -43,4 +43,5 @@ Java 并发编程实战
 - nginx
 ## 总结
 - [经典语录](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/ClassicQuotation.md "经典语录")
+- [(String)和+""和.toString()的区别](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/String%E8%BD%AC%E6%8D%A2%E6%AF%94%E8%BE%83.md)
 
