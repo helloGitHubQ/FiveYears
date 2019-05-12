@@ -39,5 +39,8 @@ Git教程请点击如下网址:
 
 ![TortoiseGit](https://i.imgur.com/rcjaYUf.png)
 
+---
+执行Git命令时出现各种 SSL certificate problem 的解决办法:
 
+git config --global http.sslVerify false
 
