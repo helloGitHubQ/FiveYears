@@ -1,4 +1,4 @@
-#正则表示式
+# 正则表示式
 ---
 ### 5/14/2019 10:26:34 PM 
 正则表达式是一种强大而灵活的文本处理工具。
@@ -14,13 +14,13 @@
 ---
 
 - split()
-- 
+---
  一个非常有用的正则表示式工具。功能：就是将字符串从正则表达式匹配的地方分开。
 
 它还有一个重载的版本，允许你限制字符串分割的次数。
 
-- 替换 
-- 
+- 替换
+---  
 replaceFirst(String replacement) / replaceAll(String replacement ) /appendReplacement(StringBuffer sbuf,String replacement)
 
 replaceFirst() 和 replaceAll() 只是替换普通字符串。
@@ -32,7 +32,7 @@ replaceFirst() 和 replaceAll() 只是替换普通字符串。
 ---
 
 - 量词
--
+---
 贪婪型(尽可能多的去匹配)
 
 勉强型(匹配满足所需的最少字符)
@@ -43,7 +43,7 @@ replaceFirst() 和 replaceAll() 只是替换普通字符串。
 
 
 - Pattern 和 Matcher
-- 
+--- 
 JDK文档 java.util.regex 包中的 Pattern 类。
 
 ![regex](https://i.imgur.com/xKUaIZk.png)
@@ -60,7 +60,7 @@ Pattern 标记（**在读JDK文档**）
 reset() : 不带参数的 reset() 方法，可以将Matcher对象重新设置到当前字符序列的起始位置。
 
 - 正则表达式和 Java I/O
--
+---
 在一个文件中进行搜素匹配操作。
 
 Jeffery E.F.Firiedl 《精通正则表达式(第2版)》

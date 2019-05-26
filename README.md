@@ -4,7 +4,7 @@
 ## Java
 - 基础
 	- [异常](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/Exception.md "异常")
-	- [String](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/String.md"String")
+	- [String](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/String.md "String")
 	- [正则表达式](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/regex.md "正则")
 - JVM
 - 容器
