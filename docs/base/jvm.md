@@ -10,8 +10,14 @@
 
 堆  栈  方法区
 
+## Java内存空间
+
 ![jdk1.6](https://i.imgur.com/jHqpbye.png)
 
 &
 
 ![jdk1.8](https://i.imgur.com/005yIoT.png)
+
+
+## JVM垃圾回收
+

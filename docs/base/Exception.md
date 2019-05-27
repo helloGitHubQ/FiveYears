@@ -41,4 +41,6 @@ logName.log
 + FATAL 级别日志，当前程序发生严重错误，程序中断。
 
  
+### 5/27/2019 9:50:50 PM 
 
+java虚拟机栈中可能会出现两种异常：StarkOverFlowError & OutOfMemoryError
