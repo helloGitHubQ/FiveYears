@@ -31,6 +31,7 @@ Java的自动内存管理主要是针对对象内存的回收和对象内存的�
 堆内存常见的分配策略：
 
 ![分配策略](https://i.imgur.com/gWtjL5k.png)
+
 1 . 对象优先在 eden 区分配
 
 2 . 大对象直接进入老年代
@@ -87,9 +88,13 @@ Java的自动内存管理主要是针对对象内存的回收和对象内存的�
 ![标记清除算法](https://i.imgur.com/opxRnwD.png)
 
 2. 复制算法：
+
 ![复制算法](https://i.imgur.com/xrp4MHY.png)
+
 3. 标记 - 整理算法：
+
 ![标记整理算法](https://i.imgur.com/liYTL8m.png)
+
 4. 分代收集算法：主流收集器采用的回收算法。
 
 分代其实就很明显了，一般就是将java堆分为新生代和老年代。
