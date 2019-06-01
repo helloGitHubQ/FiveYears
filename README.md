@@ -7,7 +7,9 @@
 	- [String](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/String.md "String")
 	- [正则表达式](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/regex.md "正则")
 - JVM
-	- [jvm](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/jvm.md "JVM")
+	- [java内存区域](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/jvm/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.md "java内存区域")
+	
+	
 - 容器
 - 并发
 - 集合(底层源码)
