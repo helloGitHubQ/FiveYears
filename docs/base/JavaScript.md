@@ -20,6 +20,10 @@
 ### 6/11/2019 10:57:18 PM 
 ## Js基础
 
+[TOC] 
+
+### 准备
+---
 1. js的放置位置在head或者body中，一般情况下是放在head中。
 
 ![js位置](https://i.imgur.com/OCHQ7I4.png)
@@ -54,3 +58,31 @@ JS 区分大小写
 + 通过变量输出内容
 + 输出多项内容，内容之间用+号
 + 输出 HTML 并起作用，标签使用 "" 括起来
+
+### 6/12/2019 8:06:47 PM 
+
+### 互动
+---
+
+7. 警告 -- alert 消息对话框
+
+	`alert(字符串或者常量)`
+8. 确认 -- confirm 消息对话框
+
+![confirm](https://i.imgur.com/1R2A7vU.png)
+	
+对话框是排他的，即用户在点击对话框之前不能进行任何其他操作。
+
+9. 提问 -- prompt 消息对话框
+
+![prompt](https://i.imgur.com/dMWVmWH.png)
+
+10. 打开新窗口 window.open()
+
+![open](https://i.imgur.com/wweNk5G.png)
+
+![open](https://i.imgur.com/zutZfNX.png)
+
+11. 关闭窗口 window.close()
+
+![close](https://i.imgur.com/pWbMyvV.png)

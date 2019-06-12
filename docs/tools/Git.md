@@ -44,3 +44,20 @@ Git教程请点击如下网址:
 
 git config --global http.sslVerify false
 
+---
+### 6/11/2019 10:38:30 PM 
+
+    You have not concluded your merge (MERGE_HEAD exists).
+    Please, commit your changes before you can merge.问题
+    
+    解决办法：（拉代码，丢掉本地修改的代码）
+    git fetch --all
+
+    git reset --hard origin/master
+    
+    git fetch
+
+![分支冲突](https://i.imgur.com/QQ8kkCn.png)
+
+[分支冲突的3种解决办法](https://blog.csdn.net/xlgen157387/article/details/51146949 "分支冲突解决办法")
+
