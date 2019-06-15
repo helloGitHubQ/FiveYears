@@ -76,3 +76,23 @@ truncate ，恢复初始化大小；delete ，不会减少表或者索引所占�
 
 
 [drop、truncate和delete的区别](https://www.cnblogs.com/zhizhao/p/7825469.html?tdsourcetag=s_pctim_aiomsg)
+
+## SUBSTRING_INDEX()函数
+
+语法：
+
+    substring_index(str,delim,count)
+
+    str:要处理的字符串
+
+    delim:分隔符
+
+    count:分隔符计数 
+    
+例子：
+
+    -- SUBSTRING_INDEX(str,'"',2)取出从左往右第二个引号左边的字符串str
+    -- SUBSTRING_INDEX(str1,'"',-1)取出从右往左数第一个引号右边的字符串str_1
+    SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(str,'"',2),'"',-1) as str_1 from stringtest;
+
+结果：str_1 : aa cdfd
