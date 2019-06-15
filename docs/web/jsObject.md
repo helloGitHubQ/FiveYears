@@ -22,11 +22,11 @@
    - getDay()
    返回的数字是 0-6， 0 代表星期日
    
-       <script type="text/javascript">
-       var mydate=new Date();
-       var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
-       document.write("今天是：" + mydate.getDay());
-       </script>
+          <script type="text/javascript">
+          var mydate=new Date();
+          var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+          document.write("今天是：" + mydate.getDay());
+          </script>
 
 - JavaScript Math 对象
    - ceil()
