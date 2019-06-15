@@ -4,7 +4,8 @@ window 对象是 BOM 的核心,window 对象指当前的浏览器窗口
 
 ### window 对象方法：
 ---
-[图片]
+
+![window对象方法](https://i.imgur.com/IFmd2MW.jpg)
 
 ### JavaScript 计时器
 ---
@@ -22,67 +23,56 @@ window 对象是 BOM 的核心,window 对象指当前的浏览器窗口
   - dearInterval() ： 取消 setInterval() 设置
   
 #### 计时器 setInterval()
----
 在执行时，从载入页面后每隔指定的时间执行代码。
  
-**语法:**
+语法:`setInterval(代码,交互时间);`
 
-`setInterval(代码,交互时间);`
-
-**参数说明：**
+参数说明：
 
 1. 代码：要调用的函数或要执行的代码串。
 
 2. 交互时间：周期性执行或调用表达式之间的时间间隔，以毫秒计（1s=1000ms）。
 
-**返回值:**
-
-一个可以传递给 clearInterval() 从而取消对"代码"的周期性执行的值。
+返回值:一个可以传递给 clearInterval() 从而取消对"代码"的周期性执行的值。
 
 #### 取消计时器 clearInterval()
----
 clearInterval() 方法可取消由 setInterval() 设置的交互时间。
 
-**语法：**
+语法：`clearInterval(id_of_setInterval)`
 
-`clearInterval(id_of_setInterval)`
+参数说明: id_of_setInterval：由 setInterval() 返回的 ID 值。
 
-**参数说明:**
-
-id_of_setInterval：由 setInterval() 返回的 ID 值。
-
-#### 计时器 setTimeout() / 取消计时器 clearTimeout()
----
+#### 计时器 setTimeout() 
 在载入后延迟指定时间后，去执行一次表达式仅执行一次
 
-**计时器语法：**
+计时器语法：`setTimeout(代码,延迟时间);`
 
-`setTimeout(代码,延迟时间);`
-
-**参数说明：**
+参数说明：
 
 1. 要调用的函数或要执行的代码串。
 
 2. 延时时间：在执行代码前需等待的时间，以毫秒为单位（1s=1000ms)。
 
 
-**取消计时器语法:**
+#### 取消计时器 clearTimeout()
+取消计时器语法:`clearTimeout(id_of_setTimeout)`
 
-`clearTimeout(id_of_setTimeout)`
-
-**参数说明:**
-
-id_of_setTimeout：由 setTimeout() 返回的 ID 值。该值标识要取消的延迟执行代码块。
+参数说明: id_of_setTimeout：由 setTimeout() 返回的 ID 值。该值标识要取消的延迟执行代码块。
 
 ### History 对象
+---
 记录用户曾经浏览过的页面( URL )，并可以实现浏览器前进与后退相似导航的功能。从窗口被打开的那一刻开始记录，每个浏览器窗口、每一个标签页乃至每一个框架，都有自己的 history对象与特定的 window 对象关联。
 
-**语法：** `window.history.[属性|方法]`
+语法： `window.history.[属性|方法]`
+
 注意：window可以省略。
 
 History 对象属性: length 返回浏览器历史列表中的 URL 数量
 
 History 对象方法： 
+
+![History对象方法](https://i.imgur.com/MvJOAqq.jpg)
+
 
 返回前一个浏览的页面：back() 方法，加载 history 列表中的前一个 URL .
 
@@ -96,28 +86,37 @@ History 对象方法：
 
 语法： `window.history.go(number);`
 
+![返回浏览历史中的其他页面的参数](https://i.imgur.com/CKsEgY4.jpg)
+
 ### Localtion 对象
+---
 location用于获取或设置窗体的URL，并且可以用于解析URL。
+ 
+语法: `location.[属性|方法]`
 
-语法:
-
-location.[属性|方法]
+![Location对象](https://i.imgur.com/qLNgFap.png)
 
 ### navigator 对象
-
+---
 Navigator 对象包含有关浏览器的信息，通常用于检测浏览器与操作系统的版本。
+
+![Navigator对象](https://i.imgur.com/keF3xXb.jpg)
 
 - userAgent 对象
 
 返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串)。
 
-语法：navigator.userAgent
+语法：`navigator.userAgent`
+
+![userAgent](https://i.imgur.com/yns4gDs.jpg)
 
 ### screen 对象
 
 screen对象用于获取用户的屏幕信息。
 
-语法：window.screen.属性
+语法：`window.screen.属性`
+
+![screen对象](https://i.imgur.com/BUYp5UC.png)
 
 ### 屏幕分辨率的高和宽以及可用的屏幕的高和宽
 
