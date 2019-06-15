@@ -50,3 +50,29 @@ Oracle中有to _char和to _date.但是MYSQL中没有.
 
 > %S：代表 秒,格式为(00……59)  
 > %s：代表 秒,格式为(00……59) 
+
+
+## drop,delete和truncate的区别
+
+一次偶然的机会我看到尽然还有 truncate table .. 这样的写法。所以就产生了好奇心。想一探究竟！
+
+1. 应用范围：delete 可以操作表和视图. truncate 只能操作表.
+
+2. delete 和 truncate 只是删除数据， drop 删除数据和结构
+
+3.执行速度：drop > truncate > drop
+
+4.delete 删除每一行的时候都会生成事务操作记录保存在日志中，以便之后的回滚操作。
+
+  truncate 删除数据的时候,并不会把删除操作记录记入日志中保存。删除行是不能恢复的，并且删除的过程中不会激活与表有关的删除触发器，所以执行速度快
+  
+5. 表和索引空间：
+
+truncate ，恢复初始化大小；delete ，不会减少表或者索引所占用的空间；drop ，将表所占用的空间全部释放掉。
+
+6. 对于有 FOREIGN KEY （外键）约束引用的表，不能使用 truncate table，而应该使用不带 where 子句的 delete 语句
+
+7.truncate 和 drop 是 DLL ，操作立即生效，原数据不放到 rollback segment 中，不能回滚。delete 是 DML ，这个操作会放到 rollback segment 中，事务提交之后才生效。
+
+
+[drop、truncate和delete的区别](https://www.cnblogs.com/zhizhao/p/7825469.html?tdsourcetag=s_pctim_aiomsg)
