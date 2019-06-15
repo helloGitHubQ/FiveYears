@@ -60,5 +60,5 @@ Java 并发编程实战
 - [经典语录](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/summary/ClassicQuotation.md "经典语录")
 - [(String)和+""和.toString()的区别](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/summary/String%E8%BD%AC%E6%8D%A2%E6%AF%94%E8%BE%83.md)
 - [Session&Cookie](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/summary/sessionCookie.md "sessionCookie")
-- [印象笔记共享fx](https://www.evernote.com/pub/garang17571773/fx)
+- [java中Math函数](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/summary/Math.md)
 
