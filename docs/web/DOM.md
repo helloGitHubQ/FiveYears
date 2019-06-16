@@ -3,16 +3,16 @@
     - [初级知识](#初级知识)
     - [getElementsByName()方法](#getElementsByName()方法) 
     - [getElementsByTagName()方法](#getElementsByTagName()方法) 
-    - [getAttribute() 方法](#getAttribute()方法) 
-    - [setAttribute() 方法](#setAttribute()方法) 
+    - [getAttribute()方法](#getAttribute()方法) 
+    - [setAttribute()方法](#setAttribute()方法) 
     - [节点属性](#节点属性)
-	    - [访问子节点 childNodes](#访问子节点 childNodes)
+	    - [访问子节点childNodes](#访问子节点childNodes)
 	    - [访问子节点的第一和最后项](#访问子节点的第一和最后项)
-	    - [访问父节点 parentNode](#访问父节点parentNode)
+	    - [访问父节点parentNode](#访问父节点parentNode)
 	    - [访问兄弟节点](#访问兄弟节点)
-	    - [插入节点 insertBefore()](#插入节点insertBefore())
-	    - [删除节点 removeChild()](#删除节点removeChild())
-	    - [替换节点元素 replaceChild()](#替换节点元素replaceChild())
+	    - [插入节点insertBefore()](#插入节点insertBefore())
+	    - [删除节点removeChild()](#删除节点removeChild())
+	    - [替换节点元素replaceChild()](#替换节点元素replaceChild())
  
 <!-- /TOC -->
 # DOM 操作
@@ -102,7 +102,7 @@ className 属性设置或者返回元素的 class 属性。
 
 注意：方法区分大小写！！！
 
-### getAttribute() 方法
+### getAttribute()方法
 
 通过元素节点的属性名称获取属性的值
 
@@ -114,7 +114,7 @@ className 属性设置或者返回元素的 class 属性。
 
 2. name：要想查询的元素节点的属性名字
 
-### setAttribute() 方法
+### setAttribute()方法
 
 增加一个指定名称和值得新属性或者把一个现有的属性设定为指定的值
 
@@ -138,7 +138,7 @@ nodeValue 属性：节点的值
 
 nodeType 属性：节点的类型，只读
 
-#### 访问子节点 childNodes
+#### 访问子节点childNodes
 
 访问选定元素节点下的所有子节点的列表，返回的值可以看作是一个数组，具有length属性。如果选定的节点没有子节点，则该属性返回不包含节点的 NodeList
 
@@ -158,7 +158,7 @@ lastChild 属性：
 
 语法：`node.lastChild`
 
-#### 访问父节点 parentNode
+#### 访问父节点parentNode
 
 获取指定节点的父节点.父节点只有一个
 
@@ -174,7 +174,7 @@ previousSibing 属性可返回某个节点之前紧跟的节点（处在同一�
 
 语法：`nodeObject.previousSibling`
 
-#### 插入节点 appendChild()
+#### 插入节点appendChild()
 
 在指定节点的最后一个子节点列表之后添加一个新的节点
 
@@ -186,11 +186,11 @@ previousSibing 属性可返回某个节点之前紧跟的节点（处在同一�
 
 语法：`insertBefore(newnode,node);`
 
-#### 删除节点 removeChild()
+#### 删除节点removeChild()
 
 从子节点列表中删除某个节点。如删除成功，可返回被删除的节点，如失败，则返回 NULL
 
-#### 替换节点元素 replaceChild()
+#### 替换节点元素replaceChild()
 
 子节点（对象）的替换。返回别替换对象的引用
 
