@@ -1,3 +1,15 @@
+<!-- TOC -->
+- [BOM](#BOM)
+    - [浏览器对象](#浏览器对象)
+    - [window 对象方法](#window 对象方法)
+    - [JavaScript 计时器](#JavaScript 计时器)
+    - [History 对象](#History 对象)
+    - [Localtion 对象](#Localtion 对象)
+    - [navigator 对象](#navigator 对象)
+    - [screen 对象](#screen 对象)
+    - [屏幕分辨率的高和宽以及可用的屏幕的高和宽](#屏幕分辨率的高和宽以及可用的屏幕的高和宽)
+
+<!-- /TOC -->
 # BOM
 ## 浏览器对象
 window 对象是 BOM 的核心,window 对象指当前的浏览器窗口
