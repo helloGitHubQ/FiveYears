@@ -46,6 +46,14 @@ JS 区分大小写
 
 函数中参数的返回值不只是数字，还可以是字符串等其他类型。
 
+### [JS对象](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jsObject.md)
+
+### [jQuery](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery.md)
+
+### [DOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/DOM.md)
+
+### [BOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/browserObject.md)
+
 ### 事件
 
 JavaScript 创建动态页面。事件是可以被 JavaScript 侦测到的行为。网页中的每个元素都可以产生某些可以触发 JavaScript 函数或程序的事件。
@@ -69,8 +77,6 @@ JavaScript 创建动态页面。事件是可以被 JavaScript 侦测到的行为
 
 - onunload(卸载事件)：当用户退出页面时（页面关闭，页面刷新等），触发 onUnload 事件，同时执行被调用的程序。
 
-
-
 ### 输出内容(document.write())
 
 + 输出内容用""括起直接输出
@@ -78,35 +84,6 @@ JavaScript 创建动态页面。事件是可以被 JavaScript 侦测到的行为
 + 输出多项内容，内容之间用+号
 + 输出 HTML 并起作用，标签使用 "" 括起来
 
-### 6/12/2019 8:06:47 PM 
-
-### 互动
----
-
-7. 警告 -- alert 消息对话框
-
-	`alert(字符串或者常量)`
-8. 确认 -- confirm 消息对话框
-
-![confirm](https://i.imgur.com/1R2A7vU.png)
-	
-对话框是排他的，即用户在点击对话框之前不能进行任何其他操作。
-
-9. 提问 -- prompt 消息对话框
-
-![prompt](https://i.imgur.com/dMWVmWH.png)
-
-10. 打开新窗口 window.open()
-
-![open](https://i.imgur.com/wweNk5G.png)
-
-![open](https://i.imgur.com/zutZfNX.png)
-
-11. 关闭窗口 window.close()
-
-![close](https://i.imgur.com/pWbMyvV.png)
-
-[js学习教程](http://www.w3school.com.cn/b.asp "js")
 
 ### 6/13/2019 10:06:36 PM 
 

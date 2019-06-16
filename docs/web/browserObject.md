@@ -7,6 +7,32 @@ window 对象是 BOM 的核心,window 对象指当前的浏览器窗口
 
 ![window对象方法](https://i.imgur.com/IFmd2MW.jpg)
 
+
+1. 警告 -- alert 消息对话框
+
+	`alert(字符串或者常量)`
+2. 确认 -- confirm 消息对话框
+
+![confirm](https://i.imgur.com/1R2A7vU.png)
+	
+对话框是排他的，即用户在点击对话框之前不能进行任何其他操作。
+
+3. 提问 -- prompt 消息对话框
+
+![prompt](https://i.imgur.com/dMWVmWH.png)
+
+4. 打开新窗口 window.open()
+
+![open](https://i.imgur.com/wweNk5G.png)
+
+![open](https://i.imgur.com/zutZfNX.png)
+
+5. 关闭窗口 window.close()
+
+![close](https://i.imgur.com/pWbMyvV.png)
+
+[js学习教程](http://www.w3school.com.cn/b.asp "js")
+
 ### JavaScript 计时器
 ---
 计时器类型：
