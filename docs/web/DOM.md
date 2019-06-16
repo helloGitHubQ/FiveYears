@@ -6,7 +6,7 @@
     - [getAttribute() 方法](#getAttribute()方法) 
     - [setAttribute() 方法](#setAttribute()方法) 
     - [节点属性](#节点属性)
-	    - [访问子节点childNodes](#访问子节点childNodes)
+	    - [访问子节点 childNodes](#访问子节点 childNodes)
 	    - [访问子节点的第一和最后项](#访问子节点的第一和最后项)
 	    - [访问父节点 parentNode](#访问父节点parentNode)
 	    - [访问兄弟节点](#访问兄弟节点)
