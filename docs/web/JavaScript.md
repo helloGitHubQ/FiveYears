@@ -1,3 +1,17 @@
+<!-- TOC -->
+- [JS基础](#Js基础)
+    - [变量](#变量)
+    - [函数](#函数)
+    - [表达式](#表达式)
+    - [操作符](#操作符)
+    - [数组](#数组)
+    - [Js对象](#Js对象)
+    - [jQuery](#jQuery)
+    - [DOM](#DOM)
+    - [BOM](#BOM)
+
+
+<!-- /TOC -->
 ### 6/11/2019 10:57:18 PM 
 ## Js基础
 
@@ -45,14 +59,6 @@ JS 区分大小写
 #### 返回值的函数：
 
 函数中参数的返回值不只是数字，还可以是字符串等其他类型。
-
-### [JS对象](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jsObject.md)
-
-### [jQuery](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery.md)
-
-### [DOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/DOM.md)
-
-### [BOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/browserObject.md)
 
 ### 事件
 
@@ -174,3 +180,11 @@ do..while 循环
 break
 
 continue
+
+### [JS对象](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jsObject.md)
+
+### [jQuery](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery.md)
+
+### [DOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/DOM.md)
+
+### [BOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/browserObject.md)
