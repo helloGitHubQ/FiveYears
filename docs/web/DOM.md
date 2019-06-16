@@ -26,6 +26,13 @@ HTML 文档有节点组成.三种常见的DOM节点：
 【此处应该有图的】
 
 4. 改变 HTML 样式
+
+语法：`Object.style.property =new style;`
+
+注意:Object是获取的元素对象，如通过document.getElementById("id")获取的元素。
+
+基本属性表:
+
 5. 显示和隐藏 (display 属性)
 
 
