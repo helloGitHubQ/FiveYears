@@ -1,12 +1,12 @@
 <!-- TOC -->
 - [BOM](#BOM)
     - [浏览器对象](#浏览器对象)
-    - [window 对象方法](#window 对象方法)
-    - [JavaScript 计时器](#JavaScript 计时器)
-    - [History 对象](#History 对象)
-    - [Localtion 对象](#Localtion 对象)
-    - [navigator 对象](#navigator 对象)
-    - [screen 对象](#screen 对象)
+    - [window对象方法](#window对象方法)
+    - [JavaScript计时器](#JavaScript计时器)
+    - [History对象](#History对象)
+    - [Localtion对象](#Localtion对象)
+    - [Navigator对象](#Navigator对象)
+    - [screen对象](#screen对象)
     - [屏幕分辨率的高和宽以及可用的屏幕的高和宽](#屏幕分辨率的高和宽以及可用的屏幕的高和宽)
 
 <!-- /TOC -->
@@ -14,7 +14,7 @@
 ## 浏览器对象
 window 对象是 BOM 的核心,window 对象指当前的浏览器窗口
 
-### window 对象方法：
+### window对象方法：
 ---
 
 ![window对象方法](https://i.imgur.com/IFmd2MW.jpg)
@@ -45,7 +45,7 @@ window 对象是 BOM 的核心,window 对象指当前的浏览器窗口
 
 [js学习教程](http://www.w3school.com.cn/b.asp "js")
 
-### JavaScript 计时器
+### JavaScript计时器
 ---
 计时器类型：
 
@@ -97,7 +97,7 @@ clearInterval() 方法可取消由 setInterval() 设置的交互时间。
 
 参数说明: id_of_setTimeout：由 setTimeout() 返回的 ID 值。该值标识要取消的延迟执行代码块。
 
-### History 对象
+### History对象
 ---
 记录用户曾经浏览过的页面( URL )，并可以实现浏览器前进与后退相似导航的功能。从窗口被打开的那一刻开始记录，每个浏览器窗口、每一个标签页乃至每一个框架，都有自己的 history对象与特定的 window 对象关联。
 
@@ -126,7 +126,7 @@ History 对象方法：
 
 ![返回浏览历史中的其他页面的参数](https://i.imgur.com/CKsEgY4.jpg)
 
-### Localtion 对象
+### Localtion对象
 ---
 location用于获取或设置窗体的URL，并且可以用于解析URL。
  
@@ -134,7 +134,7 @@ location用于获取或设置窗体的URL，并且可以用于解析URL。
 
 ![Location对象](https://i.imgur.com/qLNgFap.png)
 
-### navigator 对象
+### Navigator对象
 ---
 Navigator 对象包含有关浏览器的信息，通常用于检测浏览器与操作系统的版本。
 
@@ -148,7 +148,7 @@ Navigator 对象包含有关浏览器的信息，通常用于检测浏览器与�
 
 ![userAgent](https://i.imgur.com/yns4gDs.jpg)
 
-### screen 对象
+### screen对象
 
 screen对象用于获取用户的屏幕信息。
 
