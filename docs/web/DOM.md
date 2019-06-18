@@ -13,6 +13,11 @@
 	    - [插入节点insertBefore](#插入节点insertBefore)
 	    - [删除节点removeChild](#删除节点removeChild)
 	    - [替换节点元素replaceChild](#替换节点元素replaceChild)
+	    - [创建元素节点createElement](#创建元素节点createElement)
+	    - [创建文本节点createTextNode](#创建文本节点createTextNode)
+	    - [网页尺寸scrollHeight](#网页尺寸scrollHeight)
+	    - [网页尺寸offsetHeight](#网页尺寸offsetHeight)
+	    - [网页卷去的距离与偏移量](#网页卷去的距离与偏移量)
  
 <!-- /TOC -->
 # DOM 操作
@@ -32,8 +37,7 @@ HTML 文档有节点组成.三种常见的DOM节点：
 [节点属性图片]
 
 
-[遍历节点树图片]
-
+![遍历节点树](https://i.imgur.com/G6Wrjso.png)
 
 2. 通过 ID 获取元素
 
@@ -54,6 +58,8 @@ HTML 文档有节点组成.三种常见的DOM节点：
 注意:Object是获取的元素对象，如通过document.getElementById("id")获取的元素。
 
 基本属性表:
+
+[基本属性表]
 
 5. 显示和隐藏 (display 属性)
 
@@ -200,7 +206,7 @@ previousSibing 属性可返回某个节点之前紧跟的节点（处在同一�
 
 创建元素节点，可返回一个 Element 对象
 
-语法:document.createElement(tagName);
+语法:`document.createElement(tagName);`
 
 参数：tagName:字符串值，这个字符串用来指明创建元素的类型
 
@@ -210,7 +216,7 @@ previousSibing 属性可返回某个节点之前紧跟的节点（处在同一�
 
 创建新的文本节点，返回新创建的 Text 节点
 
-语法: document.createTextNode(data)
+语法: `document.createTextNode(data)`
 
 参数：data: 字符串值，可规定此节点的文本
 
@@ -240,9 +246,9 @@ Document对象的body属性对应HTML文档的<body>标签
 
 在不同浏览器都实用的 JavaScript 方案：
 
-var w= document.documentElement.clientWidth
+    var w= document.documentElement.clientWidth
       || document.body.clientWidth;
-var h= document.documentElement.clientHeight
+    var h= document.documentElement.clientHeight
       || document.body.clientHeight;
 
 #### 网页尺寸scrollHeight
@@ -259,10 +265,10 @@ scrollHeight 是网页内容高度，不过最小值是 clientHeight。也就是
 
 三、浏览器兼容性
 
-var w=document.documentElement.scrollWidth
-   || document.body.scrollWidth;
-var h=document.documentElement.scrollHeight
-   || document.body.scrollHeight;
+    var w=document.documentElement.scrollWidth
+       || document.body.scrollWidth;
+    var h=document.documentElement.scrollHeight
+       || document.body.scrollHeight;
 注意:区分大小写
 
 scrollHeight和scrollWidth还可获取Dom元素中内容实际占用的高度和宽度。
@@ -277,12 +283,14 @@ offsetHeight = clientHeight + 滚动条 + 边框。
 
 二、浏览器兼容性
 
-var w= document.documentElement.offsetWidth
+    var w= document.documentElement.offsetWidth
     || document.body.offsetWidth;
-var h= document.documentElement.offsetHeight
+    var h= document.documentElement.offsetHeight
     || document.body.offsetHeight;
 
 #### 网页卷去的距离与偏移量
+
+[网页卷去的距离与偏移量]
 
 scrollLeft:设置或获取位于给定对象左边界与窗口中目前可见内容的最左端之间的距离 ，即左边灰色的内容。
 
