@@ -15,6 +15,7 @@
 	    - [替换节点元素replaceChild](#替换节点元素replaceChild)
 	    - [创建元素节点createElement](#创建元素节点createElement)
 	    - [创建文本节点createTextNode](#创建文本节点createTextNode)
+	    - [浏览器窗口可视区域大小](#浏览器窗口可视区域大小)
 	    - [网页尺寸scrollHeight](#网页尺寸scrollHeight)
 	    - [网页尺寸offsetHeight](#网页尺寸offsetHeight)
 	    - [网页卷去的距离与偏移量](#网页卷去的距离与偏移量)
