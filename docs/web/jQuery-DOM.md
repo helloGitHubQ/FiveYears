@@ -30,7 +30,6 @@
 		- [add()方法](#add()方法) 
 		- [each()方法](#each()方法) 
 <!-- /TOC -->
-
 # jQuery-DOM
 ## DOM节点的创建
 创建元素节点：`$("<div></div>")`
