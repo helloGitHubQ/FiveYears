@@ -1,6 +1,6 @@
 # jQuery
 
-jQuery 是什么呢？有什么用？怎么用？ 我们一个一个问题来解答
+> jQuery 是什么呢？有什么用？怎么用？ 我们一个一个问题来解答
 
 jQuery 是一个快速、简洁的 JavaScript 框架。设计宗旨是 "write less,do more",即提倡写更少的代码，做更多的事情。它封装了 JavaScript 常用的功能代码，提供一种简便的 JavaScript 设计模式，优化 HTML 文档操作、事件处理、动画设计和 Ajax 交互。
 
