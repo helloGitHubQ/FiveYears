@@ -75,8 +75,27 @@ post 无法使用缓存文件。向服务器发送大量数据请求。发送包
     
 ### XHR readyState
 - onreadystatechange 事件
+当 readyState 等于 4 (请求已完成，且响应已就绪)且状态为 200 时，表示响应已就绪
 
+        xmlhttp.onreadystatechange=function()
+          {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+            document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+            }
+          }
 - 使用 Callback 函数
+
+        function myFunction()
+        {
+        loadXMLDoc("ajax_info.txt",function()
+          {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+            document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+            }
+          });
+        }
 
 ## 校验用户名
 
