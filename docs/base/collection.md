@@ -9,7 +9,7 @@
 List 集合是线性数据结构的主要实现，集合元素通常明确上一个和下一个，也存在明确第一个和最后一个元素。List 集合遍历的结果是非常稳定。常用的有 ArrayList 和 LinkedList 两个集合类。
 
 >1. ArrayList 是容量可以改变的非线程安全集合。内部实现是使用数组进行存储的，集合扩容时会创建更大的数组空间，把原有数组复制到新数组中。ArrayList 支持对元素的快速访问，但是删除和新增速度很慢。
-2. LinkedList 的本质是双向链表。如果跟 ArrayList 相比较的话，LinkedList 访问元素的速度很慢，但是新增和删除元素的速度就很快了。除了继承 AbstractList 抽象类之外，还实现了另一个接口 Deque。这个接口同时具有队列和栈的性质。
+>2. LinkedList 的本质是双向链表。如果跟 ArrayList 相比较的话，LinkedList 访问元素的速度很慢，但是新增和删除元素的速度就很快了。除了继承 AbstractList 抽象类之外，还实现了另一个接口 Deque。这个接口同时具有队列和栈的性质。
 
 LinkedList  有三个重要成员：size,first,last。size 是双向链表中的节点个数。first 和 last 是指向第一个和最后一个节点引用。LinkedList 的优点是可以将零散的内存单元通过附加引用的方式关联起来，形成按链路查找的线性结构，内存利用率高。
 
@@ -22,7 +22,6 @@ LinkedList  有三个重要成员：size,first,last。size 是双向链表中的
 Map 集合是以key-value键值对作为存储元素实现的哈希结构。key 按照某种哈希函数计算后是唯一的。Value 则是重复的。Map类提供三种Collection 视图，指向 Collection 的箭头仅表示两个类之间的依赖关系。
 
 > 使用 keySet() 查看所有 key，使用 values() 查看所有 values,使用 entrySet() 查看所有的键值对。
-
 > HashMap 线程是不安全的，ConcurrentHashMap 是线程安全的。TreeMap 是 key 有序的 Map 类集合。 
 
 - Set 集合
