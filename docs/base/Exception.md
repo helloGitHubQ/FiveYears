@@ -50,3 +50,9 @@ java虚拟机栈中可能会出现两种异常：StarkOverFlowError & OutOfMemor
 Math.pow 求某数的任意次方, 抛出ArithmeticException处理溢出异常
 ### 6/21/2019 9:52:20 AM 
 UnsupportedOperationException（不支持方法异常）
+
+### 6/28/2019 2:52:07 PM 
+
+    String[] str=new String[?];
+
+如果 ? 处写的是负数的话就会抛 NegativeArraySizeException。
