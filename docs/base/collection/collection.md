@@ -50,7 +50,9 @@ ArrayList 是存储单个元素的顺序表结构， HashMap 是存错KV键值�
 
 集合初始化的时候，要指定初始值大小。如果暂时无法确定集合大小，那么指定相应的默认值。ArrayList大小的为10，而HashMap默认值为16.
 
-[集合和泛型]()
+[集合和泛型](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/collection/collection%26generics.md)
 
-[集合和数组]()
+[集合和数组](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/collection/collection%26list.md)
+
+[Map类集合](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/collection/map.md)
 
