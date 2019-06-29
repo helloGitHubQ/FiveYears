@@ -16,8 +16,8 @@ Tomcat 7
 Apache
 
 ## 运行原理
-![service 图]
 
+![service图](https://i.imgur.com/8uNRa3c.png)
 
 - Connecter 组件
 
@@ -27,7 +27,7 @@ Apache
 
 - Container 原理
 
-![Container图]
+![Container图](https://i.imgur.com/XsZ2nMd.png)
 ## 环境搭建
 1. java 开发环境
 
@@ -87,7 +87,7 @@ reloadable 为true的话，就会自动加载新增或者修改的 .class 文件
 
 3. 在 Catalina 下的 localhost 下新建一个 xml 文件。 
 
-![方式3图]  
+![tomcat热部署方式3](https://i.imgur.com/kv516i9.png) 
 
 - 配置连接池和数据源
 
@@ -103,14 +103,16 @@ Server Status/Manager App/Host Manager
 - 发布项目
 
 ## 单点登录
+
+![单点登录](https://i.imgur.com/6VLPKsR.png)
+
 SSO：用户只需要登录一次就可以访问所有相互信任的应用系统。
 
 CAS：开源的企业级单点登录解决方案。（基于HTTPS）
 
 CAS Server | CAS Client 
 
-![CAS协议过程图]
-
+![CAS协议过程图](https://i.imgur.com/pwOsa2u.png)
 
 
 下载 CAS 的war包和两个客户端的war包；cas 的Tomcat和两个客户端的Tomcat。
@@ -130,7 +132,11 @@ deployerConfigContext.xml
 
 server.xml中加入同级的 HOST 标签。
 
+![通过IP配置多域名访问](https://i.imgur.com/0a9lI6D.jpg)
+
 通过端口配置多域名访问：
+
+![通过端口配置多域名访问](https://i.imgur.com/68GBCsD.jpg)
 
 server.xml中加入同级的 server 标签。
 
@@ -196,3 +202,8 @@ server.xml 中 HTTP 中connectionTimeout设置时间。
 - NIO：基于缓存区、非阻塞的I/O（推荐）
 
 - APR：tomcat7以上默认模式
+
+---
+Tomcat 启动 java 项目：
+
+把 war 包放到tomcat安装目录下的webapps下，然后重新启动tomcat即完成。
