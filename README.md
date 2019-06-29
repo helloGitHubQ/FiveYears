@@ -19,7 +19,7 @@
 - 并发
 - 集合(底层源码)
 - IO
-- [集合](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/collection.md)
+- [集合](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/collection/collection.md)
 - 反射
 - Java8(暂未涉及)
 - 源码学习
