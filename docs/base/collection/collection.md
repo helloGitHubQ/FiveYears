@@ -56,3 +56,29 @@ ArrayList 是存储单个元素的顺序表结构， HashMap 是存错KV键值�
 
 [Map类集合](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/collection/map.md)
 
+----
+List 集合中的 add 和 addAll 的区别：
+
+	@Test
+    public void test6(){
+        List<String> list1=Arrays.asList("1","2","3","4","5","6");
+        List list2=new ArrayList<>();
+
+        list2.add("1111");
+        list2.add("2222");
+        list2.add(list1);
+        System.out.println(list2);
+        System.out.println("------------");
+
+        List list3=new ArrayList<>();
+
+        list3.add("1111");
+        list3.add("2222");
+        list3.addAll(list1);
+        System.out.println(list3);
+    }
+
+	结果：
+	[1111, 2222, [1, 2, 3, 4, 5, 6]]
+	------------
+	[1111, 2222, 1, 2, 3, 4, 5, 6]
