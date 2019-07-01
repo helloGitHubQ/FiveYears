@@ -10,7 +10,7 @@
 
 # java8新特性
 
-@guigu
+atguigu
 
 - 速度更快(HashMap、ConcurrentHashMap等)
 - 代码更少（新增语法Lambda表达式）
@@ -23,7 +23,7 @@ jdk8 中对 ConcurrentHashMap进行了脱胎换骨式的改造，使用了大量
 数组+链表+红黑树：当某个槽内的元素个数增加到超过8个且table的容量大于或等于64时，由链表转为红黑树；当某个槽内的元素个数减少到6个时，由红黑树转回链表。CAS
 
 ## Lambda表达式
-![Lambda表达式]()
+[Lambda表达式](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/java8/Lambda.md)
 ## 函数式接口
 java 四大内置核心函数式接口：
 
@@ -210,7 +210,7 @@ boolean test(T t);
 	    }
 
 ## StreamAPI
-![StreamAPI]()
+[StreamAPI](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/java8/StreamAPI.md)
 ## 接口中的默认方法与静态方法
 
 ## 新时间日期API

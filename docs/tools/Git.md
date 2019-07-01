@@ -1,5 +1,6 @@
 Git
 ---
+[Git常用命令速查表（收藏大全）](https://www.evernote.com/l/AjjNMu8GV5lIlbg7NIEqoCW1fMkPmw5f1gY/)
 
 ### 5/11/2019 4:46:42 PM ###
 
