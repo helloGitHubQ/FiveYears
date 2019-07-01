@@ -34,12 +34,14 @@
 ## 网络
 ## 操作系统
 - Linux
+	- [Linux](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/os/Linux.md) 
 ## 数据库
 - Oracle
 	- [PL/SQL](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/DataBase.md "database") 
 - MYQL
 	- [MYSQL](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL.md "MYSQL")
 - Redis
+	- [Redis](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/tools/redis.md) 
 ## 框架
 - 注解
 ## 设计模式
