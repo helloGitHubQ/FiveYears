@@ -48,6 +48,8 @@
 ## 书籍
 Thinking in Java（第4版）**在读**
 
+Esay Coding **在读**
+
 Java 并发编程实战
 
 设计模式 - 可复用面向对象软件基础
