@@ -24,6 +24,7 @@
 - [Java8](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/java8/java8.md)
 - 源码学习
 - 编码规范
+- 注解
 
 ## 前端
 - [JS](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/web/JavaScript.md)
@@ -50,7 +51,8 @@
 - Redis
 	- [Redis](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/tools/redis.md) 
 ## 框架
-- 注解
+- [spring](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/spring.md)
+- [hibernate](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/hibernate.md)
 ## 设计模式
 ## 书籍
 Thinking in Java（第4版）**在读**
