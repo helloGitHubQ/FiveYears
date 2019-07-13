@@ -56,7 +56,7 @@
 - MYQL
 	- [MYSQL](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL.md "MYSQL")
 - Redis
-	- [Redis](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/tools/redis.md) 
+	- [Redis](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/database/NoSql/redis.md) 
 ## 框架
 - [spring](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/spring.md)
 - [hibernate](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/hibernate.md)
