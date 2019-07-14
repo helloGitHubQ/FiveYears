@@ -5,3 +5,6 @@ iBatis曾是开源软件组 Apache 推出的一种轻量级的对象关系映射
 [官网](http://www.mybatis.org/mybatis-3/)
 
 [源码](https://github.com/mybatis)
+
+---
+[MyBatis基础--黑马视频](https://www.evernote.com/l/Ajjo99Mnz05NGrjyGDT_Okj4XiOd8aa4dDI/)
