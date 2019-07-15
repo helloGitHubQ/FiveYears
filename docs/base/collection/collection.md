@@ -1,6 +1,6 @@
 # Collection
 ## 集合
-[java集合框架图]
+![java集合框架图](https://i.imgur.com/54PApE6.gif)
 
 其实框架图主要分为两类：第一类是按照单个元素存储的 Collection。Set 和 List 都实现了 Collection 接口；第二类是以 key-value 存储的 Map。下面我们就来看看他们的巧妙之处和区别：
 
