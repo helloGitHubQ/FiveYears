@@ -7,6 +7,7 @@
 	- [String](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/String.md "String")
 	- [正则表达式](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/regex.md "正则")
 	- [泛型](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/generics.md)
+	- [消息队列](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/messageQueue.md)
 - JVM
 	- [java内存区域](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/jvm/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.md "java内存区域")
 	- [jvm垃圾回收](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/jvm/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.md "jvm垃圾回收")
