@@ -10,18 +10,18 @@ NIO和BIO的区别：
 
 大量的线程会带来大量的开销。
 
-
-[NIO和BIO]
+![NIO和BIO](https://i.imgur.com/z6x2yTj.png)
 
 随着线程的不断增加，bio会越来越差，错误率和响应时间都在明显的增加。而吞吐量，每秒传输速率在不断下降。
 
 传统的 BIO 模型：
 
-[传统的 BIO 模型]
+![传统的BIO模型](https://i.imgur.com/Lr6bnRP.png)
 
 改造过的 BIO 模型：
 
-[改造过的 BIO 模型]
+![改造后的BIO模型](https://i.imgur.com/tAs84Rq.png)
+
 
 ## NIO
 
@@ -33,21 +33,21 @@ Tomcat,Dubbo,Zookeeper,RabbitMQ等都使用了 NIO.
 
 - 阻塞
 
-调用方等待操作完成后返回
+    	调用方等待操作完成后返回
 
 - 非阻塞
 
-调用方无需等待操作完成
+    	调用方无需等待操作完成
 
 **同步和异步：**
 
 - 同步
 
-调用者发起请求，等待操作完成再返回
+    	调用者发起请求，等待操作完成再返回
 
 - 异步
 
-调用者发起请求，不需要等待操作完成
+    	调用者发起请求，不需要等待操作完成
 
 **扩展：**
 
@@ -90,7 +90,7 @@ Tomcat,Dubbo,Zookeeper,RabbitMQ等都使用了 NIO.
 ---
 Buffer 本质上是内存的一块，我们可以将数据写入这块内存，之后从这块内存读取数据。所有的 NIO 操作始于通道，通道是数据来源或者写入数据的目的地。
 
-[Buffer]
+![Buffer](https://i.imgur.com/RMsRr2L.png)
 
 - Buffer 重要属性：
 
