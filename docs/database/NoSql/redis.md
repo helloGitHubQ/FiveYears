@@ -555,124 +555,134 @@ redis 正是通过分数来为集合中的成员进行从小到大的排序。zs
 
 #### APPEND ONLY MODE追加
 
+appendfsync:
+1. Always :同步持久化每次发现数据变更会立即记录在磁盘中，性能比价差但是数据完整性好
+2. Everysec： 出厂默认推荐，异步操作，每秒记录，如果一秒内宕（dang 四声）机，有数据丢失
+3. NO 
 
-	############################## APPEND ONLY MODE ###############################
-	
-	# By default Redis asynchronously dumps the dataset on disk. This mode is
-	# good enough in many applications, but an issue with the Redis process or
-	# a power outage may result into a few minutes of writes lost (depending on
-	# the configured save points).
-	#
-	# The Append Only File is an alternative persistence mode that provides
-	# much better durability. For instance using the default data fsync policy
-	# (see later in the config file) Redis can lose just one second of writes in a
-	# dramatic event like a server power outage, or a single write if something
-	# wrong with the Redis process itself happens, but the operating system is
-	# still running correctly.
-	#
-	# AOF and RDB persistence can be enabled at the same time without problems.
-	# If the AOF is enabled on startup Redis will load the AOF, that is the file
-	# with the better durability guarantees.
-	#
-	# Please check http://redis.io/topics/persistence for more information.
-	
-	appendonly no
-	
-	# The name of the append only file (default: "appendonly.aof")
-	
-	appendfilename "appendonly.aof"
-	
-	# The fsync() call tells the Operating System to actually write data on disk
-	# instead of waiting for more data in the output buffer. Some OS will really flush
-	# data on disk, some other OS will just try to do it ASAP.
-	#
-	# Redis supports three different modes:
-	#
-	# no: don't fsync, just let the OS flush the data when it wants. Faster.
-	# always: fsync after every write to the append only log. Slow, Safest.
-	# everysec: fsync only one time every second. Compromise.
-	#
-	# The default is "everysec", as that's usually the right compromise between
-	# speed and data safety. It's up to you to understand if you can relax this to
-	# "no" that will let the operating system flush the output buffer when
-	# it wants, for better performances (but if you can live with the idea of
-	# some data loss consider the default persistence mode that's snapshotting),
-	# or on the contrary, use "always" that's very slow but a bit safer than
-	# everysec.
-	#
-	# More details please check the following article:
-	# http://antirez.com/post/redis-persistence-demystified.html
-	#
-	# If unsure, use "everysec".
-	
-	# appendfsync always
-	appendfsync everysec
-	# appendfsync no
-	
-	# When the AOF fsync policy is set to always or everysec, and a background
-	# saving process (a background save or AOF log background rewriting) is
-	# performing a lot of I/O against the disk, in some Linux configurations
-	# Redis may block too long on the fsync() call. Note that there is no fix for
-	# this currently, as even performing fsync in a different thread will block
-	# our synchronous write(2) call.
-	#
-	# In order to mitigate this problem it's possible to use the following option
-	# that will prevent fsync() from being called in the main process while a
-	# BGSAVE or BGREWRITEAOF is in progress.
-	#
-	# This means that while another child is saving, the durability of Redis is
-	# the same as "appendfsync none". In practical terms, this means that it is
-	# possible to lose up to 30 seconds of log in the worst scenario (with the
-	# default Linux settings).
-	#
-	# If you have latency problems turn this to "yes". Otherwise leave it as
-	# "no" that is the safest pick from the point of view of durability.
-	
-	no-appendfsync-on-rewrite no
-	
-	# Automatic rewrite of the append only file.
-	# Redis is able to automatically rewrite the log file implicitly calling
-	# BGREWRITEAOF when the AOF log size grows by the specified percentage.
-	#
-	# This is how it works: Redis remembers the size of the AOF file after the
-	# latest rewrite (if no rewrite has happened since the restart, the size of
-	# the AOF at startup is used).
-	#
-	# This base size is compared to the current size. If the current size is
-	# bigger than the specified percentage, the rewrite is triggered. Also
-	# you need to specify a minimal size for the AOF file to be rewritten, this
-	# is useful to avoid rewriting the AOF file even if the percentage increase
-	# is reached but it is still pretty small.
-	#
-	# Specify a percentage of zero in order to disable the automatic AOF
-	# rewrite feature.
-	
-	auto-aof-rewrite-percentage 100
-	auto-aof-rewrite-min-size 64mb
-	
-	# An AOF file may be found to be truncated at the end during the Redis
-	# startup process, when the AOF data gets loaded back into memory.
-	# This may happen when the system where Redis is running
-	# crashes, especially when an ext4 filesystem is mounted without the
-	# data=ordered option (however this can't happen when Redis itself
-	# crashes or aborts but the operating system still works correctly).
-	#
-	# Redis can either exit with an error when this happens, or load as much
-	# data as possible (the default now) and start if the AOF file is found
-	# to be truncated at the end. The following option controls this behavior.
-	#
-	# If aof-load-truncated is set to yes, a truncated AOF file is loaded and
-	# the Redis server starts emitting a log to inform the user of the event.
-	# Otherwise if the option is set to no, the server aborts with an error
-	# and refuses to start. When the option is set to no, the user requires
-	# to fix the AOF file using the "redis-check-aof" utility before to restart
-	# the server.
-	#
-	# Note that if the AOF file will be found to be corrupted in the middle
-	# the server will still exit with an error. This option only applies when
-	# Redis will try to read more data from the AOF file but not enough bytes
-	# will be found.
-	aof-load-truncated yes
+no-appendfsync-on-rewrite:重写时是否可以御用 Appendfsync，用默认 no 即可，保证数据安全性
+
+auto-aof-rewrite-percentage:设置重写的基准值
+
+auto-aof-rewrite-min-size:设置重写的基准值
+
+		############################## APPEND ONLY MODE ###############################
+		
+		# By default Redis asynchronously dumps the dataset on disk. This mode is
+		# good enough in many applications, but an issue with the Redis process or
+		# a power outage may result into a few minutes of writes lost (depending on
+		# the configured save points).
+		#
+		# The Append Only File is an alternative persistence mode that provides
+		# much better durability. For instance using the default data fsync policy
+		# (see later in the config file) Redis can lose just one second of writes in a
+		# dramatic event like a server power outage, or a single write if something
+		# wrong with the Redis process itself happens, but the operating system is
+		# still running correctly.
+		#
+		# AOF and RDB persistence can be enabled at the same time without problems.
+		# If the AOF is enabled on startup Redis will load the AOF, that is the file
+		# with the better durability guarantees.
+		#
+		# Please check http://redis.io/topics/persistence for more information.
+		
+		appendonly no
+		
+		# The name of the append only file (default: "appendonly.aof")
+		
+		appendfilename "appendonly.aof"
+		
+		# The fsync() call tells the Operating System to actually write data on disk
+		# instead of waiting for more data in the output buffer. Some OS will really flush
+		# data on disk, some other OS will just try to do it ASAP.
+		#
+		# Redis supports three different modes:
+		#
+		# no: don't fsync, just let the OS flush the data when it wants. Faster.
+		# always: fsync after every write to the append only log. Slow, Safest.
+		# everysec: fsync only one time every second. Compromise.
+		#
+		# The default is "everysec", as that's usually the right compromise between
+		# speed and data safety. It's up to you to understand if you can relax this to
+		# "no" that will let the operating system flush the output buffer when
+		# it wants, for better performances (but if you can live with the idea of
+		# some data loss consider the default persistence mode that's snapshotting),
+		# or on the contrary, use "always" that's very slow but a bit safer than
+		# everysec.
+		#
+		# More details please check the following article:
+		# http://antirez.com/post/redis-persistence-demystified.html
+		#
+		# If unsure, use "everysec".
+		
+		# appendfsync always
+		appendfsync everysec
+		# appendfsync no
+		
+		# When the AOF fsync policy is set to always or everysec, and a background
+		# saving process (a background save or AOF log background rewriting) is
+		# performing a lot of I/O against the disk, in some Linux configurations
+		# Redis may block too long on the fsync() call. Note that there is no fix for
+		# this currently, as even performing fsync in a different thread will block
+		# our synchronous write(2) call.
+		#
+		# In order to mitigate this problem it's possible to use the following option
+		# that will prevent fsync() from being called in the main process while a
+		# BGSAVE or BGREWRITEAOF is in progress.
+		#
+		# This means that while another child is saving, the durability of Redis is
+		# the same as "appendfsync none". In practical terms, this means that it is
+		# possible to lose up to 30 seconds of log in the worst scenario (with the
+		# default Linux settings).
+		#
+		# If you have latency problems turn this to "yes". Otherwise leave it as
+		# "no" that is the safest pick from the point of view of durability.
+		
+		no-appendfsync-on-rewrite no
+		
+		# Automatic rewrite of the append only file.
+		# Redis is able to automatically rewrite the log file implicitly calling
+		# BGREWRITEAOF when the AOF log size grows by the specified percentage.
+		#
+		# This is how it works: Redis remembers the size of the AOF file after the
+		# latest rewrite (if no rewrite has happened since the restart, the size of
+		# the AOF at startup is used).
+		#
+		# This base size is compared to the current size. If the current size is
+		# bigger than the specified percentage, the rewrite is triggered. Also
+		# you need to specify a minimal size for the AOF file to be rewritten, this
+		# is useful to avoid rewriting the AOF file even if the percentage increase
+		# is reached but it is still pretty small.
+		#
+		# Specify a percentage of zero in order to disable the automatic AOF
+		# rewrite feature.
+		
+		auto-aof-rewrite-percentage 100
+		auto-aof-rewrite-min-size 64mb
+		
+		# An AOF file may be found to be truncated at the end during the Redis
+		# startup process, when the AOF data gets loaded back into memory.
+		# This may happen when the system where Redis is running
+		# crashes, especially when an ext4 filesystem is mounted without the
+		# data=ordered option (however this can't happen when Redis itself
+		# crashes or aborts but the operating system still works correctly).
+		#
+		# Redis can either exit with an error when this happens, or load as much
+		# data as possible (the default now) and start if the AOF file is found
+		# to be truncated at the end. The following option controls this behavior.
+		#
+		# If aof-load-truncated is set to yes, a truncated AOF file is loaded and
+		# the Redis server starts emitting a log to inform the user of the event.
+		# Otherwise if the option is set to no, the server aborts with an error
+		# and refuses to start. When the option is set to no, the user requires
+		# to fix the AOF file using the "redis-check-aof" utility before to restart
+		# the server.
+		#
+		# Note that if the AOF file will be found to be corrupted in the middle
+		# the server will still exit with an error. This option only applies when
+		# Redis will try to read more data from the AOF file but not enough bytes
+		# will be found.
+		aof-load-truncated yes
 
 #### 常见配置 Redis.conf介绍
 
@@ -747,12 +757,92 @@ Fork 的时候，内存中的数据被克隆了一份，大致2倍的膨胀性�
 
 - 配置文件
 
-aof 启动、修复、恢复
+- aof 启动、修复、恢复
 
-Rewrite
+**正常恢复：**
 
-优势
+	启动：设置 YES(修改默认的appendonly no 改为 yes)
+	将有数据的 aof 文件复制一份保存到对应的目录(config get dir)
+	恢复：重启 redis 然后重新加载
 
-劣势
+**异常恢复：**
 
+	启动：设置YES(修改默认的appendonly no 改为 yes)
+	备份被写坏的 AOF文件
+	修复： redis-check-aof  --flx 进行修复
+	恢复：重启 redis 然后重新加载 
+
+- Rewrite
+
+是什么：
+
+AOF 采用文件追加方式，文件会越来越大为避免出现此种情况，新增了重写机制。当 AOF 文件的大小超过所设定的阀门值时，Redis 就会启动 AOF 文件的内容压缩，只保留可以恢复数据的最小指令集，可以使用命令 bgrewriteaof
+
+
+重写原理：
+
+AOF文件持续增长而过大时，会fork出一条新进程来讲文件重写（也是先写临时文件最后再 rename）,遍历新进车的内存中数据，每条记录有一条 set 语句。重写 aof 文件的操作，并没有读取旧的 aof 文件，而是将整个内存中的数据库内容用命令的方式重写一个新的 aof 文件，这点和快照有点类似。
+
+触发机制：
+
+Redis 会记录上次重写时的 AOF 大小，默认配置是当 AOF 文件大小时上次 rewrite 后大小的一倍且文件大于 64M 时触发
+
+- 优势
+
+		每秒同步：appendfsync always :同步持久化每次发现数据变更会立即记录在磁盘中，性能比价差但是数据完整性好
+		每修改同步：appendfsync  Everysec： 出厂默认推荐，异步操作，每秒记录，如果一秒内宕（dang 四声）机，有数据丢失
+		不同步：appendfsync no 从不同步
+
+- 劣势
+
+	相同数据集的数据而言 aof 文件远远大于 rdb 文件，恢复速度慢于 rdb
+	aof 运行效率要慢于 rdb,每秒同步策略效率较好，不同步效率和 rdb 相同
+
+### 事务(暂时不太懂)
+---
+- 是什么
+
+可以一次执行多个命令，本质是一组命令的集合，一个事务中的所有命令都会序列化。按顺序地串行化执行而不会被其它命令插入，不许加塞。
+
+- 能干嘛
+
+一个队列中，一次性、顺序型、排他性的执行一系列命令
+
+- 怎么玩
+
+常用命令:
+
+[Redis 事务命令](https://www.runoob.com/redis/redis-transactions.html)
+
+case1:正常执行
+
+case2:放弃事务
+
+case3:全体连坐
+
+case4:冤头债主
+
+case5:watch 监控
+
+	乐观锁/悲观锁/CAS（check And Set）
+	初始化信用卡可用余额和欠款
+	无加塞篡改，先监控再开启 multi，保证两笔金额变动在同一个事务。
+	有加塞篡改
+	unwatch
+	一旦执行了exec之前加的监控锁都会被取消掉了
+
+- 3阶段
+
+		开启：以MULTI开始一个事务
+		入队：将多个命令入队到事务中，接到这些命令并不会立即执行，而是放在等待执行的事务队列里面
+		执行：由 exec 命令触发事务
+
+- 3特性
+
+
+	单独的隔离操作：事务中的所有命令都会序列化、按照顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。
+	没有隔离级别的概念：队列中的命令没有提交之前都不会实际的被执行，因为事务提交前任何指令都不会被实际执行，也就不存在事务内的查询要看到事务里的更新，在事务外查询补鞥看到这个让人万分头疼的问题。
+	不保证原子性：redis 同一事务中如果有一条命令执行失败，其后的命令仍然会被执行，没有回滚。
+
+### 消息订阅发布简介
 
