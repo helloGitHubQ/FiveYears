@@ -1,3 +1,25 @@
+<!-- TOC -->
+- [redis](#redis)
+	- [NoSql](#NoSql)	
+	- [redis](#redis)
+		- [杂项基础知识](#杂项基础知识)
+		- [常用五大数据类型](#常用五大数据类型)
+		- [解析配置文件](#解析配置文件)
+			- [它在哪](#它在哪)
+			- [Unitls单元](#Unitls单元)
+			- [INCLUDES包含](#INCLUDES包含)
+			- [GENERAL通用](#GENERAL通用)
+			- [SNAPSHOTTING快照](#SNAPSHOTTING快照)
+			- [REPLICATION复制](#REPLICATION复制)
+			- [SECURITY安全](#SECURITY安全)
+			- [LIMITS限制](#LIMITS限制)
+			- [APPEND_ONLY_MODE追加](#APPEND_ONLY_MODE追加)
+			- [常见配置Redis.conf介绍](#常见配置Redis.conf介绍)
+		- [持久化](#持久化)
+			- [RDB](#RDB)
+			- [AOF](#AOF)
+			- [事务](#事务)
+			- [消息订阅发布简介](#消息订阅发布简介)
 #redis
 
 [redis-runoob-2](https://www.evernote.com/l/AjhLPz3eb91KhYBieBemVl8x1CzlWfsKHko/)
@@ -553,7 +575,7 @@ redis 正是通过分数来为集合中的成员进行从小到大的排序。zs
 	#
 	# maxmemory-samples 5
 
-#### APPEND ONLY MODE追加
+#### APPEND_ONLY_MODE追加
 
 appendfsync:
 1. Always :同步持久化每次发现数据变更会立即记录在磁盘中，性能比价差但是数据完整性好
@@ -684,14 +706,16 @@ auto-aof-rewrite-min-size:设置重写的基准值
 		# will be found.
 		aof-load-truncated yes
 
-#### 常见配置 Redis.conf介绍
+#### 常见配置Redis.conf介绍
 
 [常见配置 Redis.conf介绍](https://www.evernote.com/l/AjjinnX9k1dNibHGsGYfNfHdGUEhclsOeaQ/)	
 
 ### 持久化
 ---
 
-#### RDB(Redis DataBase)
+#### RDB
+
+**(Redis DataBase)**
 
 - 官网介绍
 
@@ -745,7 +769,9 @@ Fork 的时候，内存中的数据被克隆了一份，大致2倍的膨胀性�
 
 动态所有停止 RDB 保存规则的方法： `redis-cli config set save ""`
 
-#### AOF(Append Only File)
+#### AOF
+
+**(Append Only File)**
 
 - 官网介绍
 
@@ -798,8 +824,11 @@ Redis 会记录上次重写时的 AOF 大小，默认配置是当 AOF 文件大�
 	相同数据集的数据而言 aof 文件远远大于 rdb 文件，恢复速度慢于 rdb
 	aof 运行效率要慢于 rdb,每秒同步策略效率较好，不同步效率和 rdb 相同
 
-### 事务(暂时不太懂)
+### 事务
 ---
+
+**(暂时不太懂)**
+
 - 是什么
 
 可以一次执行多个命令，本质是一组命令的集合，一个事务中的所有命令都会序列化。按顺序地串行化执行而不会被其它命令插入，不许加塞。
@@ -846,3 +875,4 @@ case5:watch 监控
 
 ### 消息订阅发布简介
 
+待续....
