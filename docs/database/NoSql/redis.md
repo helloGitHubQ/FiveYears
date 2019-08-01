@@ -19,7 +19,14 @@
 			- [RDB](#RDB)
 			- [AOF](#AOF)
 			- [事务](#事务)
-			- [消息订阅发布简介](#消息订阅发布简介)
+			- [消息订阅发布](#消息订阅发布)
+			- [主从复制](#主从复制)
+	- [Jedis](#Jedis)
+		- [jar包](#jar包)
+		- [常用API](#常用API)
+		- [主从复制](#主从复制)
+		- [JedisPooL](#JedisPooL)
+		
 #redis
 
 [redis-runoob-2](https://www.evernote.com/l/AjhLPz3eb91KhYBieBemVl8x1CzlWfsKHko/)
@@ -253,7 +260,7 @@ redis 正是通过分数来为集合中的成员进行从小到大的排序。zs
 
 #### GENERAL通用
 
-[Redis配置 GENERAL通用]
+[Redis配置 GENERAL通用图]
 
 	################################ GENERAL  #####################################
 	
@@ -959,11 +966,15 @@ Slave 启动成功连接到 master 后会发送一个 sync 命令。 Master 接�
 由于所有的操作都是先在 Master 上操作，然后同步更新到 Slave 上，所以 Master 同步到 Slave 上有一定的延迟。当系统很繁忙的时候，延迟问题会加重，Slave 机器数量的增加也会使这个问题加重。
 
 ## Jedis
-
+### jar包
 所需要的 jar 包：
 
 	Commons-pool-1.6.jar
 	Jedis-2.1.0.jar
 
+### 常用API
+### 事务
+### 主从复制
+### JedisPooL
 ---
 **redis 集群！！！**
