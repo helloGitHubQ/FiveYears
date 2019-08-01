@@ -881,5 +881,89 @@ case5:watch 监控
 
 [Redis 发布订阅命令](https://www.runoob.com/redis/redis-pub-sub.html)
 
-### 复制(Master/Slave)
+### 主从复制
 
+**Master/Slave**
+
+主机配置更新后根据配置和策略，自动同步到备机的 Master/Slave 机制， Master 以写为主， Slave 以读为主。
+
+`info replication`	
+
+**能干什么？**
+
+- 读写分离
+- 容灾恢复
+
+**怎么玩？**
+
+- 配从（库）不配主（库）
+
+- 从库配置：Slave 主库ip 主库端口
+
+每次与Master断开后，都需要重新连接，除非配置进 redis.conf 文件。
+
+- 修改配置文件细节操作
+
+		拷贝多个 redis.conf	文件
+		开启 daemonize yes
+		Pid 文件名字
+		指定端口
+		Log文件名字
+		Dump.rdb名字
+- 常用3招
+
+		一主二扑
+			1.init
+			2.一个 Master 两个 Slave
+			3.日志查看
+			4.主从问题演示
+		薪火相传
+			1.上一个 Slave 可以是下一个 Slave 的 Master，Slave 同样可以接受其他 slaves 的连接和同步请求，那么该 slave 作为了链条中下一个 master ，可以有效减轻 master 写的压力
+			2.中途变更转向：会清除之前的数据，重新建立拷贝最新的
+			3.SlaveOf 新主库ip 新主库端口
+		反客为主
+			SlaveOf no one:使用当前数据库停止与其他数据库的同步，转为主数据库
+**复制原理：**
+
+Slave 启动成功连接到 master 后会发送一个 sync 命令。 Master 接受命令启动后台的存盘进程，同时收集所有接收到的用于修改数据集命令，在后台进程执行完毕之后， master 将传送整个数据文件到 slave ，以完成一次同步。
+
+- 全量复制：而 slave 服务在接收到数据库文件数据后，将其存盘并加载到内存中。
+- 增量复制：master 继续将新的所有收集到的修改命令依次传送给 slave ,完成同步。
+
+但是只要是重新连接 master ，一次完全同步（全量复制）将自动执行
+
+**哨兵模式(sentinel)：**
+
+- 是什么？
+
+反客为主的自动版，能够后台监控主机是否故障。如果故障了根据投票数自动将从库变成主库。
+
+- 怎么玩？
+
+		1.调整结构，6379带着80，81
+		2.自定义的 /myredis 目录下新建 sentinel.conf 文件，名字绝对不能错
+		3.配置哨兵，填写内容。 
+		sentinel monitor 被监控数据库名字（自己起名字） 127.0.0.1 6379 1(上面的最后一个数字1，表示主机挂掉之后 slave 投票看让谁接替主机，得票数越多少后成为主机)
+		4.启动哨兵 Redis-sentinel /usr/common/sentinel.conf（上述目录依照各自的实际配置情况，可能目录不同）
+		5.正常主从演示
+		6.原有的 master 	挂了
+		7.投票新选
+		8.重新主从继续开工， info replication 查看
+		9.问题？如果之前的 master 回来，会不会双  master 冲突？
+
+- 一组 sentinel 能同时监控多个 master
+
+**复制缺点：**
+
+复制延迟：
+由于所有的操作都是先在 Master 上操作，然后同步更新到 Slave 上，所以 Master 同步到 Slave 上有一定的延迟。当系统很繁忙的时候，延迟问题会加重，Slave 机器数量的增加也会使这个问题加重。
+
+## Jedis
+
+所需要的 jar 包：
+
+	Commons-pool-1.6.jar
+	Jedis-2.1.0.jar
+
+---
+**redis 集群！！！**
