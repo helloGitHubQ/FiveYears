@@ -9,6 +9,8 @@ Spring Boot 提供了各种组件的启动器（starters），开发者只要能
 
 [Spring Boot 核心配置文件详解](https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&mid=2247486541&idx=2&sn=436ab454a6367fdc33912162855c02c7&scene=21#wechat_redirect)
 
+[官方文档理解](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringBootOfficial.md)
+
 ---
 **面试前的瞎几把准备--云栖学院**
 
@@ -82,3 +84,58 @@ spring Boot 整合的框架：
 spring Boot 引导类：
 
 每个 Spring Boot 都有一个引导类，它作用为整个工程
+
+---
+atguigu -- bilibili
+#SpringBoot 基础
+## SpringBoot 入门
+### 简介
+> 简化 Spring 应用的一个框架
+> 
+> 整个Spring 技术栈的一个大集合
+> 
+> J2EE开发的一站式解决方案
+
+### 微服务
+2014  martin fowler
+
+每一个功能元素最终都是一个可独立替换和独立升级的软件单元。 
+
+### 环境
+- 环境约束：
+
+	jdk 1.8:Spring Boot 是要求1.7及以上  jdk 1.8.0_181
+	maven3.x :maven 3.3以上版本  Apache Maven 3.5.4
+    IntelliJ IDEA 2018.2.7 (Ultimate Edition) Windows 7 6.1
+	SpringBoot 1.5.9.RELEASE: 1.5.9
+
+- 配置Maven
+
+给 Maven 的 settings.xml 配置文件的 profiles 标签中添加。使 Maven 知道自己是用 jdk 1.8 去启动的。（我这里呢就暂时先没有去改配置文件的路径，只是改了 Maven 的路径）
+- 配置 Idea
+
+使 IDEA 使用我们自己的安装的 Maven。
+### HelloWorld
+
+
+## SpringBoot 配置
+## SpringBoot与日志
+## SpringBoot与Web开发
+## SpringBoot与Docker
+## SpringBoot与数据访问
+## SpringBoot启动配置原理
+## SpringBoot自定义starters
+
+
+---
+#SpringBoot 高级部分
+##SpringBoot与缓存
+JSR107
+Spring的缓存抽象
+## SpringBoot与消息
+## SpringBoot与检索
+## SpringBoot与任务
+## SpringBoot与安全
+## SpringBoot与分布式
+## SpringBoot与开发热部署
+## SpringBoot与监控管理
