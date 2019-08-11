@@ -40,7 +40,7 @@
 - [vue](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/web/vue.md)
 - [Reat](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/web/reat.md)
 - [bootstrap]()
-- [使用过和使用中的](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/web/used.md)
+- [使用过的](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/web/used.md)
 ## 数据结构和算法
 - 树
 - 图
@@ -63,9 +63,9 @@
 ## 框架
 - [spring-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/spring.md)
 - [hibernate-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/hibernate.md)
+- [SpringBoot-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringBoot.md)
 - [Dubbo-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Dubbo.md)
 - [Mybatis-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis.md)
-- [SpringBoot-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringBoot.md)
 - [SpringCloud-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringCloud.md)
 - [SpringMVC-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringMVC.md)
 - [struts2-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/struts2.md)
