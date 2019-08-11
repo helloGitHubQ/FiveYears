@@ -284,7 +284,7 @@ k:(空格)v：表示一对键值对（空格必须有）。
 			行内写法：
 			pets: [cat,dog,pig]
 
-- 配置文件注入
+### 配置文件注入
 
 **@ConfigurationProperties:**告诉 SpringBoot 将本类中的所有属性和配置文件中相关属性进行绑定。
 
@@ -294,13 +294,151 @@ prefix = "person" ：配置文件中哪个下面的所有属性进行一一映�
 
 **@Component：**容器注解
 
-### properties配置文件编码问题
+- properties配置文件编码问题
 
 idea 默认的 properties 是 UTF-8 编码，需要去 idea 中设置转为 ascii 码(Settings->Editor->File Encodings->勾选 Transparent native-to-ascii conversion    然后 apply -> ok)
 
-
-
 [properties编码问题]
+
+- @Value获取值和@ConfigurationProperties获取值比较
+
+|         | ConfigurationProperties           | @Value  |
+| ------------- |:-------------:| -----:|
+| 功能      | 批量注入配置文件中的属性 | 一个个指定 |
+| 松散绑定（松散语法）      | 支持      |   不支持 |
+| SpEL | 不支持    |    支持 |
+| JSR303 | 支持    |    不支持 |
+| 复杂类型封装 | 支持    |    不支持 |
+	
+配置文件yml还是properties他们都能获取值。
+
+如果说，我们只是在某个业务逻辑中需要获取一下配置文件中的某项值，使用 @Value
+
+如果说，我们专门编写一个 javaBean 来和配置文件进行映射，我们就直接使用 @ConfigurationProperties
+
+- 配置文件注入值数据校验
+
+
+- @PropertySource 和 @ImportResource
+	- @PropertySource ：加载指定的配置文件
+	- @ImportResource ：导入 Spring 的配置文件，让配置文件里面的内容生效。
+	
+	SpringBoot 里面没有 Spring 的配置文件。我们自己编写的配置文件，也不能自动识别。想让 Spring 的配置文件生效，加载进来。@ImportResource标注在一个配置类上
+
+SpringBoot 推荐给容器中添加组件方式，推荐使用全注解方式
+
+1. 配置类 ==== Spring 配置文件
+2. 使用 @Bean 给容器中添加组件
+
+- 配置文件占位符
+
+随机数：
+
+
+    ${random.value}、${random.int}、${random.long}、${random.int(10)}、${random.int[1024,65536]}
+
+占位符之前配置的值，如果没有可以用 : 指定默认值	
+
+- Profile
+	- 多个 profile 文件：我们在主配置文件编写的时候，文件名可以是 appliction-{profile}.properties/yml。默认使用的配置文件是 appliction.properties 的配置
+	- yml 支持多文档格式
+	- 激活指定的 profile
+		- 在配置文件中指定 spring.profiles.active=dev(指定的环境)
+		- 命令行：
+			java -jar jar包名称 --spring.profiles.active=dev;
+			可以直接在测试的时候，配置传入命令行参数
+		- 虚拟机参数：
+			-Dspring.profiles.active=dev
+
+- 配置文件加载的位置
+
+SpringBoot 启动会扫描 application.properties 或 application.yml 文件作为 Spring Boot 的默认配置文件。
+
+	-file:./config/
+	-file:./
+	-classpath:/config/
+	-classpath:/
+
+优先级从高到低，高优先级的配置会覆盖底优先级配置。SpringBoot 会从这四个位置全部加载配置文件。**互补配置**
+
+
+
+`还可以通过 spring.config.location 来改变默认的配置文件的位置。`
+
+**项目打包好后，我们还可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置；指定配置文件和默认加载的配置文件共同作用形成互补配置。**
+
+- 外部配置的加载顺序
+
+SpringBoot 也可以使用外部配置文件。优先级从高到低	；高优先级的配置覆盖低优先级的配置；所有配置会形成互补配置。
+
+	1.命令行参数
+	java -jar jar包 --server.port=8087
+	多个参数用空格隔开；
+	2.来自 java:comp/env 的 JNDI 属性
+	3.Java 系统属性（System.getProperties()）
+	4.操作系统环境变量
+	5.RandomValuePropertySource 配置 random.* 属性值
+	6.jar 包外部的 application-{profile}.properties 或 application-{profile}.yml （带spring.profile）配置文件
+	7.jar 包内部的 application-{profile}.properties 或 application-{profile}.yml （不带spring.profile）配置文件
+	8.jar 包外部的 application.properties 或 application-{profile}.yml （不带spring.profile）配置文件
+	9.jar 包内部的 application.properties 或 application-{profile}.yml （不带spring.profile）配置文件
+	10.@Configurtion 注解类上的 @PropertySource
+	11.通过 SpringApplication.setDefaultProperties 指定的默认属性
+
+所有支持的配置加载来源，参考官方文档！
+
+**由 jar 包外向 jar 包内寻找**
+
+**优先加载带 profile** 
+
+**再加载不带 profile**
+
+- **自动配置原理**
+
+配置文件到底能写什么？怎么写？自动配置原理。
+
+1. SpringBoot 启动的时候加载主配置类，开启了自动配置功能 @EnableAutoConfiguration 
+2. @EnableAutoConfiguration 作用：
+利用@EnableAutoConfigurationImportSelector 给容器中导入一些组件
+可以查看 selectImports() 方法的内容
+	
+将类路径下 META-INF/spring.factories 里面配置的所有 EnableAutoConfiguration 的值加入到了容器中。
+
+每一个这样的 xxxxAutoConfiguration 类都是容器中的一个组件，都加入到容器中。用它们来做自动配置。
+
+3. 每一个自动配置类进行自动配置功能
+4. 以 **HttpEncodingAutoConfiguration** 为例解释自动配置原理
+
+		@Configuration
+		@EnableConfigurationProperties({HttpProperties.class})
+		@ConditionalOnWebApplication(
+		    type = Type.SERVLET
+		)
+		@ConditionalOnClass({CharacterEncodingFilter.class})
+		@ConditionalOnProperty(
+		    prefix = "spring.http.encoding",
+		    value = {"enabled"},
+		    matchIfMissing = true
+		)
+		public class HttpEncodingAutoConfiguration {
+
+根据当前不同的条件判断，决定这个配置类是否生效？
+
+一旦配置类生效，这个配置类就会给容器添加各种组件；这些组件的属性是从对应的 properties 类中获取的，这些类里面的每一个属性又和配置文件绑定的。
+
+5. 所有配置文件中能配置的属性都是在 XXXProperties 类中封装着；配置文件能配置什么就可以参照某个对应的这个属性类。
+
+精髓：
+
+	SpringBoot 启动会加载大量的自动配置类
+	我们看我们需要的功能 SpringBoot 有没有默认写好的自动配置类
+	我们再来看这个自动配置类到底配置了哪些组件(只要我们要用的组件由，我们就不需要再配置了)。
+	给容器中自动配置添加组件的时候，会从 properties 类中获取某些属性。我们就可以在配置文件中指定这些属性了。
+
+xxxxAutoConfiguration：自动配置类。给容器中添加组件
+
+xxxxProperties : 封装配置文件中的相关属性。
+
 
 ## SpringBoot与日志
 ## SpringBoot与Web开发
