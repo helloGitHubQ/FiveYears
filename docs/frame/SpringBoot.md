@@ -439,8 +439,50 @@ xxxxAutoConfiguration：自动配置类。给容器中添加组件
 
 xxxxProperties : 封装配置文件中的相关属性。
 
+- @Conditional
+
+[@Conditional注解]
+
+**自动配置类必须在一定条件下才能生效。**
+
+自动配置报告：我们可以通过启动 SpringBoot 的 debug模式。
+ 
+用 debug=true 属性（在 application.preproties 配置文件中配置）。来让控制台打印自动配置报告。这样我们就方便知道哪些自动配置类生效了。
 
 ## SpringBoot与日志
+### 日志框架
+JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j.....
+
+[日志门面，日志实现]
+
+	左边一个日志门面，右边一个日志实现。
+	日志门面：slf4j
+	日志实现：Logback
+
+SpringBoot 底层采用是 Spring 框架，Spring 框架默认是 JCL；
+
+SpringBoot 选用 SLF4j 和 logback
+
+- SLF4j使用
+
+开发的时候，日志记录方法的调用，不应该来直接调用日志的实现类，而是调用日志抽象层里面的方法。
+
+给系统里面导入 slf4j 和 logback 的实现类
+
+	import org.slf4j.Logger;
+	import org.slf4j.LoggerFactory;
+
+	public class HelloWorld {
+	  public static void main(String[] args) {
+	    Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+	    logger.info("Hello World");
+	  }
+	}
+
+[concrete-bindings.png]
+
+每一个日志的实现框架都有自己的配置文件。使用 slf4j 以后，配置文件还是做成日志实现框架自身的配置文件。
+
 ## SpringBoot与Web开发
 ## SpringBoot与Docker
 ## SpringBoot与数据访问
