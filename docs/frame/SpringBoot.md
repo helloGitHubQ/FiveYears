@@ -481,9 +481,104 @@ SpringBoot 选用 SLF4j 和 logback
 
 [concrete-bindings.png]
 
-每一个日志的实现框架都有自己的配置文件。使用 slf4j 以后，配置文件还是做成日志实现框架自身的配置文件。
+每一个日志的实现框架都有自己的配置文件。使用 slf4j 以后，**配置文件还是做成日志实现框架自身的配置文件。**
+
+- 遗留问题
+
+[legacy.png]
+
+其他日志框架统一转换为 slf4j ：
+
+1. 将系统中的其他日志框架先排除出去
+2. 用中间包来替换原有的日志框架
+3. 我们导入 slf4j 的其他实现
+
+- SpringBoot 日志关系
+
+		<dependency>
+	      <groupId>org.springframework.boot</groupId>
+	      <artifactId>spring-boot-starter</artifactId>
+	    </dependency>
+
+SpringBoot 使用它来做日志功能：
+
+	<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-logging</artifactId>
+    </dependency>
+
+
+[SpringBoot日志关系图]
+
+总结：
+
+	1）SpringBoot 底层也是使用 slf4j+logback 的方式进行日志记录
+	2）SpringBoot 也把其他日志都替换成了 slf4j
+	3）中间替换包
+	4）如果我们要引入其他框架，一定要把这个框架的默认日志依赖移除掉。
+	Spring框架采用的是 commons-logging;
+
+**SpringBoot 能够自适配所有的日志，而且底层使用 slf4j + logback 的方式记录日志，引入其他框架的时候，只需要把这个框架依赖的日志框架排除掉。**
+	
+- SpringBoot 默认配置
+
+日志级别:
+
+由低到高  trace<debug<info<warn<error
+
+可以调整输出的日志级别（在配置文件中设置 logging.level=warn ）；日志就只会在这个级别及以后的高级别生效。
+
+
+SpringBoot 默认给我使用的 info 级别的，没有指定级别就用 SpringBoot 默认规定的级别
+
+		不指定路径在当前项目下生成 spring.log 日志。可以指定完整的路径。
+		logging.file=G:/springboot.log
+
+		在当前磁盘的根路劲下创建 spring 文件夹和里面的 log 文件夹；使用 spring.log 作为默认文件
+		logging.path=/spring/log
+
+		在控制台输出的日志格式
+		logging.pattern.console=
+		指定文件中日志的输出格式
+		logging.pattern.file=	
+
+- 指定日志文件
+
+给类路径下放每个日志框架自己的配置文件即可；SpringBoot 就不使用其他默认配置了。
+
+[Logging System]
+
+logback.xml:直接被日志框架识别
+
+**logback-spring.xml:**日志框架就不直接加载日志的配置项，由 SpringBoot 解析日志配置，可以使用 SpringBoot 的高级 Profile 功能。否则就会报错！
+
+	<springProfile name="staging">
+	    <!-- configuration to be enabled when the "staging" profile is active -->
+	</springProfile>
+	
+	<springProfile name="dev, staging">
+	    <!-- configuration to be enabled when the "dev" or "staging" profiles are active -->
+	</springProfile>
+	
+	<springProfile name="!production">
+	    <!-- configuration to be enabled when the "production" profile is not active -->
+	</springProfile>
+
+- 切换日志框架
+
+可以按照 slf4j 的日志适配图，进行相关的切换。
+
+切换为 log4j2
 
 ## SpringBoot与Web开发
+使用 SpringBoot :
+
+1) 创建 SpringBoot 应用，选中我们需要的模块
+
+2) SpringBoot 已经默认将这些场景配置好了，只需要在配置文件中指定少量配置就可以运行起来
+
+3) 自己编写代码
+
 ## SpringBoot与Docker
 ## SpringBoot与数据访问
 ## SpringBoot启动配置原理
