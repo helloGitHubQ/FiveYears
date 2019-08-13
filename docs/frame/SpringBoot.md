@@ -88,7 +88,8 @@ spring Boot 引导类：
 ---
 atguigu -- bilibili
 
-#SpringBoot 基础
+# SpringBoot 基础
+
 ## SpringBoot 入门
 ### 简介
 > 简化 Spring 应用的一个框架
@@ -119,19 +120,19 @@ atguigu -- bilibili
 给 Maven 的 settings.xml 配置文件的 profiles 标签中添加。使 Maven 知道自己是用 jdk 1.8 去启动的。（我这里呢就暂时先没有去改配置文件的路径，只是改了 Maven 的路径）
 
 	 <profile>
-      <id>jdk-1.8</id>
-
-      <activation>
+	  <id>jdk-1.8</id>
+	
+	  <activation>
 	  <activeByDefault>true</activeByDefault>
-        <jdk>1.8</jdk>
-      </activation>
-
-     <properties>
+	    <jdk>1.8</jdk>
+	  </activation>
+	
+	 <properties>
 			<maven.compiler.source>1.8</maven.compiler.source>
 			<maven.compiler.target>1.8<maven.compiler.target>
 			<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
 	 </properties>
-    </profile>
+	</profile>
 
 - 配置 Idea
 
@@ -161,9 +162,9 @@ Spring Boot的版本仲裁中心；
 启动器(starter)：
 
 	<dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
 
 Spring-boot-starter-web:
 
@@ -274,7 +275,7 @@ k:(空格)v：表示一对键值对（空格必须有）。
 			friends: {lastName: zhangsan,age 20}			
 
 	- 数组（List、Set）：
-		   
+		
 			用 - 值表示数组中的一个元素
 			pets:
 			- cat
@@ -309,7 +310,7 @@ idea 默认的 properties 是 UTF-8 编码，需要去 idea 中设置转为 asci
 | SpEL | 不支持    |    支持 |
 | JSR303 | 支持    |    不支持 |
 | 复杂类型封装 | 支持    |    不支持 |
-	
+
 配置文件yml还是properties他们都能获取值。
 
 如果说，我们只是在某个业务逻辑中需要获取一下配置文件中的某项值，使用 @Value
@@ -402,6 +403,7 @@ SpringBoot 也可以使用外部配置文件。优先级从高到低	；高优�
 利用@EnableAutoConfigurationImportSelector 给容器中导入一些组件
 可以查看 selectImports() 方法的内容
 	
+
 将类路径下 META-INF/spring.factories 里面配置的所有 EnableAutoConfiguration 的值加入到了容器中。
 
 每一个这样的 xxxxAutoConfiguration 类都是容器中的一个组件，都加入到容器中。用它们来做自动配置。
@@ -446,7 +448,7 @@ xxxxProperties : 封装配置文件中的相关属性。
 **自动配置类必须在一定条件下才能生效。**
 
 自动配置报告：我们可以通过启动 SpringBoot 的 debug模式。
- 
+
 用 debug=true 属性（在 application.preproties 配置文件中配置）。来让控制台打印自动配置报告。这样我们就方便知道哪些自动配置类生效了。
 
 ## SpringBoot与日志
@@ -471,7 +473,7 @@ SpringBoot 选用 SLF4j 和 logback
 
 	import org.slf4j.Logger;
 	import org.slf4j.LoggerFactory;
-
+	
 	public class HelloWorld {
 	  public static void main(String[] args) {
 	    Logger logger = LoggerFactory.getLogger(HelloWorld.class);
@@ -479,7 +481,7 @@ SpringBoot 选用 SLF4j 和 logback
 	  }
 	}
 
-[concrete-bindings.png]
+![concrete-bindings.png](C:\Users\Administrator\Desktop\GitHub\FiveYears\docs\image\springBoot\concrete-bindings.png)
 
 每一个日志的实现框架都有自己的配置文件。使用 slf4j 以后，**配置文件还是做成日志实现框架自身的配置文件。**
 
@@ -503,9 +505,9 @@ SpringBoot 选用 SLF4j 和 logback
 SpringBoot 使用它来做日志功能：
 
 	<dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-logging</artifactId>
-    </dependency>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-logging</artifactId>
+	</dependency>
 
 
 [SpringBoot日志关系图]
@@ -533,10 +535,10 @@ SpringBoot 默认给我使用的 info 级别的，没有指定级别就用 Sprin
 
 		不指定路径在当前项目下生成 spring.log 日志。可以指定完整的路径。
 		logging.file=G:/springboot.log
-
+	
 		在当前磁盘的根路劲下创建 spring 文件夹和里面的 log 文件夹；使用 spring.log 作为默认文件
 		logging.path=/spring/log
-
+	
 		在控制台输出的日志格式
 		logging.pattern.console=
 		指定文件中日志的输出格式
@@ -584,7 +586,6 @@ logback.xml:直接被日志框架识别
 ## SpringBoot启动配置原理
 ## SpringBoot自定义starters
 
-
 ---
 #SpringBoot 高级部分
 ##SpringBoot与缓存
@@ -598,4 +599,3 @@ Spring的缓存抽象
 ## SpringBoot与开发热部署
 ## SpringBoot与监控管理
 
-​
