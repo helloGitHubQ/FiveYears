@@ -105,34 +105,38 @@ atguigu -- bilibili
 
 ![微服务图片](../image/springBoot/微服务.png)
 
-每一个功能元素最终都是一个可独立替换和独立升级的软件单元。 
+**每一个功能元素最终都是一个可独立替换和独立升级的软件单元。** 
 
 ### 环境
 - 环境约束：
 
-		jdk 1.8:Spring Boot 是要求1.7及以上  jdk 1.8.0_181
-		maven3.x :maven 3.3以上版本  Apache Maven 3.5.4
-	    IntelliJ IDEA 2018.2.7 (Ultimate Edition) Windows 7 6.1
-		SpringBoot 1.5.9.RELEASE: 1.5.9
+   ```
+   jdk 1.8:Spring Boot 是要求1.7及以上  jdk 1.8.0_181
+   maven3.x :maven 3.3以上版本  Apache Maven 3.5.4
+   IntelliJ IDEA 2018.2.7 (Ultimate Edition) Windows 7 6.1
+   SpringBoot 1.5.9.RELEASE: 1.5.9
+   ```
 
 - 配置Maven
 
 给 Maven 的 settings.xml 配置文件的 profiles 标签中添加。使 Maven 知道自己是用 jdk 1.8 去启动的。（我这里呢就暂时先没有去改配置文件的路径，只是改了 Maven 的路径）
 
-	 <profile>
-	  <id>jdk-1.8</id>
-	
-	  <activation>
-	  <activeByDefault>true</activeByDefault>
-	    <jdk>1.8</jdk>
-	  </activation>
-	
-	 <properties>
-			<maven.compiler.source>1.8</maven.compiler.source>
-			<maven.compiler.target>1.8<maven.compiler.target>
-			<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
-	 </properties>
-	</profile>
+```xml
+ <profile>
+  <id>jdk-1.8</id>
+
+  <activation>
+  <activeByDefault>true</activeByDefault>
+    <jdk>1.8</jdk>
+  </activation>
+
+ <properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8<maven.compiler.target>
+		<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+ </properties>
+</profile>
+```
 
 - 配置 Idea
 
@@ -150,7 +154,11 @@ atguigu -- bilibili
 - 测试（运行 main 方法,访问 localhost:8080/hello）
 - 简化部署工作
 
-pom.xml 中加入打 jar 包的注解。运行  Maven Projects->项目下的 Lifecycle->package。打好 jar 包的位置会出现在 控制台上，找到相应的 jar 包。通过 java -jar 命令进行执行
+pom.xml 中加入打 jar 包的注解。
+
+运行  Maven Projects->项目下的 Lifecycle->package。
+
+打好 jar 包的位置会出现在 控制台上，找到相应的 jar 包。通过 java -jar 命令进行执行
 
 ### HelloWOrld探究
 - pom 文件
@@ -215,9 +223,15 @@ Spring Initializer:快速向导
 默认生成的 SpringBoot 项目：主程序已经生成好了，我们只需要书写我们的逻辑。
 
 resources 目录文件：
-	- static ：保存所有的静态资源。 js css images
-	- templates ：保存所有的模板页面；（Spring Boot 默认 jar 包使用嵌入式的 Tomcat ,默认不支持 JSP 页面）；但是可以使用模板引擎（freemarker、thymeleaf）
-	- application.properties:Spring Boot 应用的配置文件。可以修改一些默认配置。 
+	
+
+```
+static ：保存所有的静态资源。 js css images
+templates ：保存所有的模板页面；（Spring Boot 默认 jar 包使用嵌入式的 Tomcat ,默认不支持 JSP 页面）；但是可以使用模板引擎（freemarker、thymeleaf）
+application.properties:Spring Boot 应用的配置文件。可以修改一些默认配置。
+```
+
+ 
 
 ## SpringBoot 配置
 ### 配置文件
@@ -482,7 +496,7 @@ SpringBoot 选用 SLF4j 和 logback
 	  }
 	}
 
-![concrete-bindings.png](C:\Users\Administrator\Desktop\GitHub\FiveYears\docs\image\springBoot\concrete-bindings.png)
+![concrete-bindings.png](../image/springBoot/concrete-bindings.png)
 
 每一个日志的实现框架都有自己的配置文件。使用 slf4j 以后，**配置文件还是做成日志实现框架自身的配置文件。**
 
@@ -625,7 +639,7 @@ webjars : 以jar包的形式引入静态资源。
 
 ### 3.模板引擎
 
-#### Thymeleaf 
+#### Thymeleaf 介绍
 
 JSP、Velocity、Freemarker、Thymeleaf
 
@@ -646,14 +660,120 @@ thymeleaf 2 主程序 -- layout1
 
 #### Thymeleaf 使用&语法
 
+只要把 html 页面放在 classpath:/templates ，thymeleaf就能自动渲染了。
+
+- **使用**
+
+1. 导入 thymeleaf 的名称空间
+
+   ```html
+   <html lang="en" xmlns:th="http://www.thymeleaf.org" >
+   ```
+
+2. 使用 thymeleaf 语法
+
+   ```html
+   <!DOCTYPE html>
+   <html xmlns:th="http://www.thymeleaf.org">
+   <head>
+   <title>Good Thymes Virtual Grocery</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   </head>
+   <body>
+   <!--th:text 将p标签中内容设置为-->    
+   <p th:text="#{home.welcome}">Welcome to our grocery store!</p>
+   </body>
+   </html>
+   ```
+
+- **语法**
+
+1. th:text
+
+![th](../image/springBoot/th.png)
+
+2. 表达式
+
+- Simple expressions: 模板引擎
+
+  - Variable Expressions: ${...} 获取变量值
+
+    4.2 Variables 
+
+  - Selection Variable Expressions: *{...} 选择表达式和${...}在功能上一样。补充，配合 th:object="${session.user}  使用
+
+    4.3 Expressions on selections (asterisk syntax) 
+
+  - Message Expressions: #{...}   获取国际化内容
+
+    4.1 Messages 
+
+  - Link URL Expressions: @{...} 定义 URL 
+
+    4.4 Link URLs 
+
+  - Fragment Expressions: ~{...} 片段引用表达式
+
+    4.5 Fragments 
+
+- Literals （字面量）
+
+  - Text literals: 'one text' , 'Another one!' ,…
+
+  - Number literals: 0 , 34 , 3.0 , 12.3 ,…
+
+  - Boolean literals: true , false
+
+  - Null literal: null
+
+  - Literal tokens: one , sometext , main ,…
+
+- Text operations:（文本操作）
+
+  - String concatenation: +
+
+  - Literal substitutions: |The name is ${name}|
+
+- Arithmetic operations:（数字运算）
+
+  - Binary operators: + , - , * , / , %
+
+  - Minus sign (unary operator): -
+
+- Boolean operations:（布尔运算）
+
+  - Binary operators: and , or
+
+  - Boolean negation (unary operator): ! , not
+
+- Comparisons and equality:（比较运算）
+
+  - Comparators: > , < , >= , <= ( gt , lt , ge , le )
+
+  - Equality operators: == , != ( eq , ne )
+
+- Conditional operators:（条件运算 - 三元运算符）
+
+  - If-then: (if) ? (then)
+
+  - If-then-else: (if) ? (then) : (else)
+  - Default: (value) ?: (defaultvalue)
+
+- Special tokens:
+
+  - No-Operation: _ 
+
+
+
 ## SpringBoot与Docker
 ## SpringBoot与数据访问
 ## SpringBoot启动配置原理
 ## SpringBoot自定义starters
 
----
-#SpringBoot 高级部分
-##SpringBoot与缓存
+
+
+# SpringBoot 高级部分
+## SpringBoot与缓存
 JSR107
 Spring的缓存抽象
 
