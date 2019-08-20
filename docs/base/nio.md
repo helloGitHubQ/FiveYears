@@ -98,7 +98,7 @@ Buffer 本质上是内存的一块，我们可以将数据写入这块内存，�
 2. position
 3. limit
 
-[Buffer的重要属性]
+![Buffer的重要属性](../image/nio/buffer的重要属性.png)
 
 ### Channel
 ---
@@ -114,9 +114,7 @@ Channel 是一个已经建立好的支持 I/O 操作的实体（如文件和网�
 - ServerSocketChannel：可以监听新进来的 TCP 连接，对每一个新进来的连接都会创建一个 SocketChannel
 
 ### Selector
----
-
-[多路复用器]
+![多路复用器](../image/nio/多路复用器.png)
 
 - Selector 选择器
 

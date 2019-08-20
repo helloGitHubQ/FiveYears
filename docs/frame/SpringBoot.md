@@ -101,9 +101,9 @@ atguigu -- bilibili
 ### 微服务
 2014  martin fowler
 
-[单体应用]
+![单体应用](../image/springBoot/单体应用.png)
 
-[微服务图片]
+![微服务图片](../image/springBoot/微服务.png)
 
 每一个功能元素最终都是一个可独立替换和独立升级的软件单元。 
 
@@ -138,7 +138,8 @@ atguigu -- bilibili
 
 使 IDEA 使用我们自己的安装的 Maven。
 
-[Maven]
+![Maven](../image/springBoot/maven.png)
+
 ### HelloWorld
 浏览器发送请求，服务器接收请求并处理。响应 HelloWorld 字符串。
 
@@ -443,7 +444,7 @@ xxxxProperties : 封装配置文件中的相关属性。
 
 - @Conditional
 
-[@Conditional注解]
+![@Conditional注解](../image/springBoot/@Conditional扩展.png)
 
 **自动配置类必须在一定条件下才能生效。**
 
@@ -487,7 +488,7 @@ SpringBoot 选用 SLF4j 和 logback
 
 - 遗留问题
 
-[legacy.png]
+![](../image/springBoot/@Conditional扩展.png)
 
 其他日志框架统一转换为 slf4j ：
 
@@ -509,8 +510,9 @@ SpringBoot 使用它来做日志功能：
 	  <artifactId>spring-boot-starter-logging</artifactId>
 	</dependency>
 
-
 [SpringBoot日志关系图]
+
+![](../image/springBoot/SpringBoot日志关系.png)
 
 总结：
 
@@ -550,6 +552,8 @@ SpringBoot 默认给我使用的 info 级别的，没有指定级别就用 Sprin
 
 [Logging System]
 
+![](../image/springBoot/LoggingSystem.png)
+
 logback.xml:直接被日志框架识别
 
 **logback-spring.xml:**日志框架就不直接加载日志的配置项，由 SpringBoot 解析日志配置，可以使用 SpringBoot 的高级 Profile 功能。否则就会报错！
@@ -573,6 +577,9 @@ logback.xml:直接被日志框架识别
 切换为 log4j2
 
 ## SpringBoot与Web开发
+
+### 1.web开发简介
+
 使用 SpringBoot :
 
 1) 创建 SpringBoot 应用，选中我们需要的模块
@@ -581,11 +588,63 @@ logback.xml:直接被日志框架识别
 
 3) 自己编写代码
 
+### 2.静态资源映射配置规则
 
+- ==所有 /webjars/** ,都去 classpath:/META-INF/resource/webjars/ 找资源==
 
+webjars : 以jar包的形式引入静态资源。
 
+[webjars官网](https://www.webjars.org/)
 
+```xml
+<!-- 引入jquery-webjars,在访问的时候写入下面的资源名称即可 -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>jquery</artifactId>
+    <version>3.4.1</version>
+</dependency>
+```
 
+- ==/** 访问当前项目的任何资源（静态资源文件夹）==
+
+  ```java
+  "classpath:/META-INF/resources/",
+  "classpath:/resources/",
+  "classpath:/static/",
+  "classpath:/public/",
+  "/":当前项目的根路径
+  ```
+
+  localhost:/8080/abc -- 去静态资源文件夹下去找abc
+
+- ==欢迎页；静态资源文件夹下的 index.html 页面；被 /** 映射；==
+
+  localhost:8080/   找 Index 页面
+
+- ==所有的  **/favicon.ico 都是在静态资源文件下找。==
+
+### 3.模板引擎
+
+#### Thymeleaf 
+
+JSP、Velocity、Freemarker、Thymeleaf
+
+![](../image/springBoot/模板引擎.png)
+
+SpringBoot 推荐的 Thymeleaf，功能更强大，语法更简单。
+
+**布局功能支持程序**：
+
+thymeleaf 3 主程序 -- layout 2 以上版本
+
+```
+Thymeleaf Layout Dialect 2.0.0
+Layout dialect rewritten to support Thymeleaf 3 
+```
+
+thymeleaf 2 主程序 -- layout1
+
+#### Thymeleaf 使用&语法
 
 ## SpringBoot与Docker
 ## SpringBoot与数据访问
@@ -597,6 +656,7 @@ logback.xml:直接被日志框架识别
 ##SpringBoot与缓存
 JSR107
 Spring的缓存抽象
+
 ## SpringBoot与消息
 ## SpringBoot与检索
 ## SpringBoot与任务
@@ -604,4 +664,6 @@ Spring的缓存抽象
 ## SpringBoot与分布式
 ## SpringBoot与开发热部署
 ## SpringBoot与监控管理
+
+
 

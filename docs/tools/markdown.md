@@ -13,14 +13,13 @@
 
 情况3：经常出现本地图片导入失败的（MarkdownPad）。本人也曾想过用个图片服务器直接引地址。现在看来不太容易实现。所以打算换个工具试试(Typora)。
 
-
-## 
+---
 
 # 技巧
 ## 1.可以以浏览器的方式展示
 Preview MarkDown in Browser(F6)
 
-[图片]
+![](../image/tools/markdownBowser.png)
 
 ## 2.使用扩展版本
 
