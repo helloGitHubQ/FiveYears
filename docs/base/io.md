@@ -7,8 +7,8 @@ Java中流有两个重要概念，一个是字节流，另一个则为字符流�
 
 按操作方式分类结构图：
 
-![javaIO](https://i.imgur.com/RghJWRN.jpg)
+![javaIO](../image/JavaIo.jpg)
 
 按操作对象分类结构图：
 
-[按操作对象分类结构图]
+![](../image/JavaIo2.jpg)
