@@ -762,8 +762,59 @@ thymeleaf 2 主程序 -- layout1
 - Special tokens:
 
   - No-Operation: _ 
+  
+    
 
+#### SpringMVC的自动配置原理
 
+**27.1.1 Spring MVC auto-configuration**
+
+Spring Boot provides <!--提供--> auto-configuration for Spring MVC that works well with most applications.<!--应用-->
+
+The auto-configuration adds the following features on top of Spring’s defaults:
+
+- Inclusion of `ContentNegotiatingViewResolver` and `BeanNameViewResolver` beans.
+
+  - 自动配置了 ViewResolver（视图解析器：根据方法的返回得到视图对象（View），视图对象决定如何渲染（转发？，重定向？））
+  - ContentNegotiatingViewResolver：组合所有的视图解析器的
+  - 如何定制：我们可以自己给容器中添加一个视图解析器；自动的将其组合进来
+
+- Support for serving static resources, including support for WebJars (see below).    静态资源文件夹和 webjars
+
+- Automatic registration  <!--自动注册--> of `Converter`, `GenericConverter`, `Formatter` beans.
+
+  - Converter ：转换器。类型转换使用
+  - Formatter ：格式化器。
+
+  ==自动添加的格式化转换器，我们只需要放在容器中即可==
+
+- Support for `HttpMessageConverters` (see below).   
+
+  - HttpMessageConverters：SpringMVC用来转换 http 请求和相应的。
+  - HttpMessageConverters：是从容器中确定的；获取所有的HttpMessageConverters；
+
+  ==自己给容器中添加HttpMessageConverter，只需要将自己的组件注册到容器中（@Bean，@Component）。==
+
+- Automatic registration of `MessageCodesResolver` (see below).  定义错误代码的生成规则
+
+- Static `index.html` support. 静态欢迎页面
+
+- Custom `Favicon` support (see below).  favicon.icon
+
+- Automatic use of a `ConfigurableWebBindingInitializer` bean (see below).
+
+  ==我们可以配置一个ConfigurableWebBindingInitializer来替换默认的；（添加到容器中）==
+
+If you want to keep Spring Boot MVC features, and you just want to add additional [MVC configuration](https://docs.spring.io/spring/docs/4.3.25.RELEASE/spring-framework-reference/htmlsingle#mvc) (interceptors, formatters, view controllers etc.) you can add your own `@Configuration` class of type `WebMvcConfigurerAdapter`, but **without** `@EnableWebMvc`. If you wish to provide custom instances of `RequestMappingHandlerMapping`, `RequestMappingHandlerAdapter` or `ExceptionHandlerExceptionResolver` you can declare a `WebMvcRegistrationsAdapter` instance providing such components.
+
+If you want to take complete control of Spring MVC, you can add your own `@Configuration` annotated with `@EnableWebMvc`.
+
+#### 如何修改 SpringBoot 的默认配置
+
+模式：
+
+1. SpringBoot 在自动配置很多组件的时候，先看容器中有没有用户自己配置的（@Bean、@Component）如果有就用用户配置的，如果没有，才自动配置；如果有些组件可以有多个（ViewResolver）将用户配置的和自己默认的组合起来
+2. 
 
 ## SpringBoot与Docker
 ## SpringBoot与数据访问
