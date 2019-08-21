@@ -9,81 +9,7 @@ Spring Boot 提供了各种组件的启动器（starters），开发者只要能
 
 [Spring Boot 核心配置文件详解](https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&mid=2247486541&idx=2&sn=436ab454a6367fdc33912162855c02c7&scene=21#wechat_redirect)
 
-[官方文档理解](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringBootOfficial.md)
-
----
-**面试前的瞎几把准备--云栖学院**
-
-微服务架构：
-
-优点：
-
-	每个微服务可独立运行在自己的进程里
-	一系列独立运行的微服务共同构建起整个系统
-	每个服务为独立的业务开发，关注特定的功能
-	微服务之间通过一些轻量级通信机制进行通信
-	可以使用不同的语言与数据存储技术
-	全自动独立部署
-
-缺点：
-
-	测试复杂，多个微服务联调
-	需要使用分布式事务
-	实现服务间的通信机制
-	各个服务开发团队沟通成本提高
-
-**spring 开发微服务的弊端：**
-
-1. 大量的 XML 配置文件，配置繁琐
-2. 整合第三方框架常引起包冲突
-
-
-什么是springboot?
-
-spring Boot 不是微服务框架，而是 Spring 的一套快速配置脚手架。可以基于 spring Boot 快速开发单个微服务。
-
-spring Boot 整合的框架：
-
-	Spring IO Plarform：用于版本话应用程序的企业级开发。
-	Spring Framework：用于事务管理，依赖注入，数据访问，消息传递和 Web 应用程序。
-	Spring Cloud ：用于分布式系统，用于构建或部署你的微服务。
-	Spring Data：用于数据访问相关的微服务，不管是映射幻视归约，关系型还是非关系型。
-	Spring Batch：用于高级的批量操作。
-	Spring Security：用于授权和认证支持。
-	Spring REST 文档：用于 RESTful服务文档化。
-	Spring Social：用于连接社交媒体 API
-	Spring Mobile：适用于移动网络应用
-
-## 创建 Spring Boot 项目：
-
-	Spring Initializr
-	Spring Bott CLI	
-	Spring Tool Suite
-
-## Spring Boot 核心：
-
-- 起步依赖
-
-其实就是特殊的 maven，利用传递依赖解析，把常用库聚合在一起，组成几个特定功能而定制的依赖。
-
-把你从"需要这些库的哪些版本"中解放出来
-
-- 自动配置
-
-
-针对很多 Spring应用程序常见的应用功能，Spring Boot 能自动提供相关配置。
-
-- 命令行界面
-
-一个可选特性，借此你只需写代码就能完成完整的应用程序，无需传统项目构建。
-
-- Actuator
-
-提供在运行时检查引用程序内部情况。
-
-spring Boot 引导类：
-
-每个 Spring Boot 都有一个引导类，它作用为整个工程
+[官方文档理解](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringBoot/SpringBootOfficial.md)
 
 ---
 atguigu -- bilibili
@@ -91,14 +17,14 @@ atguigu -- bilibili
 # SpringBoot 基础
 
 ## SpringBoot 入门
-### 简介
+### 1.简介
 > 简化 Spring 应用的一个框架
 > 
 > 整个Spring 技术栈的一个大集合
 > 
 > J2EE开发的一站式解决方案
 
-### 微服务
+### 2.微服务
 2014  martin fowler
 
 ![单体应用](../image/springBoot/单体应用.png)
@@ -107,7 +33,7 @@ atguigu -- bilibili
 
 **每一个功能元素最终都是一个可独立替换和独立升级的软件单元。** 
 
-### 环境
+### 3.环境
 - 环境约束：
 
    ```
@@ -144,7 +70,7 @@ atguigu -- bilibili
 
 ![Maven](../image/springBoot/maven.png)
 
-### HelloWorld
+### 4.HelloWorld
 浏览器发送请求，服务器接收请求并处理。响应 HelloWorld 字符串。
 
 - 创建一个 Maven 项目
@@ -160,7 +86,7 @@ pom.xml 中加入打 jar 包的注解。
 
 打好 jar 包的位置会出现在 控制台上，找到相应的 jar 包。通过 java -jar 命令进行执行
 
-### HelloWOrld探究
+### 5.HelloWorld探究
 - pom 文件
 
 父项目
@@ -214,7 +140,7 @@ AutoConfigurationPackages.Registrar.class
 
 J2EE 的整体整合解决方案和自动配置都在 spring-boot-autoconfigure-1.5.9.RELEASE.jar
 
-### 快速创建SpringBoot应用
+### 6.快速创建SpringBoot应用
 
 Spring Initializer:快速向导
 
@@ -234,7 +160,7 @@ application.properties:Spring Boot 应用的配置文件。可以修改一些默
  
 
 ## SpringBoot 配置
-### 配置文件
+### 1.配置文件
 Spring Boot 使用一个全局的配置文件，配置文件名是固定的。
 
 - application.properties
@@ -252,7 +178,7 @@ YAML：是一个标记语言。	**是以数据为中心**，比 json、xml更适
 
 `XML例子：`
 
-### YAML语法
+### 2.YAML语法
 - 基本语法
 
 k:(空格)v：表示一对键值对（空格必须有）。
@@ -300,7 +226,7 @@ k:(空格)v：表示一对键值对（空格必须有）。
 			行内写法：
 			pets: [cat,dog,pig]
 
-### 配置文件注入
+### 3.配置文件注入
 
 **@ConfigurationProperties:**告诉 SpringBoot 将本类中的所有属性和配置文件中相关属性进行绑定。
 
@@ -538,6 +464,7 @@ SpringBoot 使用它来做日志功能：
 
 **SpringBoot 能够自适配所有的日志，而且底层使用 slf4j + logback 的方式记录日志，引入其他框架的时候，只需要把这个框架依赖的日志框架排除掉。**
 	
+
 - SpringBoot 默认配置
 
 日志级别:
@@ -765,7 +692,9 @@ thymeleaf 2 主程序 -- layout1
   
     
 
-#### SpringMVC的自动配置原理
+### 4.SpringMVC的自动配置原理
+
+#### 1.SpringMVC 的自动配置
 
 **27.1.1 Spring MVC auto-configuration**
 
@@ -809,12 +738,56 @@ If you want to keep Spring Boot MVC features, and you just want to add additiona
 
 If you want to take complete control of Spring MVC, you can add your own `@Configuration` annotated with `@EnableWebMvc`.
 
-#### 如何修改 SpringBoot 的默认配置
+#### 2.扩展 SpringMVC
 
-模式：
+==编写一个配置类（@Configuration），是 WebMvcConfigurerAdapter 类型；不能标注 @EnableWebMVC==
+
+即保留了所有的自动配置，也能用我们扩展的配置。
+
+```java
+
+```
+
+原理：
+
+​		WebMvcAutoConfiguration 是 SpringMVC 的自动配置类；
+
+​		在做其他自动配置时会导入；@Import（EnableWebMvcConfiguration.class）
+
+​		容器中所有的 WebMvcConfigurer 都会一起起作用；
+
+​		我们的配置类也会被调用
+
+效果：SpringMVC 的自动配置和我们的扩展配置都会起作用
+
+#### 3.全面接管 SpringMVC
+
+SpringBoot 对 SpringMVC 的自动配置不需要了，所以我们自动配置；所有的 SpringMVC 自动配置都失效了。
+
+**我们需要在配置类中添加 @EnableWebMvc 即可；**
+
+
+
+原理：为什么加了@EnableWebMvc SpringMVC的自动配置就失效了？
+
+​		@EnableWebMvc 的核心
+
+​		...
+
+​		@EnableWebMvc 将 WebMvcConfigurationSupport 组件导入进来
+
+​		导入的 WebMvcConfigurationSupport 只是 SpringMVC 最基本功能
+
+### 5.如何修改 SpringBoot 的默认配置
+
+**模式：**
 
 1. SpringBoot 在自动配置很多组件的时候，先看容器中有没有用户自己配置的（@Bean、@Component）如果有就用用户配置的，如果没有，才自动配置；如果有些组件可以有多个（ViewResolver）将用户配置的和自己默认的组合起来
-2. 
+2. 在 SpringBoot 中有很多 XXXConfigurer 帮助我们扩展配置。
+
+### 6.web开发 实验
+
+
 
 ## SpringBoot与Docker
 ## SpringBoot与数据访问
@@ -823,18 +796,7 @@ If you want to take complete control of Spring MVC, you can add your own `@Confi
 
 
 
-# SpringBoot 高级部分
-## SpringBoot与缓存
-JSR107
-Spring的缓存抽象
+# SpringBoot高级
 
-## SpringBoot与消息
-## SpringBoot与检索
-## SpringBoot与任务
-## SpringBoot与安全
-## SpringBoot与分布式
-## SpringBoot与开发热部署
-## SpringBoot与监控管理
-
-
+[SpringBoot高级](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringBoot/SpringBootHighLevel.md)
 
