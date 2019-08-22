@@ -27,9 +27,9 @@ atguigu -- bilibili
 ### 2.微服务
 2014  martin fowler
 
-![单体应用](../image/springBoot/单体应用.png)
+![单体应用](../../image/springBoot/单体应用.png)
 
-![微服务图片](../image/springBoot/微服务.png)
+![微服务图片](../../image/springBoot/微服务.png)
 
 **每一个功能元素最终都是一个可独立替换和独立升级的软件单元。** 
 
@@ -68,7 +68,7 @@ atguigu -- bilibili
 
 使 IDEA 使用我们自己的安装的 Maven。
 
-![Maven](../image/springBoot/maven.png)
+![Maven](../../image/springBoot/maven.png)
 
 ### 4.HelloWorld
 浏览器发送请求，服务器接收请求并处理。响应 HelloWorld 字符串。
@@ -238,7 +238,13 @@ prefix = "person" ：配置文件中哪个下面的所有属性进行一一映�
 
 - properties配置文件编码问题
 
-idea 默认的 properties 是 UTF-8 编码，需要去 idea 中设置转为 ascii 码(Settings->Editor->File Encodings->勾选 Transparent native-to-ascii conversion    然后 apply -> ok)
+idea 默认的 properties 是 UTF-8 编码，需要去 idea 中设置转为 ascii 码(Settings->Editor->File Encodings->勾选 Transparent native-to-ascii conversion    然后 apply -> ok)  这里的设置只是设置当前项目的。
+
+![Settings](../../image/springBoot/Settings.png)
+
+如果想要全局设置的话，File->other Settings->Settings for New Projects->Editor->File Encodings->勾选 Transparent native-to-ascii conversion    然后 apply -> ok)
+
+![Settings](../../image/springBoot/SettingsForNewProjects.png)
 
 [properties编码问题]
 
@@ -384,7 +390,7 @@ xxxxProperties : 封装配置文件中的相关属性。
 
 - @Conditional
 
-![@Conditional注解](../image/springBoot/@Conditional扩展.png)
+![@Conditional注解](../../image/springBoot/@Conditional扩展.png)
 
 **自动配置类必须在一定条件下才能生效。**
 
@@ -422,13 +428,13 @@ SpringBoot 选用 SLF4j 和 logback
 	  }
 	}
 
-![concrete-bindings.png](../image/springBoot/concrete-bindings.png)
+![concrete-bindings.png](../../image/springBoot/concrete-bindings.png)
 
 每一个日志的实现框架都有自己的配置文件。使用 slf4j 以后，**配置文件还是做成日志实现框架自身的配置文件。**
 
 - 遗留问题
 
-![](../image/springBoot/@Conditional扩展.png)
+![](../../image/springBoot/@Conditional扩展.png)
 
 其他日志框架统一转换为 slf4j ：
 
@@ -452,7 +458,7 @@ SpringBoot 使用它来做日志功能：
 
 [SpringBoot日志关系图]
 
-![](../image/springBoot/SpringBoot日志关系.png)
+![](../../image/springBoot/SpringBoot日志关系.png)
 
 总结：
 
@@ -493,7 +499,7 @@ SpringBoot 默认给我使用的 info 级别的，没有指定级别就用 Sprin
 
 [Logging System]
 
-![](../image/springBoot/LoggingSystem.png)
+![](../../image/springBoot/LoggingSystem.png)
 
 logback.xml:直接被日志框架识别
 
@@ -570,7 +576,7 @@ webjars : 以jar包的形式引入静态资源。
 
 JSP、Velocity、Freemarker、Thymeleaf
 
-![](../image/springBoot/模板引擎.png)
+![](../../image/springBoot/模板引擎.png)
 
 SpringBoot 推荐的 Thymeleaf，功能更强大，语法更简单。
 
@@ -617,7 +623,7 @@ thymeleaf 2 主程序 -- layout1
 
 1. th:text
 
-![th](../image/springBoot/th.png)
+![th](../../image/springBoot/th.png)
 
 2. 表达式
 
@@ -787,7 +793,84 @@ SpringBoot 对 SpringMVC 的自动配置不需要了，所以我们自动配置�
 
 ### 6.web开发 实验
 
+- 默认访问首页
 
+- 国际化
+
+  -  **编写国际化配置文件**
+  - 使用 Resource BundleMessageSource 管理国际化资源文件
+  - 在页面使用fmt:message 取出国际化内容
+  - 点击链接切换国际化
+
+- 登录，拦截器
+
+  **模板引擎页面要实时生效**
+
+  第一步：禁用模板引擎的缓存（在配置文件中写入 spring.thymeleaf.cache=false）
+
+  第二步：html 文件中修改之后要重新编译一下（Ctrl+F9）
+
+  - 错误消息的显示
+  - 登录成功的页面
+  - 拦截器进行登录检查
+
+- 员工列表
+
+  RestfulCRUD:CRUD满足Rest 风格；
+
+  URL: /资源名称/资源标识  HTTP  请求方式区分对资源CRUD操作
+
+  |      | 普通CRUD（uri来区分操作） | RestfulCRUD       |
+  | ---- | ------------------------- | ----------------- |
+  | 查询 | getEmp                    | emp---GET         |
+  | 添加 | addEmp?xxx                | emp---POST        |
+  | 修改 | updateEmp?id=1&xxx        | emp/{id}---PUT    |
+  | 删除 | deleteEmp?id=1            | emp/{id}---DELETE |
+
+  - 公共页面抽取
+
+    ```html
+    1.抽取公共片段
+    2.引入公共片段
+    
+    ```
+
+    三种引入功能片段的th属性：
+
+    1）.**th:insert** is the simplest: it will simply insert the specified fragment as the body of its host tag.
+
+    将公共片段真个插入到声明引入的元素中
+
+    2）**.th:replace** actually replaces its host tag with the specified fragment.
+
+    将声明的元素替换为公共片段
+
+    3）.**th:include** is similar to th:insert , but instead of inserting the fragment it only inserts the contents of this
+    fragment 
+
+    将被引入的片段的内容包含进这个标签中
+
+    ```html
+    <!--引入方式-->
+    <div th:insert="footer :: copy"></div>
+    <div th:replace="footer :: copy"></div>
+    <div th:include="footer :: copy"></div
+     
+    <!--效果-->    
+    <div>
+        <footer>
+        &copy; 2011 The Good Thymes Virtual Grocery
+        </footer>
+    </div>
+    <footer>
+    &copy; 2011 The Good Thymes Virtual Grocery
+    </footer>
+    <div>
+    &copy; 2011 The Good Thymes Virtual Grocery
+    </div>
+    ```
+
+    
 
 ## SpringBoot与Docker
 ## SpringBoot与数据访问
