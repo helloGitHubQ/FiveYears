@@ -882,6 +882,59 @@ SpringBoot 对 SpringMVC 的自动配置不需要了，所以我们自动配置�
 
 ### 7.错误处理机制
 
+#### 1. SpringBoot 默认的错误处理机制
+
+默认效果：
+
+​	浏览器的话，返回一个默认的错误页面
+
+​	如果是其他客户端，默认响应一个 json 数据
+
+原理：
+
+​	可以参照 ErrorMvcAutoConfiguration ；错误处理的自动配置
+
+​	给容器中添加了以下组件：
+
+​	1）DefaultErrorAttributes
+
+​	2）BasicErrorController
+
+​	3）ErrorPageCustomizer
+
+​	4）DefaultErrorViewResolver
+
+步骤：
+
+​	一旦系统出现 4xx 或 5xx 之类的错误；ErrorPageCustomizer 就会生效（定制错误的响应规则）；就会来到  /error 请求；就会被  **BasicErrorController** 处理。
+
+​			1）响应页面；去哪个页面是由 **DefaultErrorViewResolver**
+
+#### 2.如何定制错误响应
+
+- **如何定制错误页面**
+
+  - ==有模板引擎的情况下，error /状态码；==（将错误页面命名为 错误状态码.html 放在模板引擎文件夹里面的 error 文件夹下），发生此状态码的错误会来到此页面。
+
+    我们可以使用 4xx 和 5xx 作为错误页面的文件夹名来匹配这种类型的所有错误，精选优先（优先寻找精选的状态码.html）
+
+    页面能获取到的信息： 
+
+    | 英文      | 意义                          |
+    | --------- | ----------------------------- |
+    | timestamp | 时间戳                        |
+    | status    | 状态                          |
+    | error     | 错误提示                      |
+    | exception | 异常对象                      |
+    | message   | 异常消息                      |
+    | errors    | JSR303 数据校验的错误都在这里 |
+
+  - 没有模板引擎的话（模板引擎找不到这个页面），静态资源文件夹下找
+
+  - 以上都没有错误页面，就是默认来到 SpringBoot 默认的错误提示页面
+
+- 如何定制错误的 json 数据
+
 
 
 ## SpringBoot与Docker
