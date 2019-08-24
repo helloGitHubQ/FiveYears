@@ -935,6 +935,61 @@ SpringBoot 对 SpringMVC 的自动配置不需要了，所以我们自动配置�
 
 - 如何定制错误的 json 数据
 
+  - 自定义异常处理 & 返回定制 json 数据（没有自适应效果）
+
+  - 转发到 /error 进行自适应响应效果处理
+
+  - **将我们的定制数据携带出去**
+
+    出现错误之后，会来到 /error 请求，会被 BasicErrorController 处理，响应出去可以获取的数据是由  getErrorAttributes 得到（是 AbstractErrorController 规定的方法）。
+
+    ​	 1） 完全编写一个 ErrorController 的实现类（或者编写一个 AbstractErrorController 的子类），放在容器。
+
+    ​	2）页面上能用的数据，或者是 json 返回能用的数据都是通过 errorAttributes.getErrorAtrributes 得到。
+
+    ​		容器中 DefaultErrorAttributes.getErrorAttributes() 默认进行数据处理的
+
+    自定义 ErrorAttributes
+
+  ​	
+
+  最终效果：响应是自适应的，可以通过定制 ErrorAttributes 改变需要返回的内容。
+
+### 8.嵌入式 Servlet 容器配置
+
+SpringBoot 默认使用 Tomcat 作为嵌入式的 Servlet 容器
+
+#### 1.如何定制和修改 Servlet 容器的相关配置
+
+- 修改和 server 有关的配置（ServerProperties）
+- 编写一个 EmbeddedServletContainerCustomizer ：嵌入式的 Servlet 容器的定制器，来修改 Servlet 容器的配置
+
+#### 2.注册 Servlet  三大组件 （Servlet 、Filter、Listener）
+
+由于 SpringBoot 默认是以 jar 包的方式启动嵌入式的 Servlet 容器来启动 SpringBoot 的 web 应用，没有 web.xml 文件。
+
+注册三大组件用以下方式
+
+ServletRegistrationBean
+
+FilterRegistrationBean
+
+ServletListenerRegistrationBean
+
+
+
+SpringBoot 帮我们自动配置 SpringMVC 的时候，自动的注册 SpringMVC 的前端控制器；DispatcherServlet
+
+#### 3.SpringBoot 能不能支持其他的 Servlet 容器
+
+Tomcat（默认使用）
+
+Jetty（长连接）
+
+Undertow（不支持 jsp  ）
+
+####  4.嵌入式 Servlet 容器自动配置原理
+
 
 
 ## SpringBoot与Docker
