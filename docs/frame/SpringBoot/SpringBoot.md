@@ -1101,7 +1101,121 @@ Spring 的 web 某块里面有这个文件：org.springframework.web.SpringServl
 
 
 ## SpringBoot与Docker
+
+### 1.Docker简介
+
+![](../../image/springBoot/docker01.png)
+
+Docker 是一个**开源的应用容器引擎**，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。 
+
+![](../../image/springBoot/Docker.png)
+
+### 2.核心概念
+
+![](../../image/springBoot/Docker核心概念.png)
+
+使用 Docker 步骤：
+
+1）、安装 Docker
+
+2）、去 Docker 仓库找到这个软件对应的镜像
+
+3）、使用 Docker 运行这个镜像，这个镜像会生成一个 Docker 容器
+
+4）、对容器的启动停止就是对软件的启动停止
+
+### 3.安装Docker
+
+1）、安装 Linux 虚拟机
+
+​		1、VWare、VirtualBox（安装）
+
+​		2、导入虚拟机文件 centos7
+
+​		3、双击启动 linux 虚拟机；使用 root/123456 登陆
+
+​		4、使用客户端连接 linux 服务器进行命令操作
+
+​		5、设置虚拟网络；
+
+​				桥接网络  --  ==选好网卡==  -- 接入网线
+
+​		6、设置好网络之后使用命令重启虚拟机的网络
+
+​		7、查看 linux 的 ip 地址
+
+​		8、使用客户端连接
+
+2）、Docker 安装
+
+​	步骤：
+
+```shell
+1.检查内核版本，必须是3.10及以上版本
+uname -r
+2.安装 docker
+yum install docker
+输入 y 确认暗转
+3.启动 docker 
+systemctl start docker
+4.开机启动docker
+systemctl enbale docker
+5.停止 docker
+systemctl stop docker	
+```
+
+### 4.Docker常用命令
+
+- 镜像操作
+
+  | 操作 | 命令                                        | 说明                                                      |
+  | ---- | ------------------------------------------- | --------------------------------------------------------- |
+  | 检索 | docker search 关键字 eg:docker search mysql | 我们经常上 Docker Hub 上去检索信息                        |
+  | 拉取 | dcoker pull 镜像名:tag                      | :tag 是可选的，tag 表示标签，多为软件的版本，默认是latest |
+  | 列表 | docker images                               | 查看本地所有镜像                                          |
+  | 删除 | docker rmi image-id                         | 删除本地指定的镜像                                        |
+
+  [*Docker* Hub](https://hub.docker.com/)
+
+- 容器操作
+
+  软件镜像（QQ安装程序） --- 运行镜像 --- 产生一个容器（正在运行的软件，运行的QQ）
+
+  | 操作     | 命令                                          | 说明                                                         |
+  | -------- | --------------------------------------------- | ------------------------------------------------------------ |
+  | 运行     | docker run -name container-name -d image-name | --name：自定义容器名；-d：后台运行；image-name：指定镜像模板 |
+  | 列表     | docker ps(查看运行中的容器)                   | 加上 -a ：可以查看所有容器                                   |
+  | 停止     | docker stop container-name/container-id       | 停止当前你在运行的容器                                       |
+  | 启动     | docker start container-name/container-id      | 启动容器                                                     |
+  | 删除     | docker rm container-id                        | 删除容器                                                     |
+  | 端口映射 | -p 6379:6379                                  | -p：主机端口（映射到）容器内部的端口                         |
+  | 容器日志 | dockers logs container-name/container-id      |                                                              |
+
+  #### 5.Docker 安装 MYSQL
+
+  [官方文档](https://hub.docker.com/_/mysql)
+
+  ```shell
+  $ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+  没做端口映射还是用不了。
+  ```
+
+  做了端口映射之后就可以访问
+
+
+
+​		几个其他的高级操作：
+
+```SHELL
+1.$ docker run --name some-mysql -v /my/custom:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+
+2.$ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+```
+
+
+
 ## SpringBoot与数据访问
+
 ## SpringBoot启动配置原理
 ## SpringBoot自定义starters
 
