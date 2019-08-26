@@ -1212,11 +1212,169 @@ systemctl stop docker
 2.$ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
-
-
 ## SpringBoot与数据访问
 
+### 1.简介
+
+JDBC、MyBatis、JPA
+
+![](../../image/springBoot/数据访问简介.png)
+
+### 2.JDBC和自动配置
+
+效果：
+
+​		默认是用 org.apche.tomcat.jdbc.pool.DataSource 作为数据源。
+
+​		数据源的相关配置都在 DataSourceProperties 里面；
+
+自动配置原理：
+
+org.springframework.boot.autoconfigure.jdbc
+
+​		1、参考 DataSourceConfiguration ,根据配置创建数据源，默认使用 Tomcat 连接池；可以使用 spring.datasource.type 指定自定义的数据源类型；
+
+​		2、SpringBoot 默认可以支持 org.apache.tomcat.jdbc.pool.DataSource、HikariDataSource、BasicDataSource
+
+​		3、自定义数据源类型
+
+​		4、DataSourceInitalizer：ApplicationListener;
+
+​		作用：
+
+​				1）、runSchemaScript()；运行建表语句
+
+​				2）、runDataScripts()；运行插入数据的 sql 语句
+
+默认只需要将文件命名为：
+
+```properties
+schema-*.sql data-*.sql
+```
+
+​			5、操作数据库：自动配置了 jdbcTemplate 操作数据库
+
+### 3.整合 Druid 数据源
+
+pom中引入 Druid 数据源（https://mvnrepository.com/artifact/com.alibaba/druid）
+
+```xml
+<!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>druid</artifactId>
+    <version>1.1.19</version>
+</dependency>
+```
+
+然后书写配置文件
+
+
+
+配置 Druid 的监控
+
+1）、配置一个管理后台的 Servlet（StartViewServlet）
+
+2）、配置一个 web 监控的 filter（webStatFilter）
+
+![](../../image/springBoot/整合Druid数据源.png)
+
+### 4.整合MyBatis
+
+mybatis-spring-boot-starter
+
+
+
+步骤：
+
+​		1）、配置数据源相关属性（见上一节  Druid）
+
+​		2）、给数据库建表
+
+​		3）、创建 javaBean	
+
+**4）、注解版**
+
+![](../../image/springBoot/Mapper.png)
+
+
+
+自定义 Mybatis 的配置规则：给容器中添加一个 ConfigurationCustomizer
+
+![](../../image/springBoot/自定义Mybatis的规则配置.png)
+
+
+
+​	还可以使用 @MapperScan 批量扫描所有的 Mapper 接口
+
+```java
+@MapperScan(value="包名")
+```
+
+**4）、配置版**
+
+![](../../image/springBoot/配置版Mybatis.png)
+
+### 5.整合JPA
+
+SpringData ：[官网](https://spring.io/projects/spring-data)
+
+![](../../image/springBoot/SpringDataJPA.png)
+
+JPA：ORM（Object Relational Mapping）
+
+1）、编写一个实体类（bean）和数据表进行映射，并配置好映射关系；
+
+2）、编写一个 Dao 接口来操作实体类对应的数据表（Repository）
+
+3）、基本的配置 JpaProperties
+
 ## SpringBoot启动配置原理
+
+- SpringBoot 原理
+
+几个重要的事件回调机制
+
+配置在METE-INF/spring.factories
+
+**ApplicationContextInitializer**
+
+**SpringApplicationRunListener**
+
+
+
+只需要放在 ioc 容器中
+
+**ApplicationRunner**
+
+**CommandLineRunner**
+
+
+
+启动流程：
+
+1、**创建 SpringApplication 对象**
+
+```java
+......
+```
+
+
+
+2、运行 run 方法
+
+```java
+......
+```
+
+![](../../image/springBoot/run.png)
+
+
+
+- 事件监听机制
+
+  
+
 ## SpringBoot自定义starters
 
 
