@@ -65,7 +65,7 @@
 - [hibernate-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/hibernate.md)
 - [SpringBoot-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringBoot/SpringBoot.md)
 - [Dubbo-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Dubbo.md)
-- [Mybatis-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/Mybatis.md)
+- [Mybatis-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/Mybatis.md)
 - [SpringCloud-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringCloud.md)
 - [SpringMVC-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringMVC.md)
 - [struts2-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/struts2.md)
