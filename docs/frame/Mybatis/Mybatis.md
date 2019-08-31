@@ -219,6 +219,22 @@ environment：配置一个具体的环境环境，必须有两个标签。id代�
 </environments>
 ```
 
+#### 6)、databaseIdProvider 
+
+databaseldProvider：支持多数据库厂商。
+
+DB_VENDOR ：作用就是得到数据库厂商的标识（驱动getDatabaseProductName() ），mybatis 就能根据数据库厂商标识来执行不同的sql
+
+```xml
+<databaseIdProvider type="DB_VENDOR">
+    <property name="SQL Server" value="sqlserver"/>
+    <property name="DB2" value="db2"/>
+    <property name="Oracle" value="oracle" />
+</databaseIdProvider>
+```
+
+#### 7)、mappers
+
 
 
 ## 映射文件
