@@ -55,11 +55,11 @@ T get();
     //产生一些整数并放入集合中
     public List<Integer> getNumList(int num,Supplier<Integer> supplier){
         List<Integer> list=new ArrayList<>();
-
+    
         for (int i=0;i<num;i++){
             list.add(supplier.get());
         }
-
+    
         return list;
     }
 
@@ -68,42 +68,42 @@ Function<T,R>：函数型接口
 R apply(T t);
 
 	@Test
-    public void test3(){
-        String newStr=strHandler("\t\t\t hahaha",(str)->str.trim());
-        System.out.println(newStr);
-    }
-
-    //处理字符串
-    public String strHandler(String string, Function<String,String> function){
-        return function.apply(string);
-    }
+	public void test3(){
+	    String newStr=strHandler("\t\t\t hahaha",(str)->str.trim());
+	    System.out.println(newStr);
+	}
+	
+	//处理字符串
+	public String strHandler(String string, Function<String,String> function){
+	    return function.apply(string);
+	}
 
 Predicate<T>：断言型接口
     
 boolean test(T t);
 
 	@Test
-    public void test4(){
-        List<String> list= Arrays.asList("www","ok","hello","Lambda");
-        List<String> lengthList=filterStr(list,(str)->str.length()>3);
-        for (String str :
-                lengthList) {
-            System.out.println(str);
-        }
-    }
-
-    //将满足条件的字符串放入集合中
-    public List<String>   filterStr(List<String> list, Predicate<String> predicate){
-        List<String> stringList=new ArrayList<>();
-
-        for (String str :
-                list) {
-            if (predicate.test(str)) {
-                stringList.add(str);
-            }
-            }
-        return stringList;
-    }
+	public void test4(){
+	    List<String> list= Arrays.asList("www","ok","hello","Lambda");
+	    List<String> lengthList=filterStr(list,(str)->str.length()>3);
+	    for (String str :
+	            lengthList) {
+	        System.out.println(str);
+	    }
+	}
+	
+	//将满足条件的字符串放入集合中
+	public List<String>   filterStr(List<String> list, Predicate<String> predicate){
+	    List<String> stringList=new ArrayList<>();
+	
+	    for (String str :
+	            list) {
+	        if (predicate.test(str)) {
+	            stringList.add(str);
+	        }
+	        }
+	    return stringList;
+	}
 
 其他函数式接口
 
@@ -134,7 +134,7 @@ boolean test(T t);
 	        Consumer<String> consumer2=printStream::println;
 	        consumer2.accept("方法引用");
 	    }
-	
+	    
 	    @Test
 	    public void test2(){
 	        Employee employee=new Employee();
@@ -142,7 +142,7 @@ boolean test(T t);
 	        employee.setAge(18);
 	        Supplier<String> supplier1=()->employee.getName();
 	        System.out.println(supplier1.get());
-	
+	    
 	        Supplier<Integer> supplier2=employee::getAge;
 	        System.out.println(supplier2.get());
 	    }
@@ -188,7 +188,7 @@ boolean test(T t);
 	        Function<Integer,Employee> function1=(x)->new Employee(x);
 	        Employee employee3=function1.apply(10);
 	        System.out.println(employee3);
-	
+	    
 	        Function<Integer,Employee> function2=Employee::new;
 	        Employee employee4=function2.apply(5);
 	        System.out.println(employee4);
@@ -211,9 +211,57 @@ boolean test(T t);
 
 ## StreamAPI
 [StreamAPI](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/java8/StreamAPI.md)
+
 ## 接口中的默认方法与静态方法
 
+![了解Fork和Join框架](../../image/java8/了解Fork和Join框架.png)
+
+![](../../image/java8/Fork和Join框架.PNG)
+
+![](../../image/java8/并行流与顺序流.png)
+
+![](../../image/java8/接口中默认方法.png)
+
 ## 新时间日期API
+
+最重要的一点就是是线程安全的。
+
+[java 8](https://docs.oracle.com/javase/8/docs/api/)
+
+![](../../image/java8/新时间日期API.PNG)
+
+#### 本地时间和时间戳
+
+LocalTime/LocalDateTime/LocalDate：
+
+- 类的实例对象是**不可变的对象**
+
+- in the ISO-8601 calendar system, such as `10:15:30`/such as `2007-12-03T10:15:30`/such as `2007-12-03`.
+
+  ```
+  Instant ：时间戳
+  ```
+
+  ```
+  Duration：计算两个时间之间的间隔
+  Period：计算两个日期之间的间隔
+  ```
+
+#### 时间校正器
+
+```
+TemporalAdjuster
+TemporalAdjusters
+```
+
+![](../../image/java8/TemporalAdjusters.png)
+
+#### 时间格式化和时区处理
+
+```
+DateTimeFormatter 格式化、日期
+ZonedDateTime ZonedDate ZonedTime
+```
 
 ## 其他新特性
 
@@ -240,53 +288,56 @@ Optional<T> 类是一个容器类。
 尽量的避免空指针异常。
 
 	 Optional.of(T t)：创建一个 Optional 实例
-     Optional.empty()：创建一个空的 Optional 实例
-     Optional.ofNullable(T t)：若 t 不为 null,则创建Optional实例，否则创建一个空实例
-     isPresent()：判断是否包含值
-     orElse(T t)：如果调用对象包含值，返回该值，否则返回t
-     orElseGet(Supplier s)：如果调用对象包含值，返回该值，否则返回 s 获取的值
-     map(Function f)：如果有值对其处理，并返回处理后的Optional,否则返回Optional.empty()
-     flatMap(Function mapper):与map类似，要求返回值必须是Optional
-
+	 Optional.empty()：创建一个空的 Optional 实例
+	 Optional.ofNullable(T t)：若 t 不为 null,则创建Optional实例，否则创建一个空实例
+	 isPresent()：判断是否包含值
+	 orElse(T t)：如果调用对象包含值，返回该值，否则返回t
+	 orElseGet(Supplier s)：如果调用对象包含值，返回该值，否则返回 s 获取的值
+	 map(Function f)：如果有值对其处理，并返回处理后的Optional,否则返回Optional.empty()
+	 flatMap(Function mapper):与map类似，要求返回值必须是Optional
+	
 	@Test
-    public void test1(){
-        Optional<Employee> optional1=Optional.of(new Employee());
-        System.out.println(optional1.get());
+	public void test1(){
+	    Optional<Employee> optional1=Optional.of(new Employee());
+	    System.out.println(optional1.get());
+	
+	    Optional<Employee> optional2=Optional.of(null);
+	    System.out.println(optional2.get());
+	}
+	
+	@Test
+	public void test2(){
+	    Optional<Employee> optional=Optional.empty();
+	    System.out.println(optional.get());
+	}
+	
+	@Test
+	public void test3(){
+	    Optional<Employee> optional1=Optional.ofNullable(new Employee());
+	    System.out.println(optional1.get());
+	
+	    Optional<Employee> optional2=Optional.ofNullable(null);
+	
+	    if(optional2.isPresent()){
+	        System.out.println(optional2.get());
+	    }
+	
+	    Employee employee1=optional2.orElse(new Employee("张三",18,666.66, Employee.Stauts.FREE));
+	    System.out.println(employee1);
+	
+	    Employee employee2=optional2.orElseGet(()->new Employee());
+	    System.out.println(employee2);
+	}
+	
+	@Test
+	public void test4(){
+	    Optional<Employee> optional=Optional.ofNullable(new Employee("张三",18,666.66, Employee.Stauts.FREE));
+	    Optional<String> str=optional.map((e)->e.getName());
+	    System.out.println(str.get());
+	
+	    Optional<String> str2= optional.flatMap((e)->Optional.of(e.getName()));
+	    System.out.println(str2.get());
+	}
+- 重复注解与类型注解
 
-        Optional<Employee> optional2=Optional.of(null);
-        System.out.println(optional2.get());
-    }
-
-    @Test
-    public void test2(){
-        Optional<Employee> optional=Optional.empty();
-        System.out.println(optional.get());
-    }
-
-    @Test
-    public void test3(){
-        Optional<Employee> optional1=Optional.ofNullable(new Employee());
-        System.out.println(optional1.get());
-
-        Optional<Employee> optional2=Optional.ofNullable(null);
-
-        if(optional2.isPresent()){
-            System.out.println(optional2.get());
-        }
-
-        Employee employee1=optional2.orElse(new Employee("张三",18,666.66, Employee.Stauts.FREE));
-        System.out.println(employee1);
-
-        Employee employee2=optional2.orElseGet(()->new Employee());
-        System.out.println(employee2);
-    }
-
-    @Test
-    public void test4(){
-        Optional<Employee> optional=Optional.ofNullable(new Employee("张三",18,666.66, Employee.Stauts.FREE));
-        Optional<String> str=optional.map((e)->e.getName());
-        System.out.println(str.get());
-
-        Optional<String> str2= optional.flatMap((e)->Optional.of(e.getName()));
-        System.out.println(str2.get());
-    }
+  
