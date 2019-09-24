@@ -214,13 +214,13 @@ boolean test(T t);
 
 ## 接口中的默认方法与静态方法
 
-![了解Fork和Join框架](../../image/java8/了解Fork和Join框架.png)
+![了解Fork和Join框架](../../image/java8/了解Fork和Join框架.PNG)
 
 ![](../../image/java8/Fork和Join框架.PNG)
 
-![](../../image/java8/并行流与顺序流.png)
+![](../../image/java8/并行流与顺序流.PNG)
 
-![](../../image/java8/接口中默认方法.png)
+![](../../image/java8/接口中默认方法.PNG)
 
 ## 新时间日期API
 
