@@ -22,7 +22,7 @@ iBatis曾是开源软件组 Apache 推出的一种轻量级的对象关系映射
    2. 使用 sqlSession 工厂，获取 sqlSession 对象使用来执行增删改查；一个 sqlSession 就表示和数据库的一次会话，用完关闭。
    3. 使用 sql 的唯一标识来告诉 Mybatis 执行哪个 sql 。sql 是保存在 sql 映射文件中的。
 
-==参考官方文档 2.1 Getting started==
+**参考官方文档 2.1 Getting started**
 
 ## 接口式编程
 
@@ -254,6 +254,28 @@ mappers：SQL  映射注册到全局配置中，注册配置文件。
 ​				推荐做法是：**比较重要的，复杂的 DAO 接口我们来写 sql 映射文件；不重要的，简单的 DAO 接口为了开发快速可以使用注解。**
 
 ## 映射文件
+
+#### 增删改
+
+- mybatis 允许增删改直接定义以下类型返回值 Integer、Long、Boolean、void
+
+- 我们需要手动提交数据
+
+  sqlSessionFactory.openSession();   手动提交
+
+  sqlSessionFactory.openSession(true); 自动提交
+
+#### 获取自增主键的值
+
+- **mysql** 支持自增主键，自增主键的获取,mybatis也是利用 statement.getGenreatedKeys()
+
+useGenreatedKeys = "true"：使用自增主键获取主键策略
+
+keyProperty：指定对应的主键属性，也就是 mybatis 获取主键后，将这个值封装给 javaBean 的
+
+- **Oralce**不支持自增，Oracle使用序列来模拟自增；
+
+每次插入的数据的主键从序列中拿值，如何获取到这个值。
 
 ## 动态sql
 
