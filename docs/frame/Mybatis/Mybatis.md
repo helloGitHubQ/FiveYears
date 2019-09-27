@@ -335,6 +335,150 @@ TO：
 
 ​		取值：取出来第一个id值：#{list[0]}
 
+```
+总结：
+	参数多的时候会封装 map ，为了不混乱，我们可以使用@Param来指定封装时使用的 key;
+	#{key}就可以取出map中的值
+```
+
+#### #和$的区别
+
+- ${}：取出的值直接拼在sql语句中；会有安全问题
+
+- #{}：是以预编译的形式，将参数设置到 sql 语句中；PreparedStatement ；防止 sql 注入
+
+原生的 jdbc 不支持占位符的地方我们就可以使用 ${} 进行取值
+
+#### #{}更丰富的用法
+
+规定参数的一些规则
+
+javaType、jdbcType、mode（存储过程）、numericScale、resultMap、typeHandler、jdbcTypeName、expression（未来准备的功能）
+
+jdbcType 通常需要在某种特定的条件下被设置：
+
+在我们数据为 null 的时候，有些数据库可能不识别 mybatis 对 null 的默认处理。比如 Oracle （报错）
+
+JdbcType OTHER：无效的类型；因为 mybatis 对所有的 null 都映射的是原生 Jdbc 的 OTHER 类型。
+
+由于全局配置中，jdbcTypeForNull=OTHER ；Oralce 不支持，有两种办法：
+
+1、#{email，jdbcType=NULL}
+
+2、jdbcTypeForNull=NULL
+
+​			<setting name="jdbcTypeForNull" value="NULL"/>
+
+#### resultMap 自定义结果集映射规则
+
+自定义某个javaBean的封装规则
+
+```xml
+<!-- type:自定义规则的Java类型   id:唯一id方便使用 -->
+<resultMap type="" id="">
+    <!-- 指定主键列的封装规则
+ 		id：定义主键底层会有优化
+		column：指定哪一列
+		property：指定对应的 javaBean 属性
+	-->
+	<id column="id" property="id"></id>
+    <!-- 定义普通列封装规则 -->
+    <result column="last_name" property="LastName"/>
+    <!-- 其他不指定列会自动封装：我们只要写 resultMap 就把全部的映射规则都写上 -->
+    <result column="email" property="email"/>
+    <result column="gender" property="gender"/>
+</resultMap>
+<select id="getEmpById" resultMap="MyEmp">
+	select * from tbl_employee where id=#{id}
+</select>
+```
+
+#### 关联查询
+
+- 级联属性封装结果
+
+```xml
+<!-- 联合查询：级联属性封装结果 -->
+<resultMap type="" id="">
+	<id column="id" property="id"/>
+    <result column="last_name" property="lastName"/>
+    <result column="gender" property="gender"/>
+    <result column="did" property="dept.id"/>
+    <result column="dept_name" property="dept.departmentName"/>
+</resultMap>
+<select id="getEmpAndDeptId" resultMap="MyDifEmp">
+	sXXXXX(SQL语句)
+</select>
+```
+
+- assoction定义关联对象封装规则
+
+  ```xml
+  <resultMap type="" id="">
+  	<id column="id" property="id"/>
+      <result column="last_name" property="lastName"/>
+      <result column="gender" property="gender"/>
+      
+      <!--  association可以指定联合的 javaBean 对象
+    		property="dept"：指定哪个属性是联合的对象
+   		javaType：指定这个属性对象的类型(不能省略)
+       -->
+      <association property="dept" javaType="">
+      	 <id column="did" property="id"/>
+      	 <result column="dept_name" property="departmentName"/>
+      </association>
+  </resultMap>
+  
+  ```
+
+- assoction 分步查询
+
+  可以使用延迟加载（懒加载/按需加载）（在分步查询的基础上加上两个配置）
+
+  aggressiveLazyLoading 
+
+  multipleResultSetsEnabled 
+
+- collection 嵌套结果集的方式，定义关联的集合类型元素的封装规则
+
+```xml
+<resultMap type="" id="">
+	<id column="did" property="id"/>
+    <result column="dept_name" property="departmentName"/>
+   
+    
+    <!--  collection定义关联集合类型的属性的封装规则
+		  ofType：指定集合里面元素的类型
+     -->
+    <collection property="emps" ofType="">
+        <!-- 定义这个集合中元素的封装规则 -->
+    	 <id column="id" property="id"/>
+         <result column="last_name" property="lastName"/>
+   		 <result column="gender" property="gender"/>
+    	 <result column="dept_name" property="departmentName"/>
+    </collection>
+</resultMap>
+<select id="getEmpAndDeptId" resultMap="MyDifEmp">
+	sXXXXX(SQL语句)
+</select>
+```
+
+
+
+多列的值传递过去：将多列的值封装 map 传递；
+
+```xml
+column="{key1=column1,key2=column2}"
+fetchType="lazy"  ：表示延迟加载
+
+- lazy ：延迟加载
+- eager：立即加载
+```
+
+#### discriminator 鉴别器
+
+mybatis 使用 discriminator 判断某列值，然后根据某列的值改变封装行为。
+
 ## 动态sql
 
 ## 缓存
