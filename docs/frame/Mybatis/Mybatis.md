@@ -587,6 +587,8 @@ mysql 下批量保存：
 
 ​		2、 需要数据库连接属性 allowMultiQueries = true
 
+
+
 ## 缓存
 
 ## 整合Spring
