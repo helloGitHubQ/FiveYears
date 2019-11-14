@@ -182,6 +182,8 @@ Semaphore（信号维度）
 
 ​    ThreadLocal 初衷是在线程并发时，解决变量共享问题，但是由于过度设计，比如弱引用和哈希碰撞，导致理解难度大、使用成本高，反而成为故障高发点。容易出现内存泄漏、脏数据、共享对象更新等问题。
 
+![](../image/Thread/ThreadLocal.PNG)
+
 ### 引用类型
 
 **强引用**：Strong Reference
@@ -198,7 +200,98 @@ Semaphore（信号维度）
 
 **虚引用**：Phantom Reference
 
-​		是极弱的一种引用关系，定义完成后，就无法通过该引用获取指定指向对象。
+​		是极弱的一种引用关系，定义完成后，就无法通过该引用获取指定指向对象。为一个对象设置虚引用的唯一目的就是希望能在这个对象被回收时能够收到一个系统通知。虚引用必须于引用队列联合使用，当垃圾回收时，如果发现存在虚引用，就会在回收对象内存前，把这个虚引用加入与之关联的引用队列中。
+
+### ThreadLocal
+
+- set()：如果没有 set 操作的 ThreadLocal ，容易引起脏数据的问题
+
+  ```java
+  /**
+       * Sets the current thread's copy of this thread-local variable
+       * to the specified value.  Most subclasses will have no need to
+       * override this method, relying solely on the {@link #initialValue}
+       * method to set the values of thread-locals.
+       *
+       * @param value the value to be stored in the current thread's copy of
+       *        this thread-local.
+       */
+      public void set(T value) {
+          Thread t = Thread.currentThread();
+          ThreadLocalMap map = getMap(t);
+          if (map != null)
+              map.set(this, value);
+          else
+              createMap(t, value);
+      }
+  ```
+
+  
+
+- get()：始终没有 get 操作的 ThreadLocal 对象是没有意义的
+
+  ```java
+  /**
+       * Returns the value in the current thread's copy of this
+       * thread-local variable.  If the variable has no value for the
+       * current thread, it is first initialized to the value returned
+       * by an invocation of the {@link #initialValue} method.
+       *
+       * @return the current thread's value of this thread-local
+       */
+      public T get() {
+          Thread t = Thread.currentThread();
+          ThreadLocalMap map = getMap(t);
+          if (map != null) {
+              ThreadLocalMap.Entry e = map.getEntry(this);
+              if (e != null) {
+                  @SuppressWarnings("unchecked")
+                  T result = (T)e.value;
+                  return result;
+              }
+          }
+          return setInitialValue();
+      }
+  ```
+
+  
+
+- remove()：如果没有 remove 操作，容易引起内存泄漏
+
+  ```java
+  /**
+       * Removes the current thread's value for this thread-local
+       * variable.  If this thread-local variable is subsequently
+       * {@linkplain #get read} by the current thread, its value will be
+       * reinitialized by invoking its {@link #initialValue} method,
+       * unless its value is {@linkplain #set set} by the current thread
+       * in the interim.  This may result in multiple invocations of the
+       * {@code initialValue} method in the current thread.
+       *
+       * @since 1.5
+       */
+       public void remove() {
+           ThreadLocalMap m = getMap(Thread.currentThread());
+           if (m != null)
+               m.remove(this);
+       }
+  ```
+
+  
+
+### 副作用
+
+- 脏数据
+
+  线程复用会产生脏数据。
+
+  由于线程池复用 Thread 对象，那么与 Thread 绑定的类的静态属性  ThreadLocal 变量也会被重用。如果在实现的线程 run 方法体中不显式的调用 remove 方法清理与线程相关的 ThreadLocal 信息，那么倘若下一个线程不调用 set() 设置初始值，就可能 get() 到重用的线程信息，包括 ThreadLocal 所关联的线程对象的 value 值。
+
+- 内存泄漏
+
+  在源代码注释中提示试用 static 关键字来修饰 ThreadLocal 。在此场景下，寄希望于  ThreadLocal 对象失去引用后，触发弱引用机制来回收 Enty 的 Value 就不现实了。
 
 
+
+以上两个问题解决的办法很简单，就是每次用完 ThreadLocal 时，必须要及时调用 remove() 方法清理
 
