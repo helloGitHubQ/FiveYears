@@ -43,13 +43,8 @@
 - [bootstrap-面试中问到-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/bootsrap.md)
 - [使用过的](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/web/used.md)
 ## 数据结构和算法
-- 树
-- 图
-- 哈希表
-- 链表
-- 队列
-- 栈
-- 数组
+- [数据结构](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/DataStructure.md)
+
 ## 网络
 ## 操作系统
 - Linux
