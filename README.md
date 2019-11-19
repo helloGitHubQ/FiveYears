@@ -78,6 +78,9 @@ Java 并发编程实战
 设计模式 - 可复用面向对象软件基础
 
 算法（第4版）
+
+码农翻身 **在读**
+
 ## 工具
 - [Git](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/tools/Git.md "Git")
 - [Tomcat](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/tools/tomcat.md)
