@@ -26,7 +26,7 @@ ssh-keygen -t rsa -C "youremail@example.com" --生成SSH
 git remote add origin git@github.com:用户名/项目名.git --关联GitHub
 
 git push -u origin master --推送本地库到远程仓库
- 
+
 git pull -v origin master --从远程仓库获取最新
 
 git clone git@github.com:用户名/项目名.git --克隆远程仓库到本地
@@ -53,7 +53,7 @@ git config --global http.sslVerify false
     
     解决办法：（拉代码，丢掉本地修改的代码）
     git fetch --all
-
+    
     git reset --hard origin/master
     
     git fetch
@@ -62,3 +62,24 @@ git config --global http.sslVerify false
 
 [分支冲突的3种解决办法](https://blog.csdn.net/xlgen157387/article/details/51146949 "分支冲突解决办法")
 
+---
+
+### **2019/11/5**
+
+​		因为换了一台新的电脑，所以 git 生成密钥（有公钥和私钥）是没有问题的。但是就是用 TortoiseGit 去推送(push)的时候出现以下图片中的问题
+
+![](../image/tools/TortoiseGit_publickey.png)
+
+意思就是使用 TortoiseGit 没有去配置相应的公钥。
+
+
+
+1. 开始 -> TortoiseGit -> PuTTYgen -> （加载一个已经存在的私钥文件）Load 
+
+   ![](../image/tools/TortoiseGit_PuTTY.png)
+
+   *注：这一步我是因为之前就通过 git 生成过密钥所以就直接加载。如果没有生成过的话，也可以通过 TortoiseGit 去生成一个。*
+
+2. Save private key（位置可以自己选但是要记住）保存完之后你选择的地方就会有一个 .ppk的文件存在。现在离成功已经不远了。
+3. Settings -> Git -> Remote -> 选择分支 -> Putty Key（选择后面的 ... 去添加刚刚生成的那个文件） 
+4. 再去推送(push)，成功！
