@@ -83,3 +83,24 @@ git config --global http.sslVerify false
 2. Save private key（位置可以自己选但是要记住）保存完之后你选择的地方就会有一个 .ppk的文件存在。现在离成功已经不远了。
 3. Settings -> Git -> Remote -> 选择分支 -> Putty Key（选择后面的 ... 去添加刚刚生成的那个文件） 
 4. 再去推送(push)，成功！
+
+### 2019/12/16
+
+本地有git仓库，github上没有git仓库的情况下怎么办？
+
+[**远程仓库教程**](https://www.liaoxuefeng.com/wiki/896043488029600/896954117292416)
+
+1. 确认自己是否已经在 github 上添加SSH。
+
+2. 在 github 上创建项目（和本地的项目一样）,先不要创建 readme 文件。
+
+3. 添加远程仓库的分支（origin）
+
+   `$ git remote add origin git@github.com:XXX/XXX.git`
+
+4. 在本地 git 仓库中推送本地文件（第一次推送）。
+
+   `$ git push -u origin master`
+
+5. 以后推送本地 git 仓库的话用 `git push origin master`
+
