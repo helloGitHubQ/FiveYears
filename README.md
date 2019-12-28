@@ -28,9 +28,8 @@
 	- [集合和泛型](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/collection/collectionGenerics.md)
 	- [数组和集合](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/collection/collectionLlist.md)
 	- [Map类集合](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/collection/map.md)
-- 反射
-- Java8
-	- [Java8](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/java8/java8.md)
+- [反射](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/Reflect.md)
+- [Java8](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/java8/java8.md)
 - 源码学习
 - 编码规范
 - 注解
@@ -71,7 +70,7 @@
 ## 书籍
 Thinking in Java（第4版）**在读**
 
-Esay Coding **在读**
+Esay Coding **读完**
 
 Java 并发编程实战
 
@@ -79,7 +78,7 @@ Java 并发编程实战
 
 算法（第4版）
 
-码农翻身 **在读**
+码农翻身 **读完**
 
 ## 工具
 - [Git](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/tools/Git.md "Git")
