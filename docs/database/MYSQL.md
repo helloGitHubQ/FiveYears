@@ -1,98 +1,472 @@
-# MYSQl #
-## desc ##
-    select t.*,a.user_name 
-    from tbtransrecord t,t_user a 
-    where a.user_id=t.user_id  
-    ORDER BY opt_date desc,opt_time desc;
-和
+# MYSQL
 
-    select t.*,a.user_name 
-    from tbtransrecord t,t_user a 
-    where a.user_id=t.user_id  
-    ORDER BY opt_date ,opt_time desc;
+![](../image/database/mysql/MYSQL.png)
 
-区别:
+## 连接MYSQL服务器
 
-先按日期来分组再按时间来分组.会出现并不是你想要的效果(ORDER BY opt_date,opt_time desc).它实际上是 opt_ date asc, opt_time desc.所以并不会出现你想要的效果.
+- 连接 MYSQL 服务器
 
-如果想要出现按日期和时间降序排列的话,就分开写.即 opt_date desc, opt_time desc.
-## to _ char/ to _ date ##
-Oracle中有to _char和to _date.但是MYSQL中没有.
+打开 cmd 窗口
 
-+ DATE _ FORMAT(MYSQL) -- TO _ CHAR(ORACLE)
+```
+C:\Users\Q>mysql -uroot(用户名) -p(后跟密码,也可省略) 
+```
 
-> DATE _ FORMAT(SYSDATE(),'%Y-%m-%d %H:%i:%s')
+- 连接 MYSQL 服务器并指定 IP 和端口
 
-+ STR _ TO _ DATE(MYSQL) -- TO _ DATE(ORACLE)
+```
+C:\Users\Q>mysql -uroot(用户名) -p(密码) -h127.0.0.1(IP) -P3306(端口)
+```
 
-> STR _ TO _ DATE(SYSDATE(),'%Y-%m-%d %H:%i:%s')
-> 
-注: 
-> %Y：代表4位的年份 
-> %y：代表2为的年份
+- 退出客户端命令
+
+```
+1.quit
+2.exit
+3.\q
+```
+
+输入完命令之后 MYSQL 会发送一个 Bye 跟你说再见！
+
+- 注释
+
+```
+1./**/
+2.-- 
+3.#
+```
+
+- 取消当前语句执行
+
+```
+\c
+```
+
+## 数据库及表操作
+
+- 创建数据库
+
+```
+-- 创建 mydb1 数据库
+create database mydb1;
+
+-- 创建 mydb1 数据库并指定编码为 utf8
+create database mydb1 charset utf8;
+
+-- 创建 mydb1 数据库如果不存在的话，并指定 utf8 编码
+create database if not exits mydb1 charset utf8;
+```
+
+- 使用库
+
+```
+use 库名;
+```
+
+- 删除数据库
+
+```
+-- 删除 mydb1 数据库
+drop database mydb1;
+
+-- 如果 mydb1 数据库存在的话就删除
+drop database if exits mydb1;
+```
+
+- 查看数据库
+
+```
+-- 查看所有的数据库
+show databases;
+
+-- 查询某一个数据库中的所有表
+show tables;
+
+-- 查看数据库 mydb1 建库语句
+show create database mydb1; 
+```
+
+---
+
+- 创建表
+
+```
+create table 表名(
+	列名 数据类型，
+
+    列名 数据类型
+
+	.....
+);
+```
+
+- 删除表
+
+```
+drop table 表名;
+drop table if exits 表名;
+```
+
+- 查看表结构
+
+```
+desc 表名;
+```
+
+## 表记录操作
+
+- 新增表记录
+
+```
+insert into 表名(列名1,列名2...) values(值1,值2...) 
+```
+
+- 查看表记录
+
+```
+select 列名 | * from 表名
+```
+
+- 更新表
+
+```
+update 表名 set 列=值,列=值,....[where 子句]
+```
+
+- 删除表数据
+
+```
+delete from 表名 [ where条件 ]
+```
+
+### 查询表记录
+
+- 基础查询
+- where 子句查询
+- 模糊查询
+
+```
+like 关键字
+语法: select 列 | * from 表名 where 列名 like 值
+LIKE 操作符用在 where 子句中搜索列中的指定模式。
+
+通配符：
+% 表示0或多个任意的字符
+_ 表示1个任意的字符
+
+-- 26.查询emp表中姓名中以"刘"字开头的员工，显示员工姓名。
+
+select * from emp where name like '刘%';
+```
+
+- 多行函数查询
+
+多行函数也叫做聚合 (聚集) 函数,根据某一列或所有列进行统计
+
+count(*)  | sum | max | min |avg
+
+- 分组查询
+
+```
+group by 关键字
+语法: select 列名 from 表名 [where 子句] group by 列;
+
+-- 按照部门分组，统计每个部门的最高薪资
+
+select dept, max(sal) from emp group by dept;
+```
+
+- 排序查询
+
+```
+desc 降序，即从高到低.
+asc(默认)升序，即从低到高.
+
+语法:select 列名 from 表名 order by 列名 [asc|desc]
+
+-- 根据奖金和薪资进行排序（奖金是降序排序，薪资是升序排序，先根据奖金排序，如果奖金相同再根据薪资进行排序）
+
+select name,bonus,sal from emp order by bonus desc,sal asc;
+```
+
+- 分页查询
+
+```
+limit (页码-1)*煤业显示记录数,每页显示记录数
+
+-- 查询emp表中薪资最高的前三个员工的信息(小技巧,排序分页)
+
+select * from emp order by sal desc limit 0,3;
+```
+
+---
+
+### 多表查询
+
+- 连接查询
+
+```
+select * from dept, emp;
+
+上面的查询叫做笛卡尔积查询：如果同时查询两张表，其中一张表有m条数据，另外一张表有n条数据，笛卡尔积查询的结果是 m*n 条
+
+笛卡尔积查询的结果中有大量错误数据，我们通常不会直接使用。
+
+但可以通过where子句、条件剔除错误数据，保留正确数据。
+
+-- 42.查询部门和部门对应的员工信息
+
+select * from dept, emp where dept.id=emp.dept_id;
+```
+
+
+
+- 左外连接查询
+
+将左边表中的所有记录都查询出来，右边表只显示和左边表对应的数据，如果左边表在右边没有对应数据，可以对应null值。
+
+```
+-- 43.查询所有部门和部门下的员工，如果部门下没有员工，员工显示为null
+
+select * from dept left join emp on dept.id=emp.dept_id;
+```
+
+
+
+- 右外连接查询
+
+会将右边表中的所有记录都查询出来，左边表只显示和右边表对应的数据，如果右边表在左边没有对应数据，可以对应null值。
+
+```
+- 44.查询部门和所有员工，如果员工没有所属部门，部门显示为null
+
+select * from dept right join emp on dept.id=emp.dept_i
+```
+
+- 子查询
+
+将一条SQL语句的执行结果，作为另外一条SQL语句的条件进行查询
+
+- 全外连接查询
+
+```
+mysql不支持全外连接查询，但我们可以通过union（联合）查询来模拟：
+
+select * from dept left join emp on dept.id=emp.dept_id
+
+union
+
+select * from dept right join emp on dept.id=emp.dept_id;
+
+使用union可以将两个查询结果合并在一起显示，但要注意的，两个查询结果的列数和列名必须一致
+```
+
+
+
+## 数据类型
+
+### 数值类型
+
+- **tinyint**：占用1个字节，相对于java中的byte
+
+- **smallint**：占用2个字节，相对于java中的short
+
+- **int**：占用4个字节，相对于java中的int
+
+- **bigint**：占用8个字节，相对于java中的long
+
+
+
+- **float**：4字节单精度浮点类型，相对于java中的float
+
+- **double**：8字节双精度浮点类型，相对于java中的double
+
+### 字符串类型
+
+- char(n)  定长字符串，最长255个字符。n表示字符数
+
+- varchar(n)  变长字符串，最长不超过 65535个字节，n表示字符数
+
+- text  最长65535个字节，一般超过255个字符列的会使用text。
+
+  text也分多种，其中bigtext存储数据的长度约为4GB。
+
+### 日期类型
+
+- date 	年月日
+- time     时分秒
+- datetime    年月日 时分秒
+- timestamp   时间戳
+
+**datetime 和 timestamp 的区别：**
+
+1. timestamp 最大表示 2038 年， datetime 范围是 1000~999
+2. timestamp 在插入数据，修改数据的时候，会自动更新成系统当前 时间
+
+## 字段约束
+
+### 主键约束(primary key)
+
+唯一并且不能为空
+
+
+
+关于主键自增：
+
+1. 设置了主键自增后, 再往表中插入记录,就可以不用给主键赋值,直接插入一个null值即可
+
+2. 设置了主键自增后, 也可以为id赋值,只要赋的值与已有的id值不冲突即可! 在底层会将auto_increment变量的值和插入的id值进行比较, 如果插入的值较大, 将会将插入的值加1后赋值给auto_increment变量。
+
+### 非空约束(not null)
+
+不能为空但是可以重复
+
+### 唯一约束(unique)
+
+唯一并且可以为空
+
+### 外键约束
+
+外键其实就是用于通知数据库两张表数据之间对应关系的这样一个列。
+
+这样数据库就会帮我们维护两张表中数据之间的关系。
+
+
+
+```
+create table emp(
+
+    id int,
+
+    name varchar(50),
+
+    dept_id int,
+
+    foreign key(dept_id) references dept(id)
+
+);
+```
+
+## 表关系
+
+一对多（多对一）：在多的一方添加列保存一的一方的主键作为外键，从而保存两张表之间的对应关系。
+
+一对一：在任意一张表中添加列保存另一方的主键作为外键，从而保存两张表之间的对应关系。
+
+多对多：不能在任意一方添加列保存另一方的主键。此时可以创建一张第三方表，分别保存两张表的主键作为外键，从而保存两张表之间的对应关系。
+
+## 数据库备份与恢复
+
+### 备份
+
+在cmd窗口中(未登录的状态下)，可以通过如下命令对指定的数据库进行备份：
+
+`mysqldump -u用户名 -p 数据库的名字 > 备份文件的位置`
+
+例如: 对db40库中的数据(表，表记录)进行备份，备份到 c:/db40.sql文件中
+
+`mysqldump -uroot -p db40 > c:/db40.sql`
+
+键入密码，如果没有提示，即表示备份成功！
+
  
-> %m：代表月, 格式为(01……12)  
-> %c：代表月, 格式为(1……12)
- 
-> %d：代表月份中的天数,格式为(00……31)  
-> %e：代表月份中的天数, 格式为(0……31) 
- 
-> %H：代表小时,格式为(00……23)  
-> %k：代表 小时,格式为(0……23)  
-> %h： 代表小时,格式为(01……12)  
-> %I： 代表小时,格式为(01……12)  
-> %l ：代表小时,格式为(1……12)
-  
-> %i： 代表分钟, 格式为(00……59) 
 
-> %r：代表 时间,格式为12 小时(hh:mm:ss [AP]M)  
-> %T：代表 时间,格式为24 小时(hh:mm:ss) 
+也可以一次性备份所有库，例如：
 
-> %S：代表 秒,格式为(00……59)  
-> %s：代表 秒,格式为(00……59) 
+对mysql服务器中所有的数据库进行备份，备份到 d:/all.sql文件中
 
+`mysqldump -uroot -p --all-database > d:/all.sql`
 
-## drop,delete和truncate的区别
+键入密码，如果没有提示，即表示备份成功！
 
-一次偶然的机会我看到尽然还有 truncate table .. 这样的写法。所以就产生了好奇心。想一探究竟！
+### 恢复
 
-1. 应用范围：delete 可以操作表和视图. truncate 只能操作表.
+在cmd窗口中(未登录的状态下)，可以通过如下命令对指定的数据库进行恢复：
 
-2. delete 和 truncate 只是删除数据， drop 删除数据和结构
+`mysql -u用户名 -p 数据库的名字 < 备份文件的位置`
 
-3.执行速度：drop > truncate > drop
+例如: 将d:/db40.sql文件中的数据恢复到db60库中
 
-4.delete 删除每一行的时候都会生成事务操作记录保存在日志中，以便之后的回滚操作。
+```
+-- 在cmd窗口中（已登录的状态下）， 先创建db60库：
 
-  truncate 删除数据的时候,并不会把删除操作记录记入日志中保存。删除行是不能恢复的，并且删除的过程中不会激活与表有关的删除触发器，所以执行速度快
-  
-5. 表和索引空间：
+create database db60 charset utf8;
 
-truncate ，恢复初始化大小；delete ，不会减少表或者索引所占用的空间；drop ，将表所占用的空间全部释放掉。
+-- 在cmd窗口中（未登录的状态下）
 
-6. 对于有 FOREIGN KEY （外键）约束引用的表，不能使用 truncate table，而应该使用不带 where 子句的 delete 语句
-
-7.truncate 和 drop 是 DLL ，操作立即生效，原数据不放到 rollback segment 中，不能回滚。delete 是 DML ，这个操作会放到 rollback segment 中，事务提交之后才生效。
+mysql -uroot -p db60 < d:/db40.sql
+```
 
 
-[drop、truncate和delete的区别](https://www.cnblogs.com/zhizhao/p/7825469.html?tdsourcetag=s_pctim_aiomsg)
 
-## SUBSTRING_INDEX()函数
+或 例如: 将d:/db40.sql文件中的数据恢复到db80库中
 
-语法：
+```
+-- 在cmd窗口中（已登录的状态下），先创建db80库，进入db80库：
 
-    substring_index(str,delim,count)
+create database db80 charset utf8;
 
-    str:要处理的字符串
+use db80;
 
-    delim:分隔符
+-- 再通过source执行指定位置下的sql文件：
 
-    count:分隔符计数 
-    
-例子：
+source d:/db40.sql
+```
 
-    -- SUBSTRING_INDEX(str,'"',2)取出从左往右第二个引号左边的字符串str
-    -- SUBSTRING_INDEX(str1,'"',-1)取出从右往左数第一个引号右边的字符串str_1
-    SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(str,'"',2),'"',-1) as str_1 from stringtest;
+## SQL 语句的书写顺序
 
-结果：str_1 : aa cdfd
+```
+select * | 列名       -- 确定要查询的列有哪些
+
+from 表名         -- 确定查询哪张表
+
+where 条件        -- 通过筛选过滤，剔除不符合条件的记录
+
+group by 分组的列  -- 指定根据哪一列进行分组
+
+having 条件       -- 通过条件对分组后的数据进行筛选过滤
+
+order by 排序的列  -- 指定根据哪一列进行排序
+
+limit (countPage-1)*rowCount, rowCount -- 指定返回第几页记录以及每页显示多少条
+```
+
+## SQL语句的执行顺序
+
+```
+from 表名         -- 确定查询哪张表
+
+where 条件        -- 通过筛选过滤，剔除不符合条件的记录
+
+select * | 列名 列别名 -- 确定要查询的列有哪些，
+
+group by 分组的列  -- 指定根据哪一列进行分组
+
+having 条件       -- 通过条件对分组后的数据进行筛选过滤
+
+order by 排序的列  -- 指定根据哪一列进行排序
+
+limit (countPage-1)*rowCount, rowCount
+```
+
+## 函数
+
+- count(*) | sum | max | min |avg
+- ifnull( 列 , 值 )
+- curdate() 	获取当前日期 年月日
+- curtime()      获取当前日期 时分秒
+- sysdate() / now()    获取当前日期+时间 年月日  时分秒
+- year(date)   获取 date 中的年份
+- month(date)    获取 date 中的月份
+- day(date)    获取 date 中的月中天数
+- hour(date)   获取 date 中的小时
+- minute(date)    获取 date 中的分钟
+- second(date)   获取 date 中的秒数
+- concat(s1,s2,...)   将 s1 , s2 等字符串合并为一个字符串
+- concat_ws(x,s1,s2,..)  将 s1 ,s2 等字符串以 x 为分隔符拼接成一个字符串
+
+## 扩展内容
+
+- drop,delete,truncate三者的区别？
+- char(n),varchar(n),text都可以表示字符串类型，其区别？
+- where 和 having 的区别？
