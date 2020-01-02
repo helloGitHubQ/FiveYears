@@ -7,6 +7,7 @@
     - [JUnit单元测试框架](#JUnit单元测试框架)
     - [命名](#命名)
     - [断言与假设](#断言与假设)
+  - [注意事项](#注意事项)
 
 # 单元测试
 
@@ -206,9 +207,18 @@ assertTimeout 和 assertTimeoutPreemptively 断言的差异在于，前者会在
 
   AssertJ 通过 AssertJ assertions generator 来生成对应的 XxxxAssert 类，然后辅助我们对模板 JavaBean 对象进行断言 API 判断。 AssertJ assertions generator 有对应的 Maven 和 Gradle Plugin ,生成这样的代码很容易，所以很容易实现对自定义 JavaBean 对象的判断需求。此外，AssertJ 还添加了常用的扩展，如 DB assertions，Guava assertions 等，以方便我们使用。例如，典型的 DB assertions ,无论你使用哪种框架，在执行完数据库操作后，就可以使用 DB assertions 对数据库中的数据进行断言，非常适合单元测试。
 
-  
+---
 
-  
+## 注意事项
+
+使用 @Test 注解运行的方法必须遵循的4个原则：
+
+1. 方法必须是公共的(public)
+2. 方法必须是非静态的
+3. 方法必须是无返回值的
+4. 方法必须是无参的
+
+
 
 
 
