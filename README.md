@@ -69,6 +69,9 @@
 - [bootstrap-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/bootstrap.md)
 - [缓存框架-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/cacheFramework.md)
 ## 设计模式
+
+- [mybatis中的设计模式](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/designPatterns/mybatis.md)
+
 ## 书籍
 Thinking in Java（第4版）**在读**
 
