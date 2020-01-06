@@ -40,7 +40,7 @@ JS 区分大小写
 ### 函数
 
     `function 函数名（）{
-		函数方法
+    	函数方法
     }`
 
 #### 函数调用：
@@ -127,10 +127,10 @@ JavaScript 创建动态页面。事件是可以被 JavaScript 侦测到的行为
 #### 数组赋值：
 
     var myarry = new Array();
-	myarry[0] = 66;
+    myarry[0] = 66;
     myarry[1] = 77;
     myarry[2] = 88;
- 
+     
     var myarry = new Array(66,77,88);
     
     var myarry = [66,77,88];
@@ -147,15 +147,15 @@ JavaScript 创建动态页面。事件是可以被 JavaScript 侦测到的行为
 
     myarray.length;
 注意：
- 
+
 因为数组的索引总是从0开始的，所有数组的上下线是 0 和 length-1;
- 
+
 同时 js 数组的 length 属性是可变的。
 
 #### 二维数组：
 
     二维数组表示： myarry[][]
-
+    
     var myarrays=[[0,1,2],[0,1,2]];
 
 ### 流程控制语句
@@ -181,10 +181,10 @@ break
 
 continue
 
-### [JS对象](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jsObject.md)
+### [JS对象](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/js/jsObject.md)
 
-### [jQuery](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery.md)
+### [jQuery](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery/jQuery.md)
 
-### [DOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/DOM.md)
+### [DOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/js/DOM.md)
 
-### [BOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/browserObject.md)
+### [BOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/js/browserObject.md)

@@ -8,13 +8,13 @@ jQuery 的核心特性可以总结为：具有独特的链式语法和短小清�
 
 [jQuery官网](http://jquery.com/)
 
-- [jQuery 样式](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery-CSS.md)
+- [jQuery 样式](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery/jQuery-CSS.md)
 
-- [jQuery 事件](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery-Event.md)
+- [jQuery 事件](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery/jQuery-Event.md)
 
-- [jQuery 动画](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery-Animation.md)
+- [jQuery 动画](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery/jQuery-Animation.md)
 
-- [jQuery DOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery-DOM.md)
+- [jQuery DOM](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/web/jQuery/jQuery-DOM.md)
 
 ---
 ## 1.如何设置select只读不可编辑且select的值可传递
