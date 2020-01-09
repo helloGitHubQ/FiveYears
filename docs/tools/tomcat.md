@@ -3,12 +3,17 @@
 	- [运行原理](#运行原理)
     - [环境搭建](#环境搭建)
     - [部署](#部署) 
+	  
 	- [单点登录](#单点登录)
+	
 	- [多域名访问](#多域名访问)
+
 	- [Tomcat安全配置](#Tomcat安全配置)
+	
 	- [性能优化](#性能优化)
-<!-- /TOC -->
-# Tomcat
+	
+	  <!-- /TOC -->
+# Tomcat:warning: 
 Tomcat 7
 
 **打war包**
@@ -27,7 +32,7 @@ Apache
 
 - Container 原理
 
-![Container图](https://i.imgur.com/XsZ2nMd.png)
+![Container图](../image/tools/Tomcat/Container.PNG)
 ## 环境搭建
 1. java 开发环境
 
@@ -39,38 +44,32 @@ Apache
 
 **目录：**
 
-bin:bat (windows操作)/ sh (linux操作)
- 
-conf：配置文件
-
-lib:jar包
-
-logs:日志  
-
-temp:临时文件
-
-webapps：存放应用程序，打war包什么的
-
-work:编译后的文件，清除缓存（删除work下的文件，重启tomcat）
+```txt
+apache-tomcat-8.5.50	--软件安装目录
+	|bin: 	--批处理文件的存放目录 bat (windows操作)/ sh (linux操作)
+	|conf: 	--配置文件的存放目录
+	|lib: 	--运行时所依赖的jar包存放目录
+	|logs: 	--运行时所产生的日志存放的目录  
+	|temp: 	--临时文件的存放目录
+	|webapps: 	--存放应用程序，打war包什么的/资源的存放目录,可以被浏览器访问
+	|work: 		--编译后的文件，清除缓存（删除work下的文件，重启tomcat）
+```
 
 ## 部署
-- 修改端口号
+- **修改端口号**
 
 server.xml 关闭端口、HTTP端口（修改这个）、AJP端口。
 
 - 修改内存参数
 
+```
 堆内存
-
 栈内存
-
 静态内存区
-
 内存溢出异常，(OutputMemoryError)：
-
 Java heap sapce 异常 / PermGen space 异常 / StackOverflowError
-
 设置内存参数。
+```
 
 - 热部署
 
@@ -87,7 +86,7 @@ reloadable 为true的话，就会自动加载新增或者修改的 .class 文件
 
 3. 在 Catalina 下的 localhost 下新建一个 xml 文件。 
 
-![tomcat热部署方式3](https://i.imgur.com/kv516i9.png) 
+![tomcat热部署方式3](../image/tools/Tomcat/tomcat热部署方式3.png) 
 
 - 配置连接池和数据源
 
@@ -104,7 +103,7 @@ Server Status/Manager App/Host Manager
 
 ## 单点登录
 
-![单点登录](https://i.imgur.com/6VLPKsR.png)
+![单点登录](../image/tools/Tomcat/单点登录原理.png)
 
 SSO：用户只需要登录一次就可以访问所有相互信任的应用系统。
 
@@ -112,7 +111,7 @@ CAS：开源的企业级单点登录解决方案。（基于HTTPS）
 
 CAS Server | CAS Client 
 
-![CAS协议过程图](https://i.imgur.com/pwOsa2u.png)
+![CAS协议过程图](../image/tools/Tomcat/CAS协议过程.png)
 
 
 下载 CAS 的war包和两个客户端的war包；cas 的Tomcat和两个客户端的Tomcat。
@@ -132,15 +131,16 @@ deployerConfigContext.xml
 
 server.xml中加入同级的 HOST 标签。
 
-![通过IP配置多域名访问](https://i.imgur.com/0a9lI6D.jpg)
+![通过IP配置多域名访问](../image/tools/Tomcat/通过IP配置多域名访问.jpg)
 
 通过端口配置多域名访问：
 
-![通过端口配置多域名访问](https://i.imgur.com/68GBCsD.jpg)
+![通过端口配置多域名访问](../image/tools/Tomcat/通过端口配置多域名访问.jpg)
 
 server.xml中加入同级的 server 标签。
 
 *实际开发过程中是使用 Nginx 的代理来实现多域名访问。*
+
 ## Tomcat安全配置
 
 - 初始化配置
@@ -151,7 +151,7 @@ server.xml中加入同级的 server 标签。
 
 2. 隐藏版本信息
 
-jar包中的catalina.jar(org/apeche/catalina/util/ServerInfo.properties) 
+jar包中的 `catalina.jar(org/apeche/catalina/util/ServerInfo.properties) `
 修改文件中 server.info
 
 3. 禁用tomcat的管理界面
@@ -162,7 +162,7 @@ jar包中的catalina.jar(org/apeche/catalina/util/ServerInfo.properties)
 
 在ROOT下去创建error.html文件。然后去在web.xml中配置error-page。
 
-![errorHtml配置](https://i.imgur.com/zi04whl.png)
+![errorHtml配置](../image/tools/Tomcat/errorHtml配置.png)
 
 5. AJP端口管理
 
