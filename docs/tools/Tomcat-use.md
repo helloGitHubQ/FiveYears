@@ -130,7 +130,7 @@ http://localhost/hello.html
 
 将news配置为缺省的(默认的)Web应用，方式为：
 
-​	将news应用的目录改为一个大写的ROOT。
+​	**将news应用的目录改为一个大写的ROOT**。
 
 ## 配置web应用主页
 
