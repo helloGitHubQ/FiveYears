@@ -15,5 +15,11 @@ Hibernate 是一个开放源代码的对象关系映射框架，它对 JDBC 进�
 
 [Hibernate查询方式和抓取策略--黑马视频](https://www.evernote.com/l/Ajgm8NY8_2lDELMdgGzv4f5nZ1vJG4VorYE/)
 
+---
+
+**过时！！！**
+
+不用写SQL语句，开发效率快！但是 SQL 不能进行优化，执行效率低！！！
+
 
 
