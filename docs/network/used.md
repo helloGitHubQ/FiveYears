@@ -1,6 +1,6 @@
 ## 常用网站
 
-### 学习
+### :man_student:学习
 
 GitHub
 
@@ -14,7 +14,7 @@ GitHub
 
 码云(Gitee)
 
-### 工具
+### :hammer_and_wrench:工具
 
 [maven中央仓库](https://mvnrepository.com/)
 
@@ -28,7 +28,7 @@ GitHub
 
 [Json.cn](https://www.json.cn/)
 
-### 文档
+### :book:文档
 
 [Spring](https://spring.io/)
 
@@ -42,12 +42,12 @@ GitHub
 
 [jQuery](https://jquery.com/)
 
-### 刷题
+### :muscle:刷题
 
 牛客网
 
 力扣(LeetCode)
 
-### 网站
+### :blonde_man:网站
 
 Q
