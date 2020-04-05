@@ -8,7 +8,7 @@
 	- [正则表达式-未总结](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/regex.md "正则")
 	- [泛型-未总结](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/generics.md)
 	- [消息队列-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/messageQueue.md)
-- JVM
+- JVM - 待整理
 	- [java内存区域](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/jvm/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.md "java内存区域")
 	- [jvm垃圾回收](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/jvm/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.md "jvm垃圾回收")
 	- [JDK监控和故障处理工具](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/jvm/JDK%E7%9B%91%E6%8E%A7%E5%92%8C%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7.md "JDK监控和故障处理工具")
@@ -26,6 +26,13 @@
   - Reference - 未学习
   - [ThreadPoolExecutor类分析](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/thread/ThreadPoolExecutor.md)
 - 集合(底层源码)
+  - ArrayList
+  - LinkedList
+  - Vector
+  - HashMap
+  - ComcurrentHashMap
+  - LinkedHashMap
+  - Set
 - IO
 	- [IO-未总结](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/io.md)
 	- [NIO](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/nio.md)
@@ -37,6 +44,7 @@
 - [反射](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/Reflect.md)
 - [Java8](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/java8/java8.md)
 - 源码学习
+  - equals
 - 编码规范
 - 注解-未总结
 - [单元测试](https://github.com/helloGitHubQ/FiveYears/tree/master/docs/base/UnitTest.md)
@@ -53,8 +61,15 @@
 - [会话管理](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/web/session.md)
 ## :revolving_hearts:数据结构和算法
 - [数据结构](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/DataStructure.md)
+  - Queue
+  - Tree
+  - 图
+- 算法 - 未开始学习
 
 ## :biking_woman:网络
+
+
+
 ## :o:操作系统
 - Linux
 	- [Linux](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/os/Linux.md) 
@@ -64,6 +79,9 @@
 - MYQL
 	- [MYSQL](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL.md "MYSQL")
 	- [MYSQL使用过程](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL_use.md "MYSQL使用过程")
+	- 存储引擎 - 未学习
+	- 事务 - 未学习
+	- MYSQL进阶 - 未学习
 - Redis
 	- [Redis-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/database/NoSql/redis.md) 
 ## :airplane:框架
