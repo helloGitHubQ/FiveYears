@@ -83,7 +83,15 @@
 	- 事务 - 未学习
 	- MYSQL进阶 - 未学习
 - Redis
-	- [Redis-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/database/NoSql/redis.md) 
+	- [Redis-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/database/NoSql/redis.md)
+	- 持久化机制 - 未学习
+	- 内存淘汰机制  - 未学习
+	- 分片机制 - 未学习
+	- 哨兵机制 - 未学习
+	- 集群 - 未学习
+	- 缓存雪崩 - 未学习
+	- 缓存穿透 - 未学习
+	- 布隆过滤器 - 未学习
 ## :airplane:框架
 - [spring-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/spring.md)
 - [hibernate-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/hibernate.md)
