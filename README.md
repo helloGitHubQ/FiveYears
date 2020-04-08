@@ -8,6 +8,7 @@
 	- [正则表达式-未总结](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/regex.md "正则")
 	- [泛型-未总结](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/generics.md)
 	- [消息队列-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/messageQueue.md)
+	- 锁 - 未学习
 - JVM - 待整理
 	- [java内存区域](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/jvm/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.md "java内存区域")
 	- [jvm垃圾回收](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/base/jvm/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.md "jvm垃圾回收")
@@ -61,8 +62,9 @@
 - [会话管理](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/web/session.md)
 ## :revolving_hearts:数据结构和算法
 - [数据结构](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/DataStructure.md)
-  - Queue
-  - Tree
+  - Queue - 未学习
+  - Tree - 未学习
+  - Heap - 未学习
   - 图
 - 算法 - 未开始学习
 
@@ -94,12 +96,26 @@
 	- 布隆过滤器 - 未学习
 ## :airplane:框架
 - [spring-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/spring.md)
+  - Spring IOC - 未学习
+  - Spring AOP - 未学习
+  - Spring Bean - 未学习
+  - [SpringMVC-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringMVC.md)
+  - Spring 事务 - 未学习
+  - Spring 整合 - 未学习
+  - Spring & 设计模式  - 未学习
 - [hibernate-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/hibernate.md)
 - [SpringBoot-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringBoot/SpringBoot.md)
-- [Dubbo](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Dubbo.md):question:
+  - SpringBoot入门 - 未学习
+  - SpringBoot & Mybatis - 未学习
+  - SpringBoot & Web应用 - 未学习
+  - SpringBoot & Docker - 未学习
+  - SpringBoot & 数据访问 - 未学习
+- [Dubbo](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Dubbo.md)
+  - Dubbo负载均衡 - 未学习
 - [Mybatis-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/Mybatis.md)
+  - Mybatis核心 - 未学习
+  - Mybatis & 设计模式 - 未学习
 - [SpringCloud-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringCloud.md)
-- [SpringMVC-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringMVC.md)
 - [struts2-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/struts2.md)
 - [bootstrap-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/bootstrap.md)
 - [缓存框架-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/cacheFramework.md)
