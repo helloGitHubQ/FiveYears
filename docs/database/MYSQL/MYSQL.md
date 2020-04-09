@@ -1,6 +1,6 @@
 # MYSQL
 
-![](../image/database/mysql/MYSQL.png)
+![](../../image/database/mysql/MYSQL.png)
 
 ## 连接MYSQL服务器
 
