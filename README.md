@@ -104,7 +104,7 @@
   - Spring 事务 - 未学习
   - Spring 整合 - 未学习
   - Spring & 设计模式  - 未学习
-- [hibernate-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/hibernate.md)
+- [hibernate-out](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/hibernate.md)
 - [SpringBoot-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringBoot/SpringBoot.md)
   - SpringBoot入门 - 未学习
   - SpringBoot & Mybatis - 未学习
@@ -113,20 +113,20 @@
   - SpringBoot & 数据访问 - 未学习
 - [Dubbo](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Dubbo.md)
   - Dubbo负载均衡 - 未学习
-- Mybatis-未学完
-  - [Mybatis]((https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/Mybatis.md))
-  - Mybatis核心 - 未学习
-  - Mybatis & 设计模式 - 未学习
+- Mybatis:man_office_worker:
+  - [Mybatis - 学习中](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/Mybatis.md)
+  - [Mybatis核心 - 学习中](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/MybatisCentre.md)
+  - [Mybatis & 设计模式 - 未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/designPatterns/mybatis.md)
 - [SpringCloud-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringCloud.md)
 - [struts2-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/struts2.md)
 - [bootstrap-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/bootstrap.md)
 - [缓存框架-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/cacheFramework.md)
 ## :point_right:设计模式
 
-- [mybatis中的设计模式](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/designPatterns/mybatis.md)
+- [设计模式加强](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/designPatterns/DesignPatterns.md)
 
 ## :books:书籍
-Thinking in Java（第4版）**在读**
+Thinking in Java（第4版）**参考**
 
 Esay Coding **读完**
 
