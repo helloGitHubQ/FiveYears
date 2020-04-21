@@ -57,8 +57,8 @@ mybatis 中可以使用 **properties** 来引入外部 properties 配置文件�
 
 有两个标签：
 
-- resource：引入类路径下的资源
-- url：引入网络路径或磁盘路径下的资源
+- **resource**：引入类路径下的资源
+- **url**：引入网络路径或磁盘路径下的资源
 
 ## 3.Configuration XML 
 
@@ -96,7 +96,7 @@ setting：用来设置每一个设置项
 
 ### typeAliases 
 
-**typeAliases**  ： 别名处理器，可以为我们的 java 类型起别名
+**typeAliases**  ： 别名处理器，可以为我们的 java 类型起别名。**别名不区分大小写。**
 
 1、typeAlias：为某个 java 类型起别名
 
@@ -125,7 +125,7 @@ setting：用来设置每一个设置项
 </typeAliases>
 ```
 
-3、批量起别名的情况下，使用 @Alias注解给某个类型起新的别名
+3、批量起别名的情况下，使用 `@Alias`注解给某个类型起新的别名
 
 ```java
 @Alias("author")
@@ -139,15 +139,23 @@ public class Author {
 - 别名不区分大小写
 - mybatis 中预先给我们设定了一些别名（基本数据类型和它们的包装类、集合、日期、迭代器等）
 
+![](../../image/mybatis/typeAliases.png)
+
 ### typeHandlers 
 
-typeHandlers：类型处理器
+类型处理器
 
-NOTE If you use classes provided by JSR-310(Date and Time API), you can use the [mybatistypehandlers-jsr310](https://github.com/mybatis/typehandlers-jsr310)
+*NOTE* If you use classes provided by JSR-310(Date and Time API), you can use the [mybatistypehandlers-jsr310](https://github.com/mybatis/typehandlers-jsr310)
+
+JDk 1.8  日期和时间处理 API
+
+也就是 Mybatis 3.4 以前的版本需要我们手动注册这些处理器，以后的版本都是自动的。
+
+![](../../image/mybatis/typeHandlers.png)
 
 ### plugins 
 
-plugins：插件
+插件 四大对象
 
 - Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)
 - ParameterHandler (getParameterObject, setParameters)
@@ -156,26 +164,30 @@ plugins：插件
 
 ### environments
 
-environments：可以配置多种环境； default 指定使用某种环境。可以达到快速切换
+可以配置多种环境； default 指定使用某种环境。可以达到快速切换。
 
-environment：配置一个具体的环境环境，必须有两个标签。id代表当前环境的唯一标识
+- environment：配置一个具体的环境环境，必须有两个标签。id代表当前环境的唯一标识
+  - transactionManager：事务管理器。
+  - type：事务管理器的类型。
+    - JDBC（JdbcTransactionFactory）|
+    - MANAGED(MabagedTransactionFactory)|
+    - 自定义事务管理器：实现 TransactionFactory 接口 ，type 指定为全类名 
+  -  dataSource：数据源。
 
-​		transactionManager：事务管理器。
+-  type：数据源类型。
 
-​				type：事务管理器的类型。[JDBC（JdbcTransactionFactory）|MANAGED(MabagedTransactionFactory)|自定义事务管理器：实现 TransactionFactory 接口 ，type 指定为全类名] 
+  - UNPOOLED(UnpooledDataSourceFactory)|
 
-​		dataSource：数据源。
-
-​				type：数据源类型。[UNPOOLED(UnpooledDataSourceFactory)|POOLED(PooledDataSourceFactory)|JNDI(JndiDataSourceFactory)|自定义数据源：实现 DataSourceFactory 接口，type 是全类名] 
-
-
+  - POOLED(PooledDataSourceFactory)|
+  - JNDI(JndiDataSourceFactory)|
+  - 自定义数据源：实现 DataSourceFactory 接口，type 是全类名
 
 ```xml
 <environments default="development">
     <environment id="development">
         <transactionManager type="JDBC">
-        <property name="..." value="..."/>
-    </transactionManager>
+        	<property name="..." value="..."/>
+    	</transactionManager>
         <dataSource type="POOLED">
             <property name="driver" value="${driver}"/>
             <property name="url" value="${url}"/>
@@ -188,7 +200,7 @@ environment：配置一个具体的环境环境，必须有两个标签。id代�
 
 ### databaseIdProvider 
 
-databaseldProvider：支持多数据库厂商。
+支持多数据库厂商。
 
 DB_VENDOR ：作用就是得到数据库厂商的标识（驱动getDatabaseProductName() ），mybatis 就能根据数据库厂商标识来执行不同的sql
 
@@ -202,20 +214,31 @@ DB_VENDOR ：作用就是得到数据库厂商的标识（驱动getDatabaseProdu
 
 ### mappers
 
-mappers：SQL  映射注册到全局配置中，注册配置文件。
+SQL  映射注册到全局配置中，注册配置文件。
 
-​	resource：引用类路径下的 sql 映射文件；
-
-​	url：引用网络路径或磁盘路径下的 sql 映射文件。
+- resource：引用类路径下的 sql 映射文件；
+- url：引用网络路径或磁盘路径下的 sql 映射文件。
 
 
 
 ​	注册接口
 
-​		class：引用（注册）接口，
+​	class：引用（注册）接口，
 
-​				1、有 sql 映射文件，映射文件名必须和接口同名，并且放在与接口同一个包下
+​		1、有 sql 映射文件，映射文件名必须和接口同名，并且放在与接口同一个包下
 
-​				2、没有 sql 映射文件，所有的 sql 都是利用注解写在接口上
+​		2、没有 sql 映射文件，所有的 sql 都是利用注解写在接口上
 
-​				推荐做法是：**比较重要的，复杂的 DAO 接口我们来写 sql 映射文件；不重要的，简单的 DAO 接口为了开发快速可以使用注解。**
+推荐做法是：**比较重要的，复杂的 DAO 接口我们来写 sql 映射文件；不重要的，简单的 DAO 接口为了开发快速可以使用注解。**
+
+```xml
+<mappers>
+    <!-- 注册配置文件 -->
+	<mapper resource="myabtis/mapper/EmployeeMapper.xml" />
+    <mapper class="com.atguigu.mybatis.dao.EmployeeMapperAnnotation"/>
+    
+    <!-- 批量注册 -->
+    <package name="com.atguigu.mybatis.dao"/>
+</mappers>
+```
+
