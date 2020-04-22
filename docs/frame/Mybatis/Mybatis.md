@@ -60,5 +60,7 @@ iBatis曾是开源软件组 Apache 推出的一种轻量级的对象关系映射
 
 ## 缓存
 
+[缓存](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/MybatisCache.md)
+
 ## 整合Spring
 
