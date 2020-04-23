@@ -83,8 +83,9 @@
 	- [MYSQL使用过程](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL/MYSQL_use.md "MYSQL使用过程")
 	- 存储引擎 - 未学习
 	- 事务 - 未学习
-	- MYSQL进阶 - 未学习
+	- [MYSQL进阶](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL/MYSQL_Advanced.md)
 	- [MYSQL优化](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL/MYSQL_Optimize.md )
+	- [其他](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL/Other.md)
 - Redis
 	- [Redis-未学完](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/database/NoSql/redis.md)
 	- 持久化机制 - 未学习
@@ -114,7 +115,7 @@
 - [Dubbo](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Dubbo.md)
   - Dubbo负载均衡 - 未学习
 - Mybatis:man_office_worker:
-  - [Mybatis - 学习中](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/Mybatis.md)
+  - [Mybatis](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/Mybatis.md)
   - [Mybatis核心 - 学习中](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/MybatisCentre.md)
   - [Mybatis & 设计模式 - 未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/designPatterns/mybatis.md)
 - [SpringCloud-未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/SpringCloud.md)

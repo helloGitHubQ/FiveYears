@@ -62,5 +62,58 @@ iBatis曾是开源软件组 Apache 推出的一种轻量级的对象关系映射
 
 [缓存](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/frame/Mybatis/MybatisCache.md)
 
+### 缓存整合ehcache
+
+- pom依赖
+- ehcache.xml
+- Mapper中引入 <cache> 标签
+
 ## 整合Spring
 
+mybatis-spring - GitHub项目
+
+SSM - Spring SpringMVC Mybatis
+
+### Spring
+
+Spring配置文件
+
+Spring希望管理所有的业务逻辑组件等。
+
+Spring 用来控制业务员逻辑。数据源，事务控制，AOP。
+
+### Mybatis
+
+mybatis-config.xml  mybatis的配置文件
+
+dbconfig.properties  数据库配置文件
+
+### Spring MVC
+
+web.xml
+
+spring-servlet.xml
+
+SpringMVC只是控制网站跳转逻辑。
+
+扫描控制器。视图解析器。
+
+
+
+### mybatis - spring  整合
+
+目的：
+
+1).Spring管理所有组件。mapper的实现类。
+
+service ==> DAO
+
+@Autowried:自动注入Mapper
+
+2).spring用来管理事务，spring声明式事务。
+
+
+
+**jpetstore-6** GitHub 项目 
+
+整合项目演示
