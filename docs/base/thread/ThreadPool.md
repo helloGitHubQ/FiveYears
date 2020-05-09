@@ -125,3 +125,97 @@ ThreadLocalMap 已经考虑到这种情况，在调用 set() ，get()，remove()
 
 ### 怎么创建线程池呢？
 
+《阿里巴巴 JAVA 开发手册》中强制规定  线程池不允许使用 Executors 去创建，而应该通过 ThreadPoolExecutor 的方式，这样的处理方式更加明确线程池的运行规则，规避资源耗尽的风险。
+
+那么为什么不允许使用 Executors 呢？
+
+- FixedThreadPool 和 SingleThreadExecutor
+
+  允许请求的队列长度为 Integer.MAX_VALUE，可能堆积大量的请求，从而导致 OOM
+
+- CacheThreadPool 和 ScheduledThreadPool
+
+  允许创建的线程数量为 Integer.MAX_VALUE，可能会创建大量线程，从而导致 OOM
+
+怎么通过 ThreadPoolExecutor 创建线程池呢？
+
+1. 通过构造方法实现。
+
+   ![](../../image/Thread/ThreadPoolExecutor.png)
+
+2. 通过 Executor框架的工具类 Executors 来实现。
+
+- FixedThreadPool    固定线程数量的线程池
+
+  固定线程数量说的是线程池中线程数量始终不变。
+
+  如果有一个新的任务提交的时候，线程池中若有空闲线程，则立即执行。
+
+  如果没有，则新的任务会被暂存在一个任务队列中，待有线程空闲时，便处理在任务队列中的任务。
+
+- SingleThreadExecutor    只有一个线程的线程池
+
+  如果有多余的一个任务过来的时候，把该任务放在任务队列中，待线程空闲，按照先进先出的顺序执行任务队列中的任务。
+
+- CachedThreadPool   可调节线程数量的线程池
+
+  线程池中线程数量不确定，如果有空闲线程可以复用，如果没有空闲线程的时候来任务就创建一个线程，任务处理完成之后把线程归还给线程池。
+
+![](../../image/Thread/Executors.png)
+
+
+
+[ThreadPoolExecutor](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/thread/ThreadPoolExecutor.md)
+
+### 线程池的原理分析
+
+想要弄清出线程池原理 第一步就是要 分析下 execute 方法
+
+```java
+// 存放线程池的运⾏状态 (runState) 和线程池内有效线程的数量 (workerCount)
+private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));
+private static int workerCountOf(int c) {
+	return c & CAPACITY;
+}
+private final BlockingQueue<Runnable> workQueue;
+
+public void execute(Runnable command) {
+    // 如果任务为null，则抛出异常。
+    if (command == null)
+    throw new NullPointerException();
+    // ctl 中保存的线程池当前的⼀些状态信息
+    int c = ctl.get();
+	// 下⾯会涉及到 3 步 操作
+    // 1.⾸先判断当前线程池中之⾏的任务数量是否⼩于 corePoolSize
+    // 如果⼩于的话，通过addWorker(command, true)新建⼀个线程，并将任务(command)添加到该线程中；然后，启动该线程从⽽执⾏任务。
+    if (workerCountOf(c) < corePoolSize) {
+        if (addWorker(command, true))
+            return;
+        c = ctl.get();
+    }
+    
+    // 2.如果当前之⾏的任务数量⼤于等于 corePoolSize 的时候就会⾛到这⾥
+    // 通过 isRunning ⽅法判断线程池状态，线程池处于 RUNNING 状态才会被并且队列可以加⼊任务，该任务才会被加⼊进去
+    if (isRunning(c) && workQueue.offer(command)) {
+        int recheck = ctl.get();
+        // 再次获取线程池状态，如果线程池状态不是 RUNNING 状态就需要从任务队列中移除任务，并尝试判断线程是否全部执⾏完毕。同时执⾏拒绝策略。
+        if (!isRunning(recheck) && remove(command))
+        	reject(command);
+        // 如果当前线程池为空就新创建⼀个线程并执⾏。
+        else if (workerCountOf(recheck) == 0)
+        	addWorker(null, false);
+    }
+    
+    //3. 通过addWorker(command, false)新建⼀个线程，并将任务(command)添加到该线程中；然后，启动该线程从⽽执⾏任务。
+    //如果addWorker(command, false)执⾏失败，则通过reject()执⾏相应的拒绝策略的内容。
+    else if (!addWorker(command, false))
+    	reject(command);
+}
+```
+
+
+
+线程池原理分析图：
+
+![](../../image/Thread/ThreadPool.png)
+

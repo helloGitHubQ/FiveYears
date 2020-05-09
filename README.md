@@ -23,9 +23,8 @@
   - [多线程](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/thread/thread.md)
   - [线程池](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/thread/ThreadPool.md)
   - [Atomic](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/thread/Atomic.md)
-  - AQS - 未学习
-  - Reference - 未学习
-  - [ThreadPoolExecutor类分析](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/thread/ThreadPoolExecutor.md)
+  - [AQS - 未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/thread/AQS.md)
+  - [Reference - 未学习](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/base/thread/Reference.md)
 - 集合(底层源码)
   - ArrayList
   - LinkedList
