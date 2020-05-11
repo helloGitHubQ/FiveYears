@@ -80,7 +80,6 @@
 - MYQL
 	- [MYSQL](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL/MYSQL.md "MYSQL")
 	- [MYSQL使用过程](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL/MYSQL_use.md "MYSQL使用过程")
-	- 存储引擎 - 未学习
 	- 事务 - 未学习
 	- [MYSQL进阶](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL/MYSQL_Advanced.md)
 	- [MYSQL优化](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/database/MYSQL/MYSQL_Optimize.md )

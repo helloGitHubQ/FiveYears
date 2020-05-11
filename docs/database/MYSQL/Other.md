@@ -1,3 +1,15 @@
+<!--TOC-->
+
+- [大表优化](#大表优化)
+  - [限定数据范围](#限定数据范围)
+  - [读写分离](#读写分离)
+  - [垂直分区](#垂直分区)
+  - [水平分区](#水平分期)
+- [池化设计思想](#池化设计思想)
+- [SQL开发技巧](#SQL开发技巧)
+
+<!--TOC-->
+
 # 其他
 
 ## 大表优化
@@ -60,6 +72,14 @@
 数据库连接本质就是一个 **socket** 连接，数据库服务端还要维护一些缓存中和用户权限信息之类的，所以占用了一些内存。在连接池中，创建连接之后，将其放置在池中，并再次使用它，因为不必建立新的连接。如果使用了所有连接，则会建立一个新连接并将其添加到池中。
 
 [池化设计思想](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485679&idx=1&sn=57dbca8c9ad49e1f3968ecff04a4f735&chksm=cea24724f9d5ce3212292fac291234a760c99c0960b5430d714269efe33554730b5f71208582&token=1141994790&lang=zh_CN%23rd)
+
+## SQL开发技巧
+
+[SQL开发技巧之一](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/database/MYSQL/SQL1.md)
+
+[SQL开发技巧之二](https://github.com/helloGitHubQ/FiveYears/blob/master/docs/database/MYSQL/SQL2.md)
+
+
 
 
 
