@@ -59,9 +59,11 @@ from user1 a join user_kills b on a.id=b.user_id
 
 - 属性拆分
 
+  ![](../../image/database/mysql/get/属性拆分-列转行.png)
+
 - EL数据处理
 
-  [EL数据处理-列转行]
+  ![EL数据处理-列转行](../../image/database/mysql/get/EL数据处理-列转行.png)
 
 手机号行列转换
 
@@ -84,7 +86,7 @@ from user1 b
 
 #### 利用 union 方式
 
-[使用 union 方式实现列转行]
+![使用 union 方式实现列转行](../../image/database/mysql/get/使用UNION方式实现列转行.png)
 
 union / union all
 
@@ -105,7 +107,7 @@ from user1 a join user1_equipment b on a.id = b.user_id;
 
 #### 利用序列表处理
 
-[使用序列化表方式实现列转行]
+![使用序列化表方式实现列转行](../../image/database/mysql/get/使用序列化表方式实现列转行.png)
 
 coalesce 函数 / cross join / case when... then ..end
 
@@ -173,3 +175,30 @@ order_seq 表
 
 
 ## 删除重复数据
+
+![去除重复数据](../../image/database/mysql/get/去除重复数据.png)
+
+先查询出重复数据 用 having | group by 关键字
+
+```sql
+select user_name,count(*)
+from user1_test
+group by user_name
+having count(*)>1
+```
+
+删除重复数据，对于相同数据保留 ID 最大的
+
+```sql
+delete a from user1_test a join(
+select user_name,count(*),max(id) as id
+from user1_test
+group by user_name 
+having count(*)>1
+) b on a.user_name=b.user_name
+where a.id<b.id
+```
+
+
+
+![更加复杂的数据重复](../../image/database/mysql/get/去除重复数据复杂情况.png)

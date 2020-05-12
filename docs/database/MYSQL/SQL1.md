@@ -31,7 +31,7 @@
 
 *数学中的合集。*
 
-[内连接]
+![内连接](../../image/database/mysql/get/InnerJoin.png)
 
 ### left join
 
@@ -40,7 +40,7 @@
 1. 原原本本的左连接，就是以左边表为主表，右边表为副表。如果左边表中没有出现右边边中的数据的话会被标记为 NULL 。
 2. 变通的左连接。在上第一种基础上加上，如果没有出现右边表数据的话就不显示。 **is not null**
 
-[左连接]
+![左连接](../../image/database/mysql/get/LeftJoin.png)
 
 ### right join
 
@@ -49,7 +49,7 @@
 1. ..
 2. ..
 
-[右连接]
+![右连接](../../image/database/mysql/get/RightJoin.png)
 
 ### full join
 
@@ -62,7 +62,7 @@ so ,全外连接能干嘛？
 1. 能查询出 两个表中所有的 数据
 2. 能查询出 两个表中除公共数据外的所有数据。
 
-[全外连接]
+![全外连接](../../image/database/mysql/get/FullJoin.png)
 
 ### cross join
 
