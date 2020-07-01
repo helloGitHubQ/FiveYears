@@ -61,10 +61,11 @@
 - [会话管理](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/web/session.md)
 ## :revolving_hearts:数据结构和算法
 - [数据结构](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/DataStructure.md)
-  - Queue - 未学习
-  - Tree - 未学习
-  - Heap - 未学习
-  - 图
+  - [Queue - 未学习](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/Queue.md)
+  - [Tree - 未学习](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/Tree.md)
+  - [Heap - 未学习](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/Heap.md)
+  - [Map - 未学习](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/Map.md)
+  - [Stack - 未学习](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/Stack.md)
 - 算法 - 未开始学习
 
 ## :biking_woman:网络
