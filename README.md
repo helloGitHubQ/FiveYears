@@ -66,7 +66,10 @@
   - [Heap - 未学习](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/Heap.md)
   - [Map - 未学习](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/Map.md)
   - [Stack - 未学习](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/dataStructure/Stack.md)
-- 算法 - 未开始学习
+- [算法](https://github.com/helloGitHubQ/FivesYears/blob/master/docs/algorithm/algorithm.md)
+  - CH
+  - LFU
+  - LRU
 
 ## :biking_woman:网络
 
